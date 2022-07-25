@@ -82,6 +82,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         btnsearch = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,7 +142,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
         getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 419, 351, -1));
 
-        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnupdate.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +152,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
         getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 476, -1, -1));
 
-        btnexit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnexit.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         btnexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit small.png"))); // NOI18N
         btnexit.setText("Exit");
         btnexit.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +162,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
         getContentPane().add(btnexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(849, 476, -1, -1));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +172,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 480, -1, -1));
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         jButton5.setText("Login");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +180,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(789, 520, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 520, -1, -1));
 
         btnsearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
@@ -192,6 +194,13 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/11.1.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
+        jButton1.setText("Sign Up");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,6 +315,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JButton btnexit;
     private javax.swing.JButton btnsearch;
     private javax.swing.JButton btnupdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -313,6 +323,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtans;
     private javax.swing.JTextField txtemail;
     private javax.swing.JPasswordField txtpassword;

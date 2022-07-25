@@ -53,11 +53,11 @@ public class UserDao {
         return user;
     }
 
-//    public static void update(String email, String newPassword) {
-//        String query = "update user set password = '" + newPassword + "' where email = '" + email + "'";
-//        DbOperations.setDataOrDelete(query, " Password Changed Successfully ");
-//    }
-//    
+    public static void update(String email, String newPassword) {
+        String query = "update user set password = '" + newPassword + "' where email = '" + email + "'";
+        DbOperations.setDataorDelete(query, " Password Changed Successfully ");
+    }
+    
 //    public static ArrayList<User> getAllRecords(String email){
 //        ArrayList<User> arrayList = new ArrayList<>();
 //        try{

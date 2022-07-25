@@ -3,19 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
 import javax.swing.ImageIcon;
-
 
 /**
  *
  * @author kingrishabdugar
  */
 public class Login extends javax.swing.JFrame {
+
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
-    
 
     /**
      * Creates new form Login
@@ -26,23 +26,22 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
     }
-    
-    public void clear(){
+
+    public void clear() {
         txtEmail.setText("");
         txtPassword.setText("");
         btnLogin.setEnabled(false);
     }
-    
-    public void validateFields(){
+
+    public void validateFields() {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
-        if(email.matches(emailPattern) && !password.equals("")){
+        if (email.matches(emailPattern) && !password.equals("")) {
             btnLogin.setEnabled(true);
-        }
-        else{
+        } else {
             btnLogin.setEnabled(false);
         }
-        
+
     }
 
     /**
@@ -136,6 +135,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jButton4.setText("Forgot Password ?");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 371, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
@@ -155,9 +159,8 @@ public class Login extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?","Select",JOptionPane.YES_NO_CANCEL_OPTION);
-        if(a==0)
-        {
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnExitActionPerformed
@@ -174,25 +177,25 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-                // TODO add your handling code here:
+        // TODO add your handling code here:
         String email = txtEmail.getText();
         String password = txtPassword.getText();
         User user = null;
         user = UserDao.login(email, password);
         //Changing colour for incorrect password hence using HTML tags
-        if(user == null)
-            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>","Message",JOptionPane.ERROR_MESSAGE);
-        else{
-            if(user.getStatus().equals("false")){
+        if (user == null)
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+        else {
+            if (user.getStatus().equals("false")) {
                 ImageIcon icon = new ImageIcon("src/popupicon/wait.gif");
-                JOptionPane.showMessageDialog(null,"<html><b> 🍀🌿🍂 Wait for Admin Approval ✔✔ </b></html>","Message",JOptionPane.INFORMATION_MESSAGE,icon);
+                JOptionPane.showMessageDialog(null, "<html><b> 🍀🌿🍂 Wait for Admin Approval ✔✔ </b></html>", "Message", JOptionPane.INFORMATION_MESSAGE, icon);
                 clear();
-                
+
             }
-            if(user.getStatus().equals("true")){
+            if (user.getStatus().equals("true")) {
                 setVisible(false);
                 new Home(email).setVisible(true);
-                
+
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -215,6 +218,12 @@ public class Login extends javax.swing.JFrame {
         setVisible(false);
         new Signup().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ForgotPassword().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

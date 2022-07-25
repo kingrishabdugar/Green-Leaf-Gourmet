@@ -79,7 +79,6 @@ public class ForgotPassword extends javax.swing.JFrame {
         btnupdate = new javax.swing.JButton();
         btnexit = new javax.swing.JButton();
         btnclear = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnsearch = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -171,16 +170,6 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 480, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.png"))); // NOI18N
-        jButton4.setText("Signup");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 520, -1, -1));
-
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         jButton5.setText("Login");
@@ -271,12 +260,6 @@ public class ForgotPassword extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnsearchActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-        new Signup().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         setVisible(false);
@@ -323,7 +306,6 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JButton btnexit;
     private javax.swing.JButton btnsearch;
     private javax.swing.JButton btnupdate;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

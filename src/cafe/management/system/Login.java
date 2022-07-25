@@ -76,7 +76,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Palatino Linotype", 1, 19)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Password");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 314, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 268, -1, -1));
 
         txtEmail.setFont(new java.awt.Font("Palatino Linotype", 1, 19)); // NOI18N
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +89,7 @@ public class Login extends javax.swing.JFrame {
                 txtEmailKeyReleased(evt);
             }
         });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 305, -1));
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 210, 315, -1));
 
         txtPassword.setFont(new java.awt.Font("Palatino Linotype", 1, 19)); // NOI18N
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -102,17 +102,17 @@ public class Login extends javax.swing.JFrame {
                 txtPasswordKeyReleased(evt);
             }
         });
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 305, 35));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 264, 315, 35));
 
         btnLogin.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
-        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 324, -1, -1));
 
         btnExit.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit small.png"))); // NOI18N
@@ -122,7 +122,7 @@ public class Login extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 400, -1, -1));
+        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 324, -1, -1));
 
         btnClear.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
@@ -132,11 +132,11 @@ public class Login extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 400, -1, -1));
+        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 324, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jButton4.setText("Forgot Password ?");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 448, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 371, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Palatino Linotype", 1, 14)); // NOI18N
         jButton5.setText("Sign Up");
@@ -145,10 +145,10 @@ public class Login extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(388, 448, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 371, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/veganloginpage.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 576));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

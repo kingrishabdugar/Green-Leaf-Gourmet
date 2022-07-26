@@ -6,11 +6,11 @@ package model;
 
 /**
  *
- * @author kingr
+ * @author kingrishabdugar
  */
 public class User {
-    
-    private String id;
+
+    private int id;
     private String name;
     private String email;
     private String mobileNumber;
@@ -20,11 +20,11 @@ public class User {
     private String answer;
     private String status;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -91,5 +91,5 @@ public class User {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }

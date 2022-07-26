@@ -58,74 +58,74 @@ public class UserDao {
         DbOperations.setDataorDelete(query, " Password Changed Successfully ");
     }
     
-//    public static ArrayList<User> getAllRecords(String email){
-//        ArrayList<User> arrayList = new ArrayList<>();
-//        try{
-//            ResultSet rs = Dboperations.getData("select * from user where email like '%"+email+"%'");
-//            while(rs.next()){
-//                User user = new User();
-//                user.setId(rs.getInt("id"));
-//                user.setName(rs.getString("name"));
-//                user.setEmail(rs.getString("email"));
-//                user.setMobileNumber(rs.getString("mobileNumber"));
-//                user.setAddress(rs.getString("address"));
-//                user.setSecurityQuestion(rs.getString("securityQuestion"));
-//                user.setStatus(rs.getString("status"));
-//                arrayList.add(user);
-//                
-//            }
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//        return arrayList;
-//        
-//    }
-//    
-//    public static void changeStatus(String email,String status){
-//        String query = "update user set status ='"+status+"' where email ='"+email+"'";
-//        Dboperations.setDataOrDelete(query," Status Changed Successfully");
-//        
-//    }
-//    
-//    public static void changePassword(String email,String oldPassword,String newPassword){
-//        try{
-//            ResultSet rs = Dboperations.getData("select * from user where email ='"+email+"' and password ='"+oldPassword+"'");
-//            if(rs.next()){
-//                update(email, newPassword);
-//                
-//            }
-//            else{
-//                
-//                JOptionPane.showMessageDialog(null,"Old Password is Worng");
-//            }
-//        }
-//    
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//    }
-//    
-//    public static void changeSecurityQuestion(String email,String password,String securityQuestion,String answer){
-//        try{
-//            ResultSet rs = Dboperations.getData("select * from user where email='"+email+"' and password='"+password+"'");
-//            if(rs.next()){
-//                update(email, securityQuestion, answer);
-//                
-//            }
-//            else{
-//                    JOptionPane.showMessageDialog(null,"Password is Wrong");
-//                    }
-//            
-//        }
-//        catch(Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//    }
-//    
-//    public static void update(String email,String securityQuestion,String answer){
-//        String query = "update user set securityQuestion='"+securityQuestion+"',answer='"+answer+"' where email='"+email+"'";
-//        Dboperations.setDataOrDelete(query, "Security Question Changed Successfully");
-//    }
+    public static ArrayList<User> getAllRecords(String email){
+        ArrayList<User> arrayList = new ArrayList<>();
+        try{
+            ResultSet rs = DbOperations.getData("select * from user where email like '%"+email+"%'");
+            while(rs.next()){
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setMobileNumber(rs.getString("mobileNumber"));
+                user.setAddress(rs.getString("address"));
+                user.setSecurityQuestion(rs.getString("securityQuestion"));
+                user.setStatus(rs.getString("status"));
+                arrayList.add(user);
+                
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return arrayList;
+        
+    }
+    
+    public static void changeStatus(String email,String status){
+        String query = "update user set status ='"+status+"' where email ='"+email+"'";
+        DbOperations.setDataorDelete(query," Status Changed Successfully");
+        
+    }
+    
+    public static void changePassword(String email,String oldPassword,String newPassword){
+        try{
+            ResultSet rs = DbOperations.getData("select * from user where email ='"+email+"' and password ='"+oldPassword+"'");
+            if(rs.next()){
+                update(email, newPassword);
+                
+            }
+            else{
+                
+                JOptionPane.showMessageDialog(null,"Old Password is Worng");
+            }
+        }
+    
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static void changeSecurityQuestion(String email,String password,String securityQuestion,String answer){
+        try{
+            ResultSet rs = DbOperations.getData("select * from user where email='"+email+"' and password='"+password+"'");
+            if(rs.next()){
+                update(email, securityQuestion, answer);
+                
+            }
+            else{
+                    JOptionPane.showMessageDialog(null,"Password is Wrong");
+                    }
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public static void update(String email,String securityQuestion,String answer){
+        String query = "update user set securityQuestion='"+securityQuestion+"',answer='"+answer+"' where email='"+email+"'";
+        DbOperations.setDataorDelete(query, "Security Question Changed Successfully");
+    }
 
 }

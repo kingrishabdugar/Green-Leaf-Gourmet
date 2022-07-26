@@ -127,6 +127,11 @@ public class Home extends javax.swing.JFrame {
         btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnvedp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete product.png"))); // NOI18N
         btnvedp.setText("View, Edit & Delete Product");
+        btnvedp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvedpActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnvedp, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 485, -1, -1));
 
         btnvu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -164,13 +169,18 @@ public class Home extends javax.swing.JFrame {
 
     private void btnmcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmcActionPerformed
         // TODO add your handling code here:
-         new ManageCategory().setVisible(true);
+        new ManageCategory().setVisible(true);
     }//GEN-LAST:event_btnmcActionPerformed
 
     private void btnnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnpActionPerformed
         // TODO add your handling code here:
         new AddNewProduct().setVisible(true);
     }//GEN-LAST:event_btnnpActionPerformed
+
+    private void btnvedpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedpActionPerformed
+        // TODO add your handling code here:
+        new ViewEditDeleteProduct().setVisible(true);
+    }//GEN-LAST:event_btnvedpActionPerformed
 
     /**
      * @param args the command line arguments

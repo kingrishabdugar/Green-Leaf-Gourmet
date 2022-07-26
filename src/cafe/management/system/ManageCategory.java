@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+// JFrame -> Component -> component shown event instead of key released for combo box in category and Table list
 package cafe.management.system;
 
 import model.Category;
-import Dao.CategoryDao;
+import dao.CategoryDao;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -23,6 +25,8 @@ public class ManageCategory extends javax.swing.JFrame {
     public ManageCategory() {
         initComponents();
         btnsave.setEnabled(false);
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
     }
 
     public void validateField() {
@@ -56,6 +60,11 @@ public class ManageCategory extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
@@ -66,6 +75,7 @@ public class ManageCategory extends javax.swing.JFrame {
         jLabel2.setText("View Category");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 42, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Palatino Linotype", 1, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -74,6 +84,11 @@ public class ManageCategory extends javax.swing.JFrame {
                 "ID", "CATEGORY"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 74, 350, 240));
@@ -112,6 +127,11 @@ public class ManageCategory extends javax.swing.JFrame {
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 179, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -152,9 +172,40 @@ public class ManageCategory extends javax.swing.JFrame {
         new ManageCategory().setVisible(true);
     }//GEN-LAST:event_btnsaveActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+//to show all categories added on the Table
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        ArrayList<Category> list = CategoryDao.getAllRecorded();
+        Iterator<Category> itr = list.iterator();
+        while (itr.hasNext()) 
+        {
+            Category categoryobj = itr.next();
+            dtm.addRow(new Object[]{categoryobj.getId(), categoryobj.getName()});
+        }    
+    }//GEN-LAST:event_formComponentShown
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        String id = model.getValueAt(index, 0).toString();
+        String name = model.getValueAt(index, 1).toString();
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete " + name + "Category", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
+            CategoryDao.delete(id);
+            setVisible(false);
+            new ManageCategory().setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

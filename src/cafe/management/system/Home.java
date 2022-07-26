@@ -117,6 +117,11 @@ public class Home extends javax.swing.JFrame {
         btnnp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnnp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new product.png"))); // NOI18N
         btnnp.setText("New Product");
+        btnnp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnpActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnnp, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 485, -1, -1));
 
         btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -161,6 +166,11 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
          new ManageCategory().setVisible(true);
     }//GEN-LAST:event_btnmcActionPerformed
+
+    private void btnnpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnpActionPerformed
+        // TODO add your handling code here:
+        new AddNewProduct().setVisible(true);
+    }//GEN-LAST:event_btnnpActionPerformed
 
     /**
      * @param args the command line arguments

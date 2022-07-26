@@ -8,7 +8,9 @@ package dao;
  *
  * @author kingr
  */
+//creates queries to feed into SQL client via inputs from user
 import javax.swing.*;
+
 public class tables {
 
     public static void main(String[] args) {
@@ -29,4 +31,3 @@ public class tables {
         }
     }
 }
-

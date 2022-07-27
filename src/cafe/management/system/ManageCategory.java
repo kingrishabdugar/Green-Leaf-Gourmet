@@ -127,6 +127,9 @@ public class ManageCategory extends javax.swing.JFrame {
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 179, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton3.setMaximumSize(new java.awt.Dimension(40, 40));
+        jButton3.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

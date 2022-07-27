@@ -165,6 +165,9 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, 370));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(40, 40));
+        jButton4.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

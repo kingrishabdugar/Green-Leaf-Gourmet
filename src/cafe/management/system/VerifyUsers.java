@@ -59,7 +59,6 @@ public class VerifyUsers extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1024, 576));
         setMinimumSize(new java.awt.Dimension(1024, 576));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -108,6 +107,9 @@ public class VerifyUsers extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 474, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton1.setMaximumSize(new java.awt.Dimension(40, 40));
+        jButton1.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButton1.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

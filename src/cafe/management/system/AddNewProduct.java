@@ -126,12 +126,15 @@ public class AddNewProduct extends javax.swing.JFrame {
         getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 245, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton3.setMaximumSize(new java.awt.Dimension(40, 40));
+        jButton3.setMinimumSize(new java.awt.Dimension(40, 40));
+        jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 30, 30));
 
         txtcategory.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 145, 260, -1));

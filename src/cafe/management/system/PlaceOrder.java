@@ -430,7 +430,7 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
             doc.add(tb1);
             doc.add(starLine);
-            Paragraph thanksMsg = new Paragraph("Thank You,Please Visit Again ^_^ \n\n\n");
+            Paragraph thanksMsg = new Paragraph("Thank You ^_^ ,Visit Again ! \n\n\n");
             doc.add(thanksMsg);
             Paragraph kingrishab = new Paragraph("Made by Rishab Dugar\n");
             doc.add(kingrishab);

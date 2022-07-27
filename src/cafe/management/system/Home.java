@@ -4,6 +4,7 @@
  */
 package cafe.management.system;
 
+import cafe_management_system.ViewBillPlaceOrderDetails;
 import javax.swing.JOptionPane;
 
 /**
@@ -49,7 +50,7 @@ public class Home extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnbillandorder = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -84,14 +85,24 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 51, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Details.png"))); // NOI18N
-        jButton3.setText("Bill & Order Details");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 51, -1, -1));
+        btnbillandorder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnbillandorder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Details.png"))); // NOI18N
+        btnbillandorder.setText("Bill & Order Details");
+        btnbillandorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbillandorderActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnbillandorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 51, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/change Password.png"))); // NOI18N
         jButton4.setText("Change Password");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 51, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -203,6 +214,16 @@ public class Home extends javax.swing.JFrame {
         new PlaceOrder(email).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btnbillandorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillandorderActionPerformed
+        // TODO add your handling code here:
+        new ViewBillandOrderDetails().setVisible(true);
+    }//GEN-LAST:event_btnbillandorderActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new ChangePassword().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,13 +259,13 @@ public class Home extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnbillandorder;
     private javax.swing.JButton btnmc;
     private javax.swing.JButton btnnp;
     private javax.swing.JButton btnvedp;
     private javax.swing.JButton btnvu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

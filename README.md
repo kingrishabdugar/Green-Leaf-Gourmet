@@ -15,19 +15,22 @@
 
 ## 💻 Technologies used 
 <div align="center">  
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="50" />  
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="50" />  
-<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="50" />
-<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="35" />   
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="75" />  
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="75" />  
+<img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="75" />
+<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />   
 </div>
 
 ## Overview 🪟
 ### See the Application at Work 📲
+<p align="center">
+<a href=""><img src="https://user-images.githubusercontent.com/56007479/181467823-f49f8f7a-ac46-4060-b5bf-31ec7dc527b0.mp4" align="center" width="560" height="315" /></a>
 
 https://user-images.githubusercontent.com/56007479/181467823-f49f8f7a-ac46-4060-b5bf-31ec7dc527b0.mp4
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/dl23V4FlCK0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  
+  
+</p>
+<vid width="854" height="480" alt="Demo Video of the Working of 🍃Green-Leaf-Gourmet🍃" src="https://user-images.githubusercontent.com/56007479/181467823-f49f8f7a-ac46-4060-b5bf-31ec7dc527b0.mp4"> 
 
 ### Sign Up & Login
 <p align="center">

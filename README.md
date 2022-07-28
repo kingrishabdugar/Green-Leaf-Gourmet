@@ -2,8 +2,11 @@
 <h3 align="center">Foodies welcome here 😋😉 | Eat natural 🌱 – Eat organic 🥦 | Directly from Mother Earth🌍</h3>
 
 ## About 🍃Green-Leaf-Gourmet🍃 
+<p align="center">
+<img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
 
 *Using this application, one can select a menu or items within its quantity/number. Furthermore, They can also calculate the total cost of their customer. Similarly, the café management system also can generate a bill/receipt.*
+</p>
 
 ## Features 
 

@@ -5,7 +5,8 @@
 <p align="center">
 <img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
 
-*Using this application, one can select a menu or items within its quantity/number. Furthermore, They can also calculate the total cost of their customer. Similarly, the café management system also can generate a bill/receipt.*
+*A full-stack Restaurant Management Window application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
+
 </p>
 
 ## Features 

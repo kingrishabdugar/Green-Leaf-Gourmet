@@ -25,7 +25,7 @@
 ### See the Application at Work 📲
 
 
-<a href=""><img src="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true" align="center" width="854" height="480" /></a>  
+<a href=""><img src="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true" align="center" width="560" height="315" /></a>  
 
 
 

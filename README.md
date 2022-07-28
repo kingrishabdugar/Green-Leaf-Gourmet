@@ -23,11 +23,11 @@
 
 ## Overview 🪟
 ### See the Application at Work 📲
+<div align="center">  
 
+<a href=""><img src="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true" align="center" width="576" height="324" /></a>  
 
-<a href=""><img src="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true" align="center" width="560" height="315" /></a>  
-
-
+</div>  
 
 ### Sign Up & Login
 <p align="center">

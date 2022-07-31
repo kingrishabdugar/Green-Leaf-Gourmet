@@ -16,7 +16,7 @@ public class ConnectionProvider {
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //root and "Password" for MySQL login in MySQL login locally in Client
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cms?useSSL=false","root","12345678@Rd");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cms?useSSL=false","root","Your MySql Password");
             // Win + R  -> services.msc -> MySQL (manual) -> Start -> MySql client -> Login with password
             return con;
         }

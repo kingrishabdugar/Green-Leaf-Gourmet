@@ -5,7 +5,11 @@
 <p align="center">
 <img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
 
-*A full-stack Restaurant Management Window application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
+* *A full-stack Restaurant Management Window application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
+* *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*
+
+### Aim of the Project
+*The aim of the project is to provide a basic understanding of FullStack Software Development and how it can be achieved in Java and MySQL, without the use of any additional framework.*
 
 </p>
 
@@ -17,7 +21,7 @@
 * *Get the total bill value with the option to generate a Bill receipt in PDF format*
 * *View past Bill receipts generated with the option to filter by date and sort by time created*
 
-## 💻 Technologies used 
+## 💻 Tech Stacks used 
 <div align="center">  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="75" />  

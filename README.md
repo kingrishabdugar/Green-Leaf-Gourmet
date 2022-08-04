@@ -35,8 +35,7 @@
 *(P.S. If the GIF doesn't load the Demo / Working example can be accessed here : https://bit.ly/3PWPqra)*
 
 <div align="center">
-<a href=""><img src="ReadMe files/480 p Working of the application -🍃Green-Leaf-Gourmet🍃.gif" align="center" width="576" height="324" /></a>  
-"https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true
+<a href=""><img src="ReadMe files/480 p Working of the application -🍃Green-Leaf-Gourmet🍃.gif" align="center" width="576" height="324" /></a>
 </div>  
 
 ### Sign Up & Login

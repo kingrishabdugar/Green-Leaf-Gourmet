@@ -7,7 +7,7 @@
 
 * *A full-stack Restaurant Management Desktop application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
 * *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*
-* *It combines all the benefits of traditional point-of-sale (POS) systems with tools that help you manage your phone calls, take table reservations, streamline inventory management, manage bills, provide actionable analytics and build an online presence. It also integrates with your existing restaurant technology systems (such as accounting and employee management software)*
+* *It combines all the benefits of traditional point-of-sale (POS) systems with tools that helps in managing user information, taking table reservations, streamline inventory management, manage bills, and build an online presence. It also integrates with the existing technology systems (such as accounting and employee management software)*
 * *In today's fast-moving world, the necessity of management software is frequently neglected. It is looked down upon as little more than a mobile cashier. Management Software Systems, on the other hand, are capable of much more. They streamline operations, minimize wait times, and have a significant impact on customer happiness, which has a direct impact on the success of any venture.*
 
 ### Aim of the Project

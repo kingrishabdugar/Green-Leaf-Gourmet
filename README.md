@@ -32,7 +32,7 @@
 </div>
 
 ## Instructions to use 📃
-Please [click here](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/) to download the latest version of 🍃Green-Leaf-Gourmet🍃<br>
+##### Please [click here](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/) to download the latest version of 🍃Green-Leaf-Gourmet🍃<br>
  *  *Login Details (Admin) : admin@gmail.com*<br>
  *  *Password : admin*<br>
 

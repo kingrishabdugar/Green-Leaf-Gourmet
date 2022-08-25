@@ -4,6 +4,10 @@
 ## About 🍃Green-Leaf-Gourmet🍃 
 <p align="center">
 <img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
+  
+Please [click here](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/) to download the latest version of 🍃Green-Leaf-Gourmet🍃.
+Login Details (Admin) : admin@gmail.com
+Password : admin
 
 * *A full-stack Restaurant Management Desktop application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
 * *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*

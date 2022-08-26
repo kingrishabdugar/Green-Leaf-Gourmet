@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package cafe.management.system;
+import javax.swing.SwingUtilities;
 
 /**
  *
- * @author kingr
+ * @author kingrishabdugar
  */
 public class CafeManagementSystem {
 
@@ -16,6 +17,13 @@ public class CafeManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       SwingUtilities.invokeLater(new Runnable(){
+            @Override
+            public void run() {
+               new WelcomeLanding().setVisible(true);
+            }
+            
+        });
     }
     
 }

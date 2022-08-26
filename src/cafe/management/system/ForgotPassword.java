@@ -42,11 +42,18 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     }
 
+    //Admin Details cannot be changed 
     public void validateEmail() {
         email = txtemail.getText();
-        if (email.matches(emailPattern)) {
+        if (email.matches(emailPattern)&& !email.equals("admin@gmail.com")) {
             btnsearch.setEnabled(true);
-        } else {
+        }
+        else if(email.equals("admin@gmail.com")) //Admin Details Secured 
+        {
+            JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+            btnsearch.setEnabled(false);
+        }
+        else {
             btnsearch.setEnabled(false);
         }
     }

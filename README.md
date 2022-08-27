@@ -67,6 +67,7 @@
 * Manage & Add/Delete Categories ,
 * Add New Product ,
 * View, Edit and Delete any Product
+* Changes to Admin login details and security question are not allowed to prevent unauthorized access
 </p>
 </p>
 

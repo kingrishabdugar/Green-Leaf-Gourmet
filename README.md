@@ -71,10 +71,22 @@
 </p>
 </p>
 
+## Invoice | Sample Generated Invoice 
+<p align="center">
+<img width="453" alt="image" src="https://user-images.githubusercontent.com/56007479/190711261-69edbab5-b32d-4c48-a834-3de2a1badac1.png"><br>
+
+</p>
+
+<h3 align="center">Library :</h3>
+
+<p align="center">
+<img src="https://itextpdf.com/sites/default/files/2018-12/other%20-%20webimages_526x341px_V2%20-%20no%20background_iText%20resource%20center_0.png" alt="iText" height="150" /> 
+
+</p>
+
 ## Database 
 <p align="center">
-<img width="500" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png">
-
+<img width="500" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
 
 ####  *To create a new MySQL database via MySQL Command Line Client:*
 * Check if MySQL is Running . On Windows : Win + R -> services.msc -> MySQL -> Right-Click -> Start Service

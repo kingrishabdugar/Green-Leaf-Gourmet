@@ -33,7 +33,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/logout.png"/>
+          <Image iconType="3" name="/images/logout.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="LogOut"/>
       </Properties>
@@ -52,7 +52,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/place order.png"/>
+          <Image iconType="3" name="/images/placeorder.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Place Order"/>
       </Properties>
@@ -71,7 +71,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/View Bills &amp; Order Placed Details.png"/>
+          <Image iconType="3" name="/images/bill&amp;order.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Bill &amp; Order Details"/>
       </Properties>
@@ -90,7 +90,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/change Password.png"/>
+          <Image iconType="3" name="/images/secure2.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Change Password"/>
       </Properties>
@@ -109,7 +109,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/change Security Question.png"/>
+          <Image iconType="3" name="/images/secure3.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Modify Security Question"/>
       </Properties>
@@ -128,7 +128,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/exit.png"/>
+          <Image iconType="3" name="/images/exit.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Exit"/>
       </Properties>
@@ -147,7 +147,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/category.png"/>
+          <Image iconType="3" name="/images/category.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Manage Category"/>
       </Properties>
@@ -166,7 +166,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/new product.png"/>
+          <Image iconType="3" name="/images/newproduct.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="New Product"/>
       </Properties>
@@ -185,7 +185,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/view edit delete product.png"/>
+          <Image iconType="3" name="/images/view_edit.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="View, Edit &amp; Delete Product"/>
       </Properties>
@@ -204,7 +204,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/verify users.png"/>
+          <Image iconType="3" name="/images/verify.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Verify Users"/>
       </Properties>

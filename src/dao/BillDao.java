@@ -81,4 +81,9 @@ public class BillDao {
         }
         return arrayList;
     }
+    public static void delete(String id){
+        String query = "delete from bill where id ='"+id+"' "; // delete from table bill
+        DbOperations.setDataorDelete(query, "Invoice/Order Refunded Successfully !");
+        
+    }
 }

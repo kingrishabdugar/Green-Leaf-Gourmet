@@ -6,10 +6,12 @@ package cafe.management.system;
 
 import common.OpenPdf;
 import dao.BillDao;
+import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import model.Bill;
@@ -27,6 +29,8 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         String todayDate = dFormat.format(date);
@@ -161,11 +165,19 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
+         //TODO add your handling code here:
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String id = model.getValueAt(index, 0).toString();
-        OpenPdf.openById(id);
+        String name = model.getValueAt(index, 1).toString();
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to Cancel/Refund " + name + "'s Order ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
+            BillDao.delete(id);
+            setVisible(false);
+            new ViewBillandOrderDetails().setVisible(true);
+        }
+         
+        //OpenPdf.openById(id);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown

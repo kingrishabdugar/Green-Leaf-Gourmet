@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -10,16 +11,24 @@ import common.OpenPdf;
 import dao.BillDao;
 import dao.CategoryDao;
 import dao.ProductDao;
+import java.awt.geom.RoundRectangle2D;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import static java.util.Arrays.stream;
 import java.util.Date;
 import java.util.Iterator;
+import static java.util.stream.StreamSupport.stream;
+import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.filechooser.FileSystemView;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import model.Bill;
 import model.Product;
 import model.Category;
@@ -44,13 +53,19 @@ public class PlaceOrder extends javax.swing.JFrame {
     public PlaceOrder() {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
+        //setResizable(false);
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
     }
 
     public PlaceOrder(String email) {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
         txtproductname.setEditable(false); //automatically product name comes user cannot edit it the second name column in the JFrame
         txtprice.setEditable(false);
         txttotal.setEditable(false);
@@ -250,6 +265,11 @@ public class PlaceOrder extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 180, -1, -1));
 
         txtsearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
         txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtsearchKeyReleased(evt);
@@ -303,7 +323,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         getContentPane().add(txttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 215, 190, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,7 +333,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 260, -1, -1));
 
         btnaddtocart.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnaddtocart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add to cart.png"))); // NOI18N
+        btnaddtocart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add to cart.gif"))); // NOI18N
         btnaddtocart.setText("Add to Cart");
         btnaddtocart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,14 +362,14 @@ public class PlaceOrder extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 303, 497, 184));
 
         btnbill.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnbill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/generate bill & print.png"))); // NOI18N
+        btnbill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/generate bill.gif"))); // NOI18N
         btnbill.setText("Generate Bill & Print");
         btnbill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbillActionPerformed(evt);
             }
         });
-        getContentPane().add(btnbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 502, -1, -1));
+        getContentPane().add(btnbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 497, -1, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
         jButton5.setMaximumSize(new java.awt.Dimension(40, 40));
@@ -365,12 +385,12 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(242, 242, 242));
         jLabel21.setText("Grand Total :  INR");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 506, -1, -1));
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 499, -1, -1));
 
-        txtgrandtotal.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtgrandtotal.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         txtgrandtotal.setForeground(new java.awt.Color(242, 242, 242));
         txtgrandtotal.setText("0001");
-        getContentPane().add(txtgrandtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(633, 506, -1, -1));
+        getContentPane().add(txtgrandtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(631, 497, -1, -1));
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Place Order Page.png"))); // NOI18N
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -399,20 +419,56 @@ public class PlaceOrder extends javax.swing.JFrame {
         BillDao.save(bill);
 
         //Creating document
-        String path = "D:\\kingr\\Projects\\Generated_Bills\\"; 
+        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int ra = j.showSaveDialog(null);
+        String path = "D:\\Generated_Bills\\"; 
+
+ 
+            if (ra == JFileChooser.APPROVE_OPTION) {
+                // set the label to the path of the selected directory
+                path = j.getSelectedFile().getAbsolutePath();
+            }
+            // if the user cancelled the operation
+            else
+                path ="D:\\";
+                        
         com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
         try {
             //file name generated here
             //location\\ + "Green-Leaf-Gourmet_Bill_" +id(file name of bill)
-            PdfWriter.getInstance(doc, new FileOutputStream(path + "" +"Green-Leaf-Gourmet_Bill_"+ billId + ".pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream(path +"\\"+ "" +"Green-Leaf-Gourmet_Bill_"+ billId + ".pdf"));
             doc.open();
-            Paragraph cafeName = new Paragraph("Green-Leaf-Gourmet\nPeace starts on our plate ^_~ \n");
-            doc.add(cafeName);
-            Paragraph starLine = new Paragraph("****************************************************************************************************************");
-            doc.add(starLine);
+            //Code to Add Header Image in Invoice after Bill
+            String header = "src\\images\\Invoice_Header.png"; 
+            Image image_header = Image.getInstance(header);
+            image_header.setAlignment(Image.MIDDLE);
+            //Fit Maximum along Margins
+            float documentWidth = doc.getPageSize().getWidth() - doc.leftMargin() - doc.rightMargin();
+            float documentHeight = doc.getPageSize().getHeight() - doc.topMargin() - doc.bottomMargin();
+            image_header.scaleToFit(documentWidth, documentHeight);
+            doc.add(image_header);
+            
+            //Code to Add LineBreak Image in Invoice after Bill
+            String line = "src\\images\\Invoice_LineBreak.png"; 
+            Image image_line = Image.getInstance(line);
+            image_line.setAlignment(Image.MIDDLE);
+            image_line.scaleToFit(documentWidth, documentHeight);
+            
+            //Code to Add Footer Image in Invoice
+            String footer = "src\\images\\Invoice_Footer.png"; 
+            Image image_footer = Image.getInstance(footer);
+            image_footer.setAlignment(Image.MIDDLE);
+            image_footer.scaleToFit(documentWidth, documentHeight);
+            
+            
+//            Paragraph cafeName = new Paragraph("Green-Leaf-Gourmet\nPeace starts on our plate ^_~ \n");
+//            doc.add(cafeName);
+//            Paragraph starLine = new Paragraph("****************************************************************************************************************");
+            doc.add(image_line); //After Header
             Paragraph paragraph3 = new Paragraph("\tBill ID: " + billId + "\nCustomer Name: " + customerName + "\nTotal Paid: " + grandTotal);
             doc.add(paragraph3);
-            doc.add(starLine);
+            doc.add(image_line);
             PdfPTable tb1 = new PdfPTable(4);
             tb1.addCell("Name");
             tb1.addCell("Price");
@@ -429,18 +485,25 @@ public class PlaceOrder extends javax.swing.JFrame {
                 tb1.addCell(q);
             }
             doc.add(tb1);
-            doc.add(starLine);
-            Paragraph thanksMsg = new Paragraph("Thank You ^_^ ,Visit Again ! \n\n\n");
-            doc.add(thanksMsg);
-            Paragraph kingrishab = new Paragraph("Made by Rishab Dugar\n");
-            doc.add(kingrishab);
-            Paragraph github = new Paragraph("Visit Me At : https://github.com/kingrishabdugar \n");
-            doc.add(github);
-            OpenPdf.openById(String.valueOf(billId));
+//            doc.add(starLine);
 
-        } catch (Exception e) {
+            doc.add(image_line);
+            
+            
+            doc.add(image_footer);
+//            String id = String.valueOf(billId);
+//            if((new File(path+"Green-Leaf-Gourmet_Bill_"+id+".pdf")).exists()){
+//                String fph = "rundll32 url.dll,FileProtocolHandler"+path;
+//                Process p = Runtime.getRuntime().exec(fph + "Green-Leaf-Gourmet_Bill_"+id+".pdf" );
+//                
+//            }
+//            else
+//                JOptionPane.showMessageDialog(null, "File does not Exist");
+        }
+        catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
+        OpenPdf.openById(String.valueOf(billId),path+"\\");
         doc.close();
         setVisible(false);
         new PlaceOrder(createdBy).setVisible(true);
@@ -556,6 +619,10 @@ public class PlaceOrder extends javax.swing.JFrame {
         String category = (String) jComboBox1.getSelectedItem();
         productNameByCategory(category);
     }//GEN-LAST:event_formComponentShown
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsearchActionPerformed
 
     /**
      * @param args the command line arguments

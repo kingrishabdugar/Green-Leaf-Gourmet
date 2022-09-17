@@ -4,6 +4,7 @@
  */
 package cafe.management.system;
 import dao.UserDao;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import model.User;
 
@@ -22,12 +23,19 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625,350);
+
     }
 
     public ModifySecurityQuestion(String email) {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625,350);
         userEmail = email;
         txtoldsq.setEditable(false);
         btnupdate.setEnabled(false);
@@ -139,7 +147,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 222, 342, -1));
 
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +157,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         jButton3.setText("Clear");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

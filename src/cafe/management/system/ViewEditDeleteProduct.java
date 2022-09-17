@@ -7,6 +7,7 @@ package cafe.management.system;
 import dao.CategoryDao;
 import model.Product;
 import dao.ProductDao;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,6 +30,8 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btndelete.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
     }
 
     public void validateField() {
@@ -117,7 +120,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 263, 358, -1));
 
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +130,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 387, -1, -1));
 
         btndelete.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.gif"))); // NOI18N
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +140,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 387, -1, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

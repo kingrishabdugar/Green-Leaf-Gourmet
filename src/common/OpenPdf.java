@@ -10,13 +10,14 @@ import javax.swing.JOptionPane;
  * @author kingrishabdugar
  */
 public class OpenPdf {
-    public static void openById(String id){
+    public static void openById(String id,String path){
         try{
 //location:\\ + "Green-Leaf-Gourmet_Bill_" +id(file name of bill)
-            if((new File("D:\\kingr\\Projects\\Generated_Bills\\"+"Green-Leaf-Gourmet_Bill_"+id+".pdf")).exists()){
+            if((new File(path+"Green-Leaf-Gourmet_Bill_"+id+".pdf")).exists()){
+                String fph = "rundll32 url.dll,FileProtocolHandler "+path;
                 Process p = Runtime
                         .getRuntime()
-                        .exec("rundll32 url.dll,FileProtocolHandler D:\\kingr\\Projects\\Generated_Bills\\"+"Green-Leaf-Gourmet_Bill_"+id+".pdf" );
+                        .exec(fph + "Green-Leaf-Gourmet_Bill_"+id+".pdf" );
                 
             }
             else

@@ -6,6 +6,7 @@ package cafe.management.system;
 
 import javax.swing.table.DefaultTableModel;
 import dao.UserDao;
+import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import model.User;
 import java.util.Iterator;
@@ -25,6 +26,8 @@ public class VerifyUsers extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
     }
 
     public void getAllRecords(String email) {
@@ -70,7 +73,7 @@ public class VerifyUsers extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.gif"))); // NOI18N
         jLabel2.setText("Search");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 138, -1, -1));
 

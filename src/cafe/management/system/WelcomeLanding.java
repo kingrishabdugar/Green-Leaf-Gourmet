@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
-
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author kingr
+ * @author kingrishabdugar
  */
 public class WelcomeLanding extends javax.swing.JFrame {
 
@@ -19,6 +19,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
     }
 
     /**
@@ -43,8 +45,9 @@ public class WelcomeLanding extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         login.setFont(new java.awt.Font("Segoe UI Black", 1, 15)); // NOI18N
-        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         login.setText("Login");
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginActionPerformed(evt);
@@ -53,7 +56,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
 
         signup.setFont(new java.awt.Font("Segoe UI Black", 1, 15)); // NOI18N
-        signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupicon.png"))); // NOI18N
+        signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         signup.setText("Sign Up");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,15 +66,15 @@ public class WelcomeLanding extends javax.swing.JFrame {
         getContentPane().add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton2.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton2.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton2.setMaximumSize(new java.awt.Dimension(35, 35));
+        jButton2.setMinimumSize(new java.awt.Dimension(35, 35));
+        jButton2.setPreferredSize(new java.awt.Dimension(35, 35));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, -1, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 30, 40, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

@@ -7,6 +7,7 @@ package cafe.management.system;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  *
@@ -25,6 +26,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
         btnupdate.setEnabled(false);
         btnsearch.setEnabled(false);
         txtsq.setEditable(false);//security question cannot be changed !
@@ -157,7 +160,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 410, -1));
 
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,7 +170,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 414, -1, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +180,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 414, -1, -1));
 
         btnexit.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        btnexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
+        btnexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallexit.gif"))); // NOI18N
         btnexit.setText("Exit");
         btnexit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,27 +190,27 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(btnexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 414, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         jButton4.setText("Login");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 469, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 468, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signupicon.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         jButton5.setText("Sign Up");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 466, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(633, 465, -1, -1));
 
         btnsearch.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        btnsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
+        btnsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.gif"))); // NOI18N
         btnsearch.setText("Search");
         btnsearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

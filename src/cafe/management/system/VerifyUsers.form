@@ -41,7 +41,7 @@
           <Color blue="f2" green="f2" red="f2" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/search.png"/>
+          <Image iconType="3" name="/images/search.gif"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>

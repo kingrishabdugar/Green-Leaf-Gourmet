@@ -7,6 +7,7 @@ package cafe.management.system;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +27,8 @@ public class Signup extends javax.swing.JFrame {
         btnSave.setEnabled(false);//save button
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,576);
         
     }
     public void clear(){
@@ -212,7 +215,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 360, -1));
 
         btnSave.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +225,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit small.png"))); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallexit.gif"))); // NOI18N
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +235,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 460, -1, -1));
 
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +245,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 460, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure1.gif"))); // NOI18N
         jButton4.setText("Forgot Password ?");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +255,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 507, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         jButton5.setText("Login");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

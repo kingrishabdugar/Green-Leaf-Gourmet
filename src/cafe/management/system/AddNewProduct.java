@@ -11,6 +11,7 @@ import model.Product;
 import dao.CategoryDao;
 import java.util.Iterator;
 import dao.ProductDao;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  *
@@ -26,7 +27,9 @@ public class AddNewProduct extends javax.swing.JFrame {
         btnsave.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-
+        setResizable(false);
+        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625,350);
     }
 
     public void validateFields() {
@@ -106,7 +109,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 189, 260, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +119,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 245, -1, -1));
 
         btnsave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

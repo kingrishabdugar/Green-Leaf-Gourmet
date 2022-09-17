@@ -34,7 +34,8 @@
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="75" />
-<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />   
+<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />
+<img style="margin: 15px" src="https://camo.githubusercontent.com/fd88e880637d796bb3b3da47339a8d30e35ecb6ce776fc0bc0453634c658dd0b/687474703a2f2f70726f6772616d61656e6c696e65612e6e65742f77702d636f6e74656e742f75706c6f6164732f323031372f31302f496e6e6f2d53657475702d436f6d70696c65722e706e67" alt="Inno Setup" height="75" />   
 </div>
 
 ## Overview 🪟

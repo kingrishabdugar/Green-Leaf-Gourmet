@@ -23,7 +23,7 @@
 
 ## Features 
 
-* *Attractive User Interface with separate sections for Ordering, viewing, editing & deleting categories & products, user details etc*
+* *Attractive User Interface with animated icons & separate sections for Ordering, viewing, editing & deleting categories & products, user details etc*
 * *User-Friendly options for retrieving security details viz. "Forgot Password", "Change Security Question" etc*
 * *Registration with Admin approval to manage all users with administrator access*
 * *Get the total bill value with the option to generate a Bill receipt in PDF format*
@@ -35,7 +35,7 @@
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="75" />
 <img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />
-<img style="margin: 15px" src="https://camo.githubusercontent.com/fd88e880637d796bb3b3da47339a8d30e35ecb6ce776fc0bc0453634c658dd0b/687474703a2f2f70726f6772616d61656e6c696e65612e6e65742f77702d636f6e74656e742f75706c6f6164732f323031372f31302f496e6e6f2d53657475702d436f6d70696c65722e706e67" alt="Inno Setup" height="75" />   
+<img style="margin: 15px" src="https://user-images.githubusercontent.com/56007479/190919058-2d40191d-2b52-4c37-b4b3-a6d48b3c1edf.png" alt="Inno Setup" height="75" />   
 </div>
 
 ## Overview 🪟
@@ -49,12 +49,14 @@
 
 ### Sign Up & Login
 <p align="center">
-<img width="500" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/181445850-f625af36-5b5f-42b9-ba4a-fd74bf19f8da.png"> <img style="margin: 55px" width="500" alt="Log In" src="https://user-images.githubusercontent.com/56007479/181445036-645f1820-b638-4a21-90ee-4fbe3f8e29da.png">
+<img width="500" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/190919453-b04b72a8-1aa7-49d0-9751-5f05007063b9.png">
+<img style="margin: 55px" width="500" alt="Log In" src="https://user-images.githubusercontent.com/56007479/190920150-7e71e6f4-efb5-4bbd-b39a-c77519b042b0.png">
 <p align="center">
 
 ### Home Page | Admin & User Interface View
 <p align="center">
-<img width="500" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/181444897-95cfdd8e-454a-49ff-8a3f-19f36af31415.png"> <img style="margin: 55px" width="500" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/181448491-2281e3c0-7929-4b9d-a3f6-3640324cdb66.png">
+<img width="500" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
+<img style="margin: 55px" width="500" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
 <p align="center">
 
 #### *A user can Signup / Login (after Admin approval) and has access to the following features :*

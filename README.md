@@ -4,6 +4,7 @@
 <div align="center">
 
 [![Github All Releases](https://img.shields.io/github/downloads/kingrishabdugar/Green-Leaf-Gourmet/total.svg)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/)
+[![stars](https://custom-icon-badges.demolab.com/github/stars/kingrishabdugar/Green-Leaf-Gourmet?logo=star)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/stargazers "stars")
 
 </div>
 
@@ -41,7 +42,10 @@
 ## Overview 🪟
 ### Demo | Working Example of the Application📲
 
-(```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here : ```  [ ▶️ Watch on Youtube ](https://youtu.be/8T8trUddHDk) )
+>```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :``` <br>
+<p align="center">
+<a href="https://youtu.be/8T8trUddHDk"><img alt="YouTube" title="Watch this on YouTube" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a>
+</p>
 
 <div align="center">
 <a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>

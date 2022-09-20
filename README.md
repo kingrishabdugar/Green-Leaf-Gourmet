@@ -99,6 +99,16 @@
 * Remember to update your Password On Line no. 19 in dao -> ConnectionProvider.java besides root for the application to RUN and connect with your database locally.
 </p>
 
+## CONTRIBUTE 
+
+Read the [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/CONTRIBUTING.md) to know how to contribute,
+
+* Find an issue to resolve
+* Comment on the issue
+* Fork the repository
+* Make changes and push
+* Make a pull request and wait for merging
+
 ---
 
 <div align="center">

@@ -41,10 +41,10 @@
 ## Overview 🪟
 ### Demo | Working Example of the Application📲
 
-(```Too fast/slow? or the GIF isn't loading ? Acess the Demo / Working example here : ```  [▶️ Watch on Youtube !](https://youtu.be/5dThqVtqSN8) )
+(```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here : ```  [ ▶️ Watch on Youtube ](https://youtu.be/8T8trUddHDk) )
 
 <div align="center">
-<a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500" height="273" /></a>
+<a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>
 </div>  
 
 ### Sign Up & Login

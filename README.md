@@ -3,8 +3,12 @@
 
 <div align="center">
 
-[![Github All Releases](https://img.shields.io/github/downloads/kingrishabdugar/Green-Leaf-Gourmet/total.svg)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/)
+
+[![Github All Releases](https://img.shields.io/github/downloads/kingrishabdugar/Green-Leaf-Gourmet/total.svg?logo=)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/)
 [![stars](https://custom-icon-badges.demolab.com/github/stars/kingrishabdugar/Green-Leaf-Gourmet?logo=star)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/stargazers "stars")
+[![issues](https://custom-icon-badges.demolab.com/github/issues-raw/kingrishabdugar/Green-Leaf-Gourmet?logo=issue)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet?issues "issues")
+[![license](https://custom-icon-badges.demolab.com/github/license/kingrishabdugar/Green-Leaf-Gourmet?logo=law&logoColor=white)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/License?rgh-link-date=2022-07-28 "license MIT")
+
 
 </div>
 
@@ -44,7 +48,7 @@
 
 >```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :``` <br>
 <p align="center">
-<a href="https://youtu.be/8T8trUddHDk"><img alt="YouTube" title="Watch this on YouTube" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a>
+<a href="https://youtu.be/8T8trUddHDk"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a>
 </p>
 
 <div align="center">

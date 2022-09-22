@@ -43,8 +43,7 @@
 <img style="margin: 15px" src="https://user-images.githubusercontent.com/56007479/190919058-2d40191d-2b52-4c37-b4b3-a6d48b3c1edf.png" alt="Inno Setup" height="75" />   
 </div>
 
-## Overview 🪟
-### Demo | Working Example of the Application📲
+## Demo | Working Example of the Application📲
 
 >```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :``` <br>
 <p align="center">
@@ -54,6 +53,9 @@
 <div align="center">
 <a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>
 </div>  
+  
+
+## Overview 🪟
 
 ### Sign Up & Login
 <p align="center">
@@ -82,7 +84,7 @@
 </p>
 </p>
 
-## Invoice | Sample Generated Invoice 
+## Invoice 📃 | Sample Generated Invoice 
 <p align="center">
 <img width="453" alt="image" src="https://user-images.githubusercontent.com/56007479/190711261-69edbab5-b32d-4c48-a834-3de2a1badac1.png"><br>
 

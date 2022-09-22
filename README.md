@@ -59,14 +59,14 @@
 
 ### Sign Up & Login
 <p align="center">
-<img width="500" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/190919453-b04b72a8-1aa7-49d0-9751-5f05007063b9.png">
-<img style="margin: 55px" width="500" alt="Log In" src="https://user-images.githubusercontent.com/56007479/190920150-7e71e6f4-efb5-4bbd-b39a-c77519b042b0.png">
+<img width="350" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/190919453-b04b72a8-1aa7-49d0-9751-5f05007063b9.png">
+<img style="margin: 70px" width="350" alt="Log In" src="https://user-images.githubusercontent.com/56007479/190920150-7e71e6f4-efb5-4bbd-b39a-c77519b042b0.png">
 <p align="center">
 
 ### Home Page | Admin & User Interface View
 <p align="center">
-<img width="500" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
-<img style="margin: 55px" width="500" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
+<img width="350" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
+<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
 <p align="center">
 
 #### *A user can Signup / Login (after Admin approval) and has access to the following features :*
@@ -86,20 +86,20 @@
 
 ## Invoice 📃 | Sample Generated Invoice 
 <p align="center">
-<img width="453" alt="image" src="https://user-images.githubusercontent.com/56007479/190711261-69edbab5-b32d-4c48-a834-3de2a1badac1.png"><br>
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/56007479/190711261-69edbab5-b32d-4c48-a834-3de2a1badac1.png"><br>
 
 </p>
 
 <h3 align="center">Library :</h3>
 
 <p align="center">
-<img src="https://itextpdf.com/sites/default/files/2018-12/other%20-%20webimages_526x341px_V2%20-%20no%20background_iText%20resource%20center_0.png" alt="iText" height="150" /> 
+<img src="https://itextpdf.com/sites/default/files/2018-12/other%20-%20webimages_526x341px_V2%20-%20no%20background_iText%20resource%20center_0.png" alt="iText" height="175" /> 
 
 </p>
 
 ## Database 
 <p align="center">
-<img width="500" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
+<img width="350" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
 
 ####  *To create a new MySQL database via MySQL Command Line Client:*
 * Check if MySQL is Running . On Windows : Win + R -> services.msc -> MySQL -> Right-Click -> Start Service

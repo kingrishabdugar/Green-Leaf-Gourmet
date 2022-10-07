@@ -17,9 +17,9 @@ public class ConnectionProvider {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //root and "Password" for MySQL login in MySQL login locally in Client
             //Local Server
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cms?useSSL=false","root","12345678@Rd");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cms?useSSL=false","Username","Password");
             //Online SQL Server
-            //Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/greenleafgourmet?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","kingrishabdugar","i3Enq7@gM!maYmn");
+            //Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/greenleafgourmet?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","UserName","Password");
             // Win + R  -> services.msc -> MySQL (manual) -> Start -> MySql client -> Login with password
             return con;
         }

@@ -8,6 +8,11 @@
 [![stars](https://custom-icon-badges.demolab.com/github/stars/kingrishabdugar/Green-Leaf-Gourmet?logo=star)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/stargazers "stars")
 [![issues](https://custom-icon-badges.demolab.com/github/issues-raw/kingrishabdugar/Green-Leaf-Gourmet?logo=issue)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet?issues "issues")
 [![license](https://custom-icon-badges.demolab.com/github/license/kingrishabdugar/Green-Leaf-Gourmet?logo=law&logoColor=white)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/License?rgh-link-date=2022-07-28 "license MIT")
+![GitHub top language](https://img.shields.io/github/languages/top/kingrishabdugar/Green-Leaf-Gourmet) 
+[![GitHub release](https://img.shields.io/github/release/kingrishabdugar/Green-Leaf-Gourmet)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/latest)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/kingrishabdugar/Green-Leaf-Gourmet) 
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/kingrishabdugar/Green-Leaf-Gourmet) 
+![GitHub repo size](https://img.shields.io/github/repo-size/kingrishabdugar/Green-Leaf-Gourmet)
 
 
 </div>
@@ -45,10 +50,14 @@
 
 ## Demo | Working Example of the Application📲
 
->```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :``` <br>
-<p align="center">
-<a href="https://youtu.be/8T8trUddHDk"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a>
-</p>
+>```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
+<div align="center">
+
+<!--- <a href="https://youtu.be/8T8trUddHDk"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
+
+[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://youtu.be/8T8trUddHDk)
+
+</div>
 
 <div align="center">
 <a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>

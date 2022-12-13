@@ -29,7 +29,7 @@ public class ManageCategory extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+      //  setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
         setSize(625,350);
 
     }
@@ -89,6 +89,7 @@ public class ManageCategory extends javax.swing.JFrame {
                 "ID", "CATEGORY"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -114,6 +115,7 @@ public class ManageCategory extends javax.swing.JFrame {
         btnsave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
+        btnsave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);
@@ -124,6 +126,7 @@ public class ManageCategory extends javax.swing.JFrame {
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
+        btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnclearActionPerformed(evt);
@@ -131,7 +134,9 @@ public class ManageCategory extends javax.swing.JFrame {
         });
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 179, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setMaximumSize(new java.awt.Dimension(40, 40));
         jButton3.setMinimumSize(new java.awt.Dimension(40, 40));
         jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
@@ -237,6 +242,8 @@ public class ManageCategory extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ManageCategory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        Properties p = new Properties();
+        p.put("windowDecoration", "off");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

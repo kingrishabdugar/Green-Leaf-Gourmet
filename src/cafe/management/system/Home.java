@@ -5,7 +5,10 @@
 package cafe.management.system;
 
 import cafe.management.system.ViewBillandOrderDetails;
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +33,7 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35)); //round edges in window
         setSize(1024,576);
         email = userEmail;
         // when Admin Logins this should not be visible
@@ -65,13 +68,13 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.gif"))); // NOI18N
         jButton1.setText("LogOut");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -82,6 +85,7 @@ public class Home extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placeorder.gif"))); // NOI18N
         jButton2.setText("Place Order");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -92,6 +96,7 @@ public class Home extends javax.swing.JFrame {
         btnbillandorder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnbillandorder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill&order.gif"))); // NOI18N
         btnbillandorder.setText("Bill & Order Details");
+        btnbillandorder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnbillandorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbillandorderActionPerformed(evt);
@@ -102,6 +107,7 @@ public class Home extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure2.gif"))); // NOI18N
         jButton4.setText("Change Password");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -112,6 +118,7 @@ public class Home extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure3.gif"))); // NOI18N
         jButton5.setText("Modify Security Question");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -122,6 +129,7 @@ public class Home extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.gif"))); // NOI18N
         jButton6.setText("Exit");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -132,6 +140,7 @@ public class Home extends javax.swing.JFrame {
         btnmc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnmc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.gif"))); // NOI18N
         btnmc.setText("Manage Category");
+        btnmc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnmc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmcActionPerformed(evt);
@@ -142,6 +151,7 @@ public class Home extends javax.swing.JFrame {
         btnnp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnnp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newproduct.gif"))); // NOI18N
         btnnp.setText("New Product");
+        btnnp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnnp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnpActionPerformed(evt);
@@ -152,6 +162,7 @@ public class Home extends javax.swing.JFrame {
         btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnvedp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_edit.gif"))); // NOI18N
         btnvedp.setText("View, Edit & Delete Product");
+        btnvedp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnvedp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnvedpActionPerformed(evt);
@@ -162,6 +173,7 @@ public class Home extends javax.swing.JFrame {
         btnvu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnvu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify.gif"))); // NOI18N
         btnvu.setText("Verify Users");
+        btnvu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnvu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnvuActionPerformed(evt);
@@ -171,6 +183,7 @@ public class Home extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-page.png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 576));
         jLabel1.setMinimumSize(new java.awt.Dimension(1024, 576));
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 576));
@@ -266,7 +279,6 @@ public class Home extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

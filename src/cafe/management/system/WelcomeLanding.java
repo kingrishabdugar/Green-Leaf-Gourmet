@@ -3,8 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
+
+import dao.ConnectionProvider;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 /**
  *
@@ -17,10 +22,12 @@ public class WelcomeLanding extends javax.swing.JFrame {
      */
     public WelcomeLanding() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage("salad-2.png");   
+        setIconImage(icon);  
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024,576);
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024, 576);
     }
 
     /**
@@ -33,31 +40,45 @@ public class WelcomeLanding extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        login = new javax.swing.JButton();
-        signup = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        close = new javax.swing.JButton();
+        signup = new javax.swing.JButton();
+        login = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        checkbox = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
 
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(WelcomeLanding.class.getResource("salad-2.png")));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login.setFont(new java.awt.Font("Segoe UI Black", 1, 15)); // NOI18N
-        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
-        login.setText("Login");
-        login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        login.addActionListener(new java.awt.event.ActionListener() {
+        close.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        close.setContentAreaFilled(false);
+        close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        close.setIconTextGap(0);
+        close.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        close.setMaximumSize(new java.awt.Dimension(30, 30));
+        close.setMinimumSize(new java.awt.Dimension(30, 30));
+        close.setPreferredSize(new java.awt.Dimension(30, 30));
+        close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                closeActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
 
-        signup.setFont(new java.awt.Font("Segoe UI Black", 1, 15)); // NOI18N
+        signup.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         signup.setText("Sign Up");
+        signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signupActionPerformed(evt);
@@ -65,16 +86,45 @@ public class WelcomeLanding extends javax.swing.JFrame {
         });
         getContentPane().add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton2.setMaximumSize(new java.awt.Dimension(35, 35));
-        jButton2.setMinimumSize(new java.awt.Dimension(35, 35));
-        jButton2.setPreferredSize(new java.awt.Dimension(35, 35));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        login.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
+        login.setText("Login");
+        login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(945, 30, 40, 40));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jButton3.setMinimumSize(new java.awt.Dimension(25, 25));
+        jButton3.setPreferredSize(new java.awt.Dimension(28, 28));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 440, 30, 30));
+
+        checkbox.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        checkbox.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        checkbox.setSelected(true);
+        checkbox.setText("Online Database   ");
+        checkbox.setToolTipText("");
+        checkbox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 255, 0), 2, true));
+        checkbox.setBorderPaintedFlat(true);
+        checkbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkbox.setIconTextGap(4);
+        checkbox.setMaximumSize(new java.awt.Dimension(200, 28));
+        checkbox.setPreferredSize(new java.awt.Dimension(200, 28));
+        checkbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkboxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, -1, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -88,19 +138,35 @@ public class WelcomeLanding extends javax.swing.JFrame {
         new Signup().setVisible(true);
     }//GEN-LAST:event_signupActionPerformed
 
+    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_closeActionPerformed
+
+    private void checkboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxActionPerformed
+        // TODO add your handling code here:
+        if (checkbox.isSelected()) {
+            ConnectionProvider.getid(1);
+        } // selected, do something...
+        else {
+            ConnectionProvider.getid(0);
+            // un-selected, do something else..
+        }
+
+    }//GEN-LAST:event_checkboxActionPerformed
+
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         setVisible(false);
         new Login().setVisible(true);
     }//GEN-LAST:event_loginActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
-        if (a == 0) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,14 +197,20 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() { 
                 new WelcomeLanding().setVisible(true);
+                Image icon = Toolkit.getDefaultToolkit().getImage("salad-2.png");   
+                new WelcomeLanding().setIconImage(icon); 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkbox;
+    private javax.swing.JButton close;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton login;

@@ -6,6 +6,10 @@
 package cafe.management.system;
 import com.jtattoo.plaf.aluminium.AluminiumLookAndFeel;
 import com.jtattoo.plaf.hifi.HiFiLookAndFeel;
+import com.jtattoo.plaf.luna.LunaLookAndFeel;
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
+import com.jtattoo.plaf.mint.MintLookAndFeel;
+import com.jtattoo.plaf.smart.SmartLookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -17,6 +21,8 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
+
+import java.awt.*;     
 /**
  *
  * @author kingrishabdugar
@@ -32,9 +38,9 @@ public class CafeManagementSystem {
         Properties p = new Properties();
         p.put("windowTitleFont", "Ebrima PLAIN 15");
         p.put("logoString", "");
-        p.put("windowDecoration", "off");
-        AluminiumLookAndFeel.setCurrentTheme(p);
-        UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+        p.put("windowDecoration", "on");
+        McWinLookAndFeel.setCurrentTheme(p);
+        UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CafeManagementSystem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -44,9 +50,11 @@ public class CafeManagementSystem {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(CafeManagementSystem.class.getName()).log(Level.SEVERE, null, ex);
         }
-       SwingUtilities.invokeLater(new Runnable(){
+       java.awt.EventQueue.invokeLater(new Runnable(){
             @Override
             public void run() {
+               Image icon = Toolkit.getDefaultToolkit().getImage("salad-2.png");   
+               new WelcomeLanding().setIconImage(icon);    
                new WelcomeLanding().setVisible(true);
             }
             

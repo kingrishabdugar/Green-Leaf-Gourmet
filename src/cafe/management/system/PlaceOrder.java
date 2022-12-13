@@ -55,7 +55,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         //setResizable(false);
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+     //   setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,576);
     }
 
@@ -169,6 +169,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Place Order Page.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -371,16 +372,17 @@ public class PlaceOrder extends javax.swing.JFrame {
         });
         getContentPane().add(btnbill, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 497, -1, -1));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton5.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton5.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton5.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton5.setContentAreaFilled(false);
+        jButton5.setMaximumSize(new java.awt.Dimension(30, 30));
+        jButton5.setMinimumSize(new java.awt.Dimension(30, 30));
+        jButton5.setPreferredSize(new java.awt.Dimension(30, 30));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 28, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 0, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(242, 242, 242));
@@ -440,7 +442,7 @@ public class PlaceOrder extends javax.swing.JFrame {
             PdfWriter.getInstance(doc, new FileOutputStream(path +"\\"+ "" +"Green-Leaf-Gourmet_Bill_"+ billId + ".pdf"));
             doc.open();
             //Code to Add Header Image in Invoice after Bill
-            String header = "src\\images\\Invoice_Header.png"; 
+            String header = "JRE\\src\\images\\Invoice_Header.png"; 
             Image image_header = Image.getInstance(header);
             image_header.setAlignment(Image.MIDDLE);
             //Fit Maximum along Margins
@@ -450,13 +452,13 @@ public class PlaceOrder extends javax.swing.JFrame {
             doc.add(image_header);
             
             //Code to Add LineBreak Image in Invoice after Bill
-            String line = "src\\images\\Invoice_LineBreak.png"; 
+            String line = "JRE\\src\\images\\Invoice_LineBreak.png"; 
             Image image_line = Image.getInstance(line);
             image_line.setAlignment(Image.MIDDLE);
             image_line.scaleToFit(documentWidth, documentHeight);
             
             //Code to Add Footer Image in Invoice
-            String footer = "src\\images\\Invoice_Footer.png"; 
+            String footer = "JRE\\src\\images\\Invoice_Footer.png"; 
             Image image_footer = Image.getInstance(footer);
             image_footer.setAlignment(Image.MIDDLE);
             image_footer.scaleToFit(documentWidth, documentHeight);

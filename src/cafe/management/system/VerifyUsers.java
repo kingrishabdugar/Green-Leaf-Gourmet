@@ -26,7 +26,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,576);
     }
 
@@ -94,7 +94,13 @@ public class VerifyUsers extends javax.swing.JFrame {
                 "ID", "Name", "Email", "Mobile Number", "Address", "Security Question", "Status"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jTable1MouseDragged(evt);
+            }
+        });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -106,13 +112,15 @@ public class VerifyUsers extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("*Click on Row to Change Status");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 474, -1, -1));
+        jLabel1.setText("Instructions : Click/Tap on Row to Change User Status & Drag the Row to Delete User !");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton1.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton1.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton1.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(30, 30));
+        jButton1.setMinimumSize(new java.awt.Dimension(30, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(30, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -161,6 +169,20 @@ public class VerifyUsers extends javax.swing.JFrame {
             new VerifyUsers().setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseDragged
+        // TODO add your handling code here:
+        int index = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+        String id = model.getValueAt(index, 0).toString();
+        String name = model.getValueAt(index, 1).toString();
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to Remove " + name + " User ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
+            UserDao.delete(id);
+            setVisible(false);
+            new VerifyUsers().setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseDragged
 
     /**
      * @param args the command line arguments

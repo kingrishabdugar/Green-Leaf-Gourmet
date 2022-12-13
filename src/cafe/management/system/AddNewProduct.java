@@ -5,6 +5,7 @@
 // JFrame -> Component -> component shown event instead of key released for combo box in category and Table list
 package cafe.management.system;
 
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import java.util.ArrayList;
 import model.Category;
 import model.Product;
@@ -12,6 +13,7 @@ import dao.CategoryDao;
 import java.util.Iterator;
 import dao.ProductDao;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Properties;
 
 /**
  *
@@ -28,7 +30,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
         setSize(625,350);
     }
 
@@ -111,6 +113,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
+        btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnclearActionPerformed(evt);
@@ -121,6 +124,7 @@ public class AddNewProduct extends javax.swing.JFrame {
         btnsave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
+        btnsave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);
@@ -128,10 +132,13 @@ public class AddNewProduct extends javax.swing.JFrame {
         });
         getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 245, -1, -1));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton3.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton3.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setIconTextGap(0);
+        jButton3.setMaximumSize(new java.awt.Dimension(30, 30));
+        jButton3.setMinimumSize(new java.awt.Dimension(10, 10));
+        jButton3.setPreferredSize(new java.awt.Dimension(20, 20));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -220,7 +227,6 @@ public class AddNewProduct extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

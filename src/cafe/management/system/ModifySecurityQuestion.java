@@ -5,6 +5,7 @@
 package cafe.management.system;
 import dao.UserDao;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import model.User;
 
@@ -34,7 +35,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+      //  setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
         setSize(625,350);
         userEmail = email;
         txtoldsq.setEditable(false);
@@ -149,6 +150,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
+        btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdateActionPerformed(evt);
@@ -159,6 +161,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         jButton3.setText("Clear");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -166,10 +169,11 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton1.setMaximumSize(new java.awt.Dimension(35, 35));
-        jButton1.setMinimumSize(new java.awt.Dimension(35, 35));
-        jButton1.setPreferredSize(new java.awt.Dimension(35, 35));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMinimumSize(new java.awt.Dimension(30, 30));
+        jButton1.setPreferredSize(new java.awt.Dimension(30, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -261,6 +265,9 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        Properties p = new Properties();
+        p.put("windowDecoration", "off");
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

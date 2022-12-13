@@ -30,7 +30,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btndelete.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,576);
     }
 
@@ -122,6 +122,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
+        btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdateActionPerformed(evt);
@@ -132,6 +133,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btndelete.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.gif"))); // NOI18N
         btndelete.setText("Delete");
+        btndelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndeleteActionPerformed(evt);
@@ -142,6 +144,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
+        btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnclearActionPerformed(evt);
@@ -167,10 +170,12 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, 370));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton4.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton4.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setMaximumSize(new java.awt.Dimension(30, 30));
+        jButton4.setMinimumSize(new java.awt.Dimension(30, 30));
+        jButton4.setPreferredSize(new java.awt.Dimension(30, 30));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);

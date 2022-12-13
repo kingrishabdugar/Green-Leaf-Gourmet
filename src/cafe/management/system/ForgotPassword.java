@@ -4,10 +4,12 @@
  */
 package cafe.management.system;
 
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Properties;
 
 /**
  *
@@ -26,7 +28,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-        setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,576);
         btnupdate.setEnabled(false);
         btnsearch.setEnabled(false);
@@ -99,7 +101,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N

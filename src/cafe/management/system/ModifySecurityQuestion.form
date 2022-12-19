@@ -12,7 +12,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+<<<<<<< HEAD
+=======
     <Property name="undecorated" type="boolean" value="true"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -195,6 +198,8 @@
         </Constraint>
       </Constraints>
     </Component>
+<<<<<<< HEAD
+=======
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -220,6 +225,7 @@
         </Constraint>
       </Constraints>
     </Component>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">

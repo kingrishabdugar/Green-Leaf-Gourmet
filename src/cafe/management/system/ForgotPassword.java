@@ -8,6 +8,10 @@ import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
+<<<<<<< HEAD
+import java.awt.Toolkit;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 
@@ -26,10 +30,15 @@ public class ForgotPassword extends javax.swing.JFrame {
      */
     public ForgotPassword() {
         initComponents();
+        Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+<<<<<<< HEAD
+        setSize(1024,616);
+=======
         setSize(1024,576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         btnupdate.setEnabled(false);
         btnsearch.setEnabled(false);
         txtsq.setEditable(false);//security question cannot be changed !
@@ -107,24 +116,29 @@ public class ForgotPassword extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Email");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 215, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Your Security Question");
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 265, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Your Answer");
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 315, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Enter New Password");
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 365, -1, -1));
 
         txtemail.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtemail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtemailKeyReleased(evt);
@@ -133,6 +147,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 410, -1));
 
         txtsq.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtsq.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtsq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtsqKeyReleased(evt);
@@ -141,6 +156,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(txtsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 410, -1));
 
         txtans.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtans.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtansActionPerformed(evt);
@@ -154,6 +170,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         getContentPane().add(txtans, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 410, -1));
 
         txtpassword.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtpassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtpasswordKeyReleased(evt);
@@ -223,6 +240,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/forgotpasswordpage.png"))); // NOI18N
         jLabel5.setText("jLabel5");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.setMaximumSize(new java.awt.Dimension(1024, 576));
         jLabel5.setMinimumSize(new java.awt.Dimension(1024, 576));
         jLabel5.setPreferredSize(new java.awt.Dimension(1024, 576));
@@ -364,4 +382,8 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtsq;
     // End of variables declaration//GEN-END:variables
+
+        private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

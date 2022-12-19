@@ -7,6 +7,10 @@ package cafe.management.system;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
+<<<<<<< HEAD
+import java.awt.Toolkit;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 
@@ -24,11 +28,16 @@ public class Signup extends javax.swing.JFrame {
      */
     public Signup() {
         initComponents();
+        Seticon();
         btnSave.setEnabled(false);//save button
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
       //  setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+<<<<<<< HEAD
+        setSize(1024,616);
+=======
         setSize(1024,576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         
     }
     public void clear(){
@@ -92,9 +101,35 @@ public class Signup extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/first page background.PNG"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setText("Name");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 155, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setText("Email");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 199, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setText("Mobile Number");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 243, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setText("Address");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 285, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel6.setText("Password");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 327, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setText("Security Question");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 371, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+=======
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel2.setText("Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 155, -1, -1));
@@ -120,6 +155,7 @@ public class Signup extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 371, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         jLabel8.setText("Answer");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 415, -1, -1));
 
@@ -269,6 +305,7 @@ public class Signup extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 507, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 576));
@@ -441,4 +478,8 @@ public class Signup extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtSecurityQuestion;
     // End of variables declaration//GEN-END:variables
+
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

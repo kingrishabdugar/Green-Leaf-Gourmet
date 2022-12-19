@@ -6,28 +6,92 @@ package cafe.management.system;
 
 import javax.swing.table.DefaultTableModel;
 import dao.UserDao;
+<<<<<<< HEAD
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import java.util.ArrayList;
 import model.User;
 import java.util.Iterator;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
+//import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
  * @author kingrishabdugar
  */
 public class VerifyUsers extends javax.swing.JFrame {
+    public String userEmail;
 
     /**
      * Creates new form VerifyUsers
      */
     public VerifyUsers() {
         initComponents();
+        Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+<<<<<<< HEAD
+        setSize(1024,616);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
+              //  new Home().setVisible(true);
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        JTableHeader boldheader1 = jTable1.getTableHeader();
+        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+      //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+       
+    }
+    public VerifyUsers(String email) {
+        initComponents();
+        Seticon();
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
+        setSize(1024,616);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                            new Home(email).setVisible(true);
+                        }
+                    }
+                });
+             
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        JTableHeader boldheader1 = jTable1.getTableHeader();
+        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+      //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+       userEmail = email;
+=======
        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     }
 
     public void getAllRecords(String email) {
@@ -58,12 +122,10 @@ public class VerifyUsers extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1024, 576));
-        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -108,12 +170,14 @@ public class VerifyUsers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, 1012, 272));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 184, 980, 272));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Instructions : Click/Tap on Row to Change User Status & Drag the Row to Delete User !");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, -1, -1));
+<<<<<<< HEAD
+=======
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
         jButton1.setContentAreaFilled(false);
@@ -127,6 +191,7 @@ public class VerifyUsers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 40, 30, 30));
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Verify User Page.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -139,11 +204,6 @@ public class VerifyUsers extends javax.swing.JFrame {
         String email = txtemail.getText(); //whenever search is done all rows are removed from the table and only searched row is displayed
         getAllRecords(email);
     }//GEN-LAST:event_txtemailKeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
@@ -166,7 +226,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         if (a == 0) {
             UserDao.changeStatus(email, status);
             setVisible(false);
-            new VerifyUsers().setVisible(true);
+            new VerifyUsers(userEmail).setVisible(true);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -180,7 +240,11 @@ public class VerifyUsers extends javax.swing.JFrame {
         if (a == 0) {
             UserDao.delete(id);
             setVisible(false);
+<<<<<<< HEAD
+            new VerifyUsers(userEmail).setVisible(true);
+=======
             new VerifyUsers().setVisible(true);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         }
     }//GEN-LAST:event_jTable1MouseDragged
 
@@ -220,7 +284,6 @@ public class VerifyUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -228,4 +291,8 @@ public class VerifyUsers extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
+    
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

@@ -8,10 +8,22 @@ package cafe.management.system;
 
 import model.Category;
 import dao.CategoryDao;
+<<<<<<< HEAD
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 /**
@@ -25,12 +37,34 @@ public class ManageCategory extends javax.swing.JFrame {
      */
     public ManageCategory() {
         initComponents();
+        Seticon();
         btnsave.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
       //  setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+<<<<<<< HEAD
+        setSize(625,390);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
+       JTableHeader boldheader1 = jTable1.getTableHeader();
+        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        //((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+       
+=======
         setSize(625,350);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 
     }
 
@@ -59,12 +93,10 @@ public class ManageCategory extends javax.swing.JFrame {
         txtname = new javax.swing.JTextField();
         btnsave = new javax.swing.JButton();
         btnclear = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -80,7 +112,7 @@ public class ManageCategory extends javax.swing.JFrame {
         jLabel2.setText("View Category");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 42, -1, -1));
 
-        jTable1.setFont(new java.awt.Font("Palatino Linotype", 1, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -97,7 +129,7 @@ public class ManageCategory extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 74, 350, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 74, 330, 240));
 
         txtname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtname.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +153,7 @@ public class ManageCategory extends javax.swing.JFrame {
                 btnsaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 179, -1, -1));
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
@@ -132,6 +164,9 @@ public class ManageCategory extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+=======
         getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 179, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
@@ -146,6 +181,7 @@ public class ManageCategory extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel3.setText("*Click on row to delete category");
@@ -184,11 +220,6 @@ public class ManageCategory extends javax.swing.JFrame {
         setVisible(false);
         new ManageCategory().setVisible(true);
     }//GEN-LAST:event_btnsaveActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
 //to show all categories added on the Table
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
@@ -256,7 +287,6 @@ public class ManageCategory extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnclear;
     private javax.swing.JButton btnsave;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -265,4 +295,8 @@ public class ManageCategory extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtname;
     // End of variables declaration//GEN-END:variables
+
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

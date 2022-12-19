@@ -12,7 +12,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="undecorated" type="boolean" value="true"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -38,7 +37,11 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
@@ -51,7 +54,11 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
@@ -64,7 +71,11 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Mobile Number"/>
       </Properties>
@@ -77,7 +88,11 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Address"/>
       </Properties>
@@ -90,7 +105,11 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
@@ -103,7 +122,11 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Security Question"/>
       </Properties>
@@ -116,7 +139,11 @@
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+<<<<<<< HEAD
+          <Font name="Segoe UI" size="16" style="1"/>
+=======
           <Font name="Segoe UI" size="15" style="1"/>
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         </Property>
         <Property name="text" type="java.lang.String" value="Answer"/>
       </Properties>
@@ -350,6 +377,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="16" style="1"/>
+        </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/signup.png"/>
         </Property>

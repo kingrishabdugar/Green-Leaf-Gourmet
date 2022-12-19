@@ -22,12 +22,21 @@ public class WelcomeLanding extends javax.swing.JFrame {
      */
     public WelcomeLanding() {
         initComponents();
+<<<<<<< HEAD
+        Seticon();
+//        setUndecorated(true);
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024, 616);
+=======
         Image icon = Toolkit.getDefaultToolkit().getImage("salad-2.png");   
         setIconImage(icon);  
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024, 576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     }
 
     /**
@@ -42,12 +51,20 @@ public class WelcomeLanding extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+<<<<<<< HEAD
+        signup = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        login = new javax.swing.JButton();
+        database = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+=======
         close = new javax.swing.JButton();
         signup = new javax.swing.JButton();
         login = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         checkbox = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
 
@@ -59,6 +76,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(WelcomeLanding.class.getResource("salad-2.png")));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
+=======
         close.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.gif"))); // NOI18N
         close.setContentAreaFilled(false);
@@ -75,6 +94,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
         });
         getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 20, -1, -1));
 
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         signup.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         signup.setText("Sign Up");
@@ -86,6 +106,20 @@ public class WelcomeLanding extends javax.swing.JFrame {
         });
         getContentPane().add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
 
+<<<<<<< HEAD
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
+        jButton3.setContentAreaFilled(false);
+        jButton3.setMinimumSize(new java.awt.Dimension(25, 25));
+        jButton3.setPreferredSize(new java.awt.Dimension(28, 28));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 30, 30));
+
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         login.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         login.setText("Login");
@@ -95,6 +129,24 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 310, -1, -1));
+
+        database.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        database.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Connect to Online Database", "       Connect to Local MySQL Server" }));
+        database.setBorder(new javax.swing.border.MatteBorder(null));
+        database.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        database.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                databaseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(database, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 360, -1));
+        database.getAccessibleContext().setAccessibleName("");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+=======
         getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
@@ -128,6 +180,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +191,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
         new Signup().setVisible(true);
     }//GEN-LAST:event_signupActionPerformed
 
+<<<<<<< HEAD
+=======
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -158,6 +213,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
     }//GEN-LAST:event_checkboxActionPerformed
 
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         setVisible(false);
@@ -168,6 +224,22 @@ public class WelcomeLanding extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+<<<<<<< HEAD
+    private void databaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseActionPerformed
+        // TODO add your handling code here:
+         String db = (String)database.getSelectedItem();
+         if (db.trim()=="Connect to Online Database") {
+            ConnectionProvider.getid(1);
+        } // selected, do something...
+        else {
+            ConnectionProvider.getid(0);
+            new LocalSQLConnection().setVisible(true);
+            // un-selected, do something else..
+        }
+    }//GEN-LAST:event_databaseActionPerformed
+
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     /**
      * @param args the command line arguments
      */
@@ -198,14 +270,34 @@ public class WelcomeLanding extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() { 
+<<<<<<< HEAD
+               // new WelcomeLanding().setUndecorated(true);
+                new WelcomeLanding().setVisible(true);
+=======
                 new WelcomeLanding().setVisible(true);
                 Image icon = Toolkit.getDefaultToolkit().getImage("salad-2.png");   
                 new WelcomeLanding().setIconImage(icon); 
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
+    private javax.swing.JComboBox<String> database;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton login;
+    private javax.swing.JButton signup;
+    // End of variables declaration//GEN-END:variables
+
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
+=======
     private javax.swing.JCheckBox checkbox;
     private javax.swing.JButton close;
     private javax.swing.JButton jButton1;
@@ -216,4 +308,5 @@ public class WelcomeLanding extends javax.swing.JFrame {
     private javax.swing.JButton login;
     private javax.swing.JButton signup;
     // End of variables declaration//GEN-END:variables
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 }

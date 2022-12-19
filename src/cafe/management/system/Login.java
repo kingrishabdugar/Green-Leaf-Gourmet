@@ -7,6 +7,10 @@ package cafe.management.system;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
+<<<<<<< HEAD
+import java.awt.Toolkit;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -25,11 +29,16 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        Seticon();
         btnLogin.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+<<<<<<< HEAD
+        setSize(1024,616);
+=======
         setSize(1024,576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     }
 
     public void clear() {
@@ -69,7 +78,6 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
@@ -83,6 +91,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         txtEmail.setFont(new java.awt.Font("Palatino Linotype", 1, 19)); // NOI18N
+        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -96,6 +105,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 385, -1));
 
         txtPassword.setFont(new java.awt.Font("Palatino Linotype", 1, 19)); // NOI18N
+        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
@@ -158,6 +168,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/veganloginpage.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -193,8 +204,8 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
         else {
             if (user.getStatus().equals("false")) {
-                ImageIcon icon = new ImageIcon("src/popupicon/wait.gif");
-                JOptionPane.showMessageDialog(null, "<html><b> 🍵☕ Wait for Admin Approval ✔ </b></html>", "Message", JOptionPane.INFORMATION_MESSAGE, icon);
+                ImageIcon icon = new ImageIcon("src//images//wait.gif");
+                JOptionPane.showMessageDialog(null, "Wait for Admin Approval ✔", "Verifying...", JOptionPane.INFORMATION_MESSAGE, icon);
                 clear();
 
             }
@@ -272,4 +283,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

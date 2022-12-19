@@ -7,6 +7,10 @@ package cafe.management.system;
 import cafe.management.system.ViewBillandOrderDetails;
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
+<<<<<<< HEAD
+import java.awt.Toolkit;
+=======
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -24,17 +28,24 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setSize(1024,616);
     }
 
     public Home(String userEmail) {
         initComponents();
+        Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35)); //round edges in window
+<<<<<<< HEAD
+        setSize(1024,616);
+=======
         setSize(1024,576);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         email = userEmail;
         // when Admin Logins this should not be visible
         if (!email.equals("admin@gmail.com")) {
@@ -65,6 +76,7 @@ public class Home extends javax.swing.JFrame {
         btnnp = new javax.swing.JButton();
         btnvedp = new javax.swing.JButton();
         btnvu = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -181,12 +193,21 @@ public class Home extends javax.swing.JFrame {
         });
         getContentPane().add(btnvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 485, -1, -1));
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/splashscreen small.gif"))); // NOI18N
+        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 204, 0), 3, true));
+        jButton7.setContentAreaFilled(false);
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-page.png"))); // NOI18N
+<<<<<<< HEAD
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+=======
         jLabel1.setText("jLabel1");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setMaximumSize(new java.awt.Dimension(1024, 576));
         jLabel1.setMinimumSize(new java.awt.Dimension(1024, 576));
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 576));
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -222,12 +243,14 @@ public class Home extends javax.swing.JFrame {
 
     private void btnvedpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedpActionPerformed
         // TODO add your handling code here:
-        new ViewEditDeleteProduct().setVisible(true);
+        setVisible(false);
+        new ViewEditDeleteProduct(email).setVisible(true);
     }//GEN-LAST:event_btnvedpActionPerformed
 
     private void btnvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvuActionPerformed
         // TODO add your handling code here:
-        new VerifyUsers().setVisible(true);
+        setVisible(false);
+        new VerifyUsers(email).setVisible(true);
     }//GEN-LAST:event_btnvuActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -238,14 +261,19 @@ public class Home extends javax.swing.JFrame {
 
     private void btnbillandorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillandorderActionPerformed
         // TODO add your handling code here:
-        new ViewBillandOrderDetails().setVisible(true);
+        setVisible(false);
+        new ViewBillandOrderDetails(email).setVisible(true);
     }//GEN-LAST:event_btnbillandorderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         //new ChangePassword().setVisible(true);
+<<<<<<< HEAD
+        new ChangePassword(email).setVisible(true);
+=======
          setVisible(false);
         new ForgotPassword().setVisible(true);
+>>>>>>> fe35325a78edd5e7ac8be8dbe354e80dedc53409
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -297,6 +325,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

@@ -4,17 +4,87 @@
  */
 package cafe.management.system;
 
+import dao.UserDao;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+
 /**
  *
- * @author kingr
+ * @author kingrishabdugar
  */
 public class ChangePassword extends javax.swing.JFrame {
+
+    public String userEmail;
 
     /**
      * Creates new form ChangePassword
      */
     public ChangePassword() {
         initComponents();
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
+        setSize(625, 390);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
+    }
+
+    public ChangePassword(String email) {
+        initComponents();
+        Seticon();
+        userEmail = email;
+        btnupdate4.setEnabled(false);
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
+        // setResizable(false);
+        //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625, 390);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
+    }
+
+    public void validateField() {
+        String oldPassword = txtold.getText();
+        String newPassword = txtnew.getText();
+        String confirmPassword = txtconfirm.getText();
+        if(userEmail.equals("admin@gmail.com")) //Admin Details Secured 
+        {
+            JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+            btnupdate4.setEnabled(false);
+        }
+        else
+        {
+        if (!oldPassword.equals("") && !newPassword.equals("") && !confirmPassword.equals("") && newPassword.equals(confirmPassword)) {
+            btnupdate4.setEnabled(true);
+        } else {
+            btnupdate4.setEnabled(false);
+        }
+        }
     }
 
     /**
@@ -26,21 +96,130 @@ public class ChangePassword extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        txtconfirm = new javax.swing.JPasswordField();
+        txtold = new javax.swing.JPasswordField();
+        txtoldpassword = new javax.swing.JLabel();
+        txtnewpassword = new javax.swing.JLabel();
+        txtnew = new javax.swing.JPasswordField();
+        txtconfirmpassword = new javax.swing.JLabel();
+        btnupdate4 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtconfirm.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtconfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtconfirmActionPerformed(evt);
+            }
+        });
+        txtconfirm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtconfirmKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 193, 280, -1));
+
+        txtold.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtold.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtoldActionPerformed(evt);
+            }
+        });
+        txtold.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtoldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtold, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 95, 280, -1));
+
+        txtoldpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtoldpassword.setText("Old Password");
+        getContentPane().add(txtoldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 98, -1, -1));
+
+        txtnewpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnewpassword.setText("New Password");
+        getContentPane().add(txtnewpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 147, -1, -1));
+
+        txtnew.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnew.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtnewKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 144, 280, -1));
+
+        txtconfirmpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtconfirmpassword.setText("Confirm Password");
+        getContentPane().add(txtconfirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 196, -1, -1));
+
+        btnupdate4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnupdate4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
+        btnupdate4.setText("Update");
+        btnupdate4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnupdate4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdate4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnupdate4, new org.netbeans.lib.awtextra.AbsoluteConstraints(262, 242, -1, -1));
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
+        jButton3.setText("Clear");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 242, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ChangePassword.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtconfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtconfirmActionPerformed
+
+    private void txtconfirmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtconfirmKeyReleased
+        // TODO add your handling code here:
+        validateField();
+    }//GEN-LAST:event_txtconfirmKeyReleased
+
+    private void txtoldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoldKeyReleased
+        // TODO add your handling code here:
+        validateField();
+    }//GEN-LAST:event_txtoldKeyReleased
+
+    private void txtnewKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnewKeyReleased
+        // TODO add your handling code here:
+        validateField();
+    }//GEN-LAST:event_txtnewKeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new ChangePassword(userEmail).setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtoldActionPerformed
+
+    private void btnupdate4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdate4ActionPerformed
+        // TODO add your handling code here:
+        String oldPassword = txtold.getText();
+        String newPassword = txtnew.getText();
+        UserDao.changePassword(userEmail, oldPassword, newPassword);
+        setVisible(false);
+        new ChangePassword(userEmail).setVisible(true);
+    }//GEN-LAST:event_btnupdate4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +257,17 @@ public class ChangePassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnupdate4;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPasswordField txtconfirm;
+    private javax.swing.JLabel txtconfirmpassword;
+    private javax.swing.JPasswordField txtnew;
+    private javax.swing.JLabel txtnewpassword;
+    private javax.swing.JPasswordField txtold;
+    private javax.swing.JLabel txtoldpassword;
     // End of variables declaration//GEN-END:variables
+ private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

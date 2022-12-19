@@ -5,12 +5,21 @@
 // JFrame -> Component -> component shown event instead of key released for combo box in category and Table list
 package cafe.management.system;
 
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import java.util.ArrayList;
 import model.Category;
 import model.Product;
 import dao.CategoryDao;
 import java.util.Iterator;
 import dao.ProductDao;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.geom.RoundRectangle2D;
+import java.util.Properties;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
@@ -23,10 +32,26 @@ public class AddNewProduct extends javax.swing.JFrame {
      */
     public AddNewProduct() {
         initComponents();
+        Seticon();
         btnsave.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-
+        setResizable(false);
+        //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625,390);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
     }
 
     public void validateFields() {
@@ -57,14 +82,12 @@ public class AddNewProduct extends javax.swing.JFrame {
         txtprice = new javax.swing.JTextField();
         btnclear = new javax.swing.JButton();
         btnsave = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         txtcategory = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addnewproduct.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -103,41 +126,32 @@ public class AddNewProduct extends javax.swing.JFrame {
                 txtpriceKeyReleased(evt);
             }
         });
-        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 189, 260, -1));
+        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 195, 260, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
+        btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 245, -1, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
 
         btnsave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
+        btnsave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnsaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 245, -1, -1));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton3.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton3.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton3.setPreferredSize(new java.awt.Dimension(40, 40));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 30, 30));
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 251, -1, -1));
 
         txtcategory.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 145, 260, -1));
+        getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 151, 260, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addnewproduct.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -148,11 +162,6 @@ public class AddNewProduct extends javax.swing.JFrame {
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
@@ -217,7 +226,6 @@ public class AddNewProduct extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AddNewProduct.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -229,7 +237,6 @@ public class AddNewProduct extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnclear;
     private javax.swing.JButton btnsave;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -239,4 +246,8 @@ public class AddNewProduct extends javax.swing.JFrame {
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtprice;
     // End of variables declaration//GEN-END:variables
+
+        private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

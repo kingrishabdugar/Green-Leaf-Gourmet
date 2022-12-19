@@ -127,5 +127,10 @@ public class UserDao {
         String query = "update user set securityQuestion='"+securityQuestion+"',answer='"+answer+"' where email='"+email+"'";
         DbOperations.setDataorDelete(query, "Security Question Changed Successfully");
     }
+     public static void delete(String id){
+        String query = "delete from user where id ='"+id+"' "; // delete from user
+        DbOperations.setDataorDelete(query, "User deleted successfully!");
+        
+    }
 
 }

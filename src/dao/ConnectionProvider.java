@@ -4,21 +4,48 @@
  */
 package dao;
 import java.sql.*;
-
 /**
  *
- * @author kingr
+ * @author kingrishabdugar
  */
 public class ConnectionProvider {
+    
+    static String username;
+    static String password;
+    static String server;
+    static int id = 1;
+    public static void getid(int a)
+    {
+        id=a;
+    }
+    public static void setusername(String id) {
+        ConnectionProvider.username = id;
+    }
+    public static void setpassword(String password) {
+        ConnectionProvider.password = password;
+    }
+    public static void setserver(String server) {
+        ConnectionProvider.server = server;
+    }
     public static Connection getCon()
     {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //root and "Password" for MySQL login in MySQL login locally in Client
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cms?useSSL=false","root","12345678@Rd");
+            //Local Server
+            if(id == 0)
+            {
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:"+server+"/cms?useSSL=false",username,password);
+                return con;
+            }
+            else
+            {
+            //Online SQL Server
+            Connection con = DriverManager.getConnection("jdbc:mysql://db4free.net:3306/greenleafgourmet?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false","kingrishabdugar","i3Enq7@gM!maYmn");
             // Win + R  -> services.msc -> MySQL (manual) -> Start -> MySql client -> Login with password
             return con;
+            }
         }
         catch(Exception e){
             return null;

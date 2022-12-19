@@ -62,7 +62,7 @@ public class BillDao {
     public static ArrayList<Bill> getAllRecordsByDesc(String date){
         ArrayList<Bill> arrayList = new ArrayList<>();
         try{
-            ResultSet rs = DbOperations.getData("Select * from bill where date like '%"+date+"%' order by id DESC");
+            ResultSet rs = DbOperations.getData("Select * from bill where date like '%"+date+"%' order by id DESC");//"DESC" sql query arrange automatically in sorted order
             while(rs.next()){
                 Bill bill = new Bill();
                 bill.setId(rs.getInt("id"));
@@ -80,5 +80,10 @@ public class BillDao {
             JOptionPane.showMessageDialog(null,e);
         }
         return arrayList;
+    }
+    public static void delete(String id){
+        String query = "delete from bill where id ='"+id+"' "; // delete from table bill
+        DbOperations.setDataorDelete(query, "Invoice/Order Refunded Successfully !");
+        
     }
 }

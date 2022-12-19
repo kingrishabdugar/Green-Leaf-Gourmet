@@ -7,28 +7,91 @@ package cafe.management.system;
 import dao.CategoryDao;
 import model.Product;
 import dao.ProductDao;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import model.Category;
+//import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 /**
  *
  * @author kingrishabdugar
  */
 public class ViewEditDeleteProduct extends javax.swing.JFrame {
+        public String userEmail;
 
     /**
      * Creates new form ViewEditDeleteProduct
      */
     public ViewEditDeleteProduct() {
         initComponents();
+        Seticon();
         btnupdate.setEnabled(false);
         btndelete.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,616);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                        }
+                    }
+                });
+               // new Home().setVisible(true);
+        JTableHeader boldheader1 = jTable1.getTableHeader();
+        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+//        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+       
+    }
+
+    public ViewEditDeleteProduct(String email) {
+        initComponents();
+        Seticon();
+        btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
+        setLocationRelativeTo(null); //makes aligned at center of screen
+        setResizable(false);
+       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024,616);
+        userEmail = email;
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+       addWindowListener(new WindowAdapter() {
+                    @Override
+                    public void windowClosing(WindowEvent e) {
+                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        if( result==JOptionPane.OK_OPTION){
+                            // NOW we change it to dispose on close..
+                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                            setVisible(false);
+                            dispose();
+                            new Home(userEmail).setVisible(true);
+                        }
+                    }
+                });
+               // new Home().setVisible(true);
+        JTableHeader boldheader1 = jTable1.getTableHeader();
+        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+//        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+       
     }
 
     public void validateField() {
@@ -63,12 +126,10 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btnclear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
         txtid = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
@@ -76,19 +137,19 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel1.setText("ID");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 161, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel2.setText("Name");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 211, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel3.setText("Category");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 268, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel4.setText("Price");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 325, -1, -1));
 
@@ -103,7 +164,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 txtnameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 206, 358, -1));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 206, 340, -1));
 
         txtprice.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txtprice.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -111,14 +172,16 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 txtpriceKeyReleased(evt);
             }
         });
-        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 320, 358, -1));
+        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 320, 340, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 263, 358, -1));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 263, 340, -1));
 
         btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
+        btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdateActionPerformed(evt);
@@ -127,24 +190,26 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 387, -1, -1));
 
         btndelete.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.gif"))); // NOI18N
         btndelete.setText("Delete");
+        btndelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btndeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 387, -1, -1));
+        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 387, -1, -1));
 
         btnclear.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
+        btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(399, 387, -1, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 387, -1, -1));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -155,6 +220,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 "ID", "NAME", "CATEGORY", "PRICE"
             }
         ));
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -164,23 +230,12 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, 370));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        jButton4.setMaximumSize(new java.awt.Dimension(40, 40));
-        jButton4.setMinimumSize(new java.awt.Dimension(40, 40));
-        jButton4.setPreferredSize(new java.awt.Dimension(40, 40));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(961, 19, -1, -1));
-
-        txtid.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtid.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         txtid.setText("01");
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 161, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete page.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete page.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,11 +243,6 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnameKeyReleased
         // TODO add your handling code here:
@@ -214,7 +264,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         product.setPrice(txtprice.getText());
         ProductDao.update(product);
         setVisible(false);
-        new ViewEditDeleteProduct().setVisible(true);
+        new ViewEditDeleteProduct(userEmail).setVisible(true);
     }//GEN-LAST:event_btnupdateActionPerformed
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
@@ -224,14 +274,14 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         if (a == 0) {
             ProductDao.delete(id);
             setVisible(false);
-            new ViewEditDeleteProduct().setVisible(true);
+            new ViewEditDeleteProduct(userEmail).setVisible(true);
         }
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new ViewEditDeleteProduct().setVisible(true);
+        new ViewEditDeleteProduct(userEmail).setVisible(true);
     }//GEN-LAST:event_btnclearActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
@@ -312,17 +362,19 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnclear;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnupdate;
-    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtid;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtprice;
     // End of variables declaration//GEN-END:variables
+    private void Seticon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
+    }
 }

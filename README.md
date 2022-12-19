@@ -100,7 +100,7 @@
 
 ## Invoice 📃 | Sample Generated Invoice 
 <p align="center">
-<img width="550" alt="image" src="https://user-images.githubusercontent.com/56007479/208424297-f7462821-f806-473b-bb16-4cb11b25f48a.png"><br>
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/56007479/208430991-3cb77f8e-f49e-4bc3-8388-a2cd334ed495.png"><br>
 </p>
 
 <h3 align="center">Library :</h3>

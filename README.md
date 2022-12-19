@@ -66,7 +66,7 @@
 
 ## Overview 🪟
 ### Welcome Screen
-![image]()
+
 <p align="center">
 <img width="350" alt="Welcome" src="https://user-images.githubusercontent.com/56007479/208426337-7884cb88-117b-4428-bbb6-76e52dd1b3c2.png">
 <p align="center">
@@ -117,8 +117,9 @@
 <img width="350" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
 
 >Update : Releases v2.1.1
--User can now choose on which database to work, i.e. the default online Database or the comparatively faster local MySQL Database
--User need not create any database manually, only sign in to MySQL CLI is required
+  
+- User can now choose on which database to work, i.e. the default online Database or the comparatively faster local MySQL Database
+- User need not create any database manually, only sign in to MySQL CLI is required
 
 ####  *To connect to a Local MySQL server as a Database:*
 * Check if MySQL is Running . On Windows : Win + R -> services.msc -> MySQL -> Right-Click -> Start Service

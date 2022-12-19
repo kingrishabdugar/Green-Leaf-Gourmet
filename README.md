@@ -65,6 +65,11 @@
   
 
 ## Overview 🪟
+### Welcome Screen
+![image]()
+<p align="center">
+<img width="350" alt="Welcome" src="https://user-images.githubusercontent.com/56007479/208426337-7884cb88-117b-4428-bbb6-76e52dd1b3c2.png">
+<p align="center">
 
 ### Sign Up & Login
 <p align="center">
@@ -95,8 +100,7 @@
 
 ## Invoice 📃 | Sample Generated Invoice 
 <p align="center">
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/56007479/190711261-69edbab5-b32d-4c48-a834-3de2a1badac1.png"><br>
-
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/56007479/208424297-f7462821-f806-473b-bb16-4cb11b25f48a.png"><br>
 </p>
 
 <h3 align="center">Library :</h3>
@@ -108,14 +112,21 @@
 
 ## Database 
 <p align="center">
+
+<img width="350" src="https://user-images.githubusercontent.com/56007479/208425885-354f3a62-d1b0-4226-afc5-7fdf8ee7b7b1.png"> 
 <img width="350" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
 
-####  *To create a new MySQL database via MySQL Command Line Client:*
+>Update : Releases v2.1.1
+-User can now choose on which database to work, i.e. the default online Database or the comparatively faster local MySQL Database
+-User need not create any database manually, only sign in to MySQL CLI is required
+
+####  *To connect to a Local MySQL server as a Database:*
 * Check if MySQL is Running . On Windows : Win + R -> services.msc -> MySQL -> Right-Click -> Start Service
-* Run the client
+* Run the MySQL client
 * Enter your password
-* Execute the create database command.
-* Remember to update your Password On Line no. 19 in dao -> ConnectionProvider.java besides root for the application to RUN and connect with your database locally.
+* Launch the Application and choose the option of "Connect to Local MySQL Server" -> Enter the required details -> Good to Go !
+* For more detailed instructions read the guide at [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/CONTRIBUTING.md)
+
 </p>
 
 ## CONTRIBUTE 

@@ -1,42 +1,86 @@
 <h1 align="center">🍃Green-Leaf-Gourmet🍃</h1>
 <h3 align="center">Foodies welcome here 😋😉 | Eat natural 🌱 – Eat organic 🥦 | Directly from Mother Earth🌍</h3>
 
-## About 🍃Green-Leaf-Gourmet🍃 
+<div align="center">
 
-*Using this application, one can select a menu or items within its quantity/number. Furthermore, They can also calculate the total cost of their customer. Similarly, the café management system also can generate a bill/receipt.*
+
+[![Github All Releases](https://img.shields.io/github/downloads/kingrishabdugar/Green-Leaf-Gourmet/total.svg?logo=)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/)
+[![stars](https://custom-icon-badges.demolab.com/github/stars/kingrishabdugar/Green-Leaf-Gourmet?logo=star)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/stargazers "stars")
+[![issues](https://custom-icon-badges.demolab.com/github/issues-raw/kingrishabdugar/Green-Leaf-Gourmet?logo=issue)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet?issues "issues")
+[![license](https://custom-icon-badges.demolab.com/github/license/kingrishabdugar/Green-Leaf-Gourmet?logo=law&logoColor=white)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/License?rgh-link-date=2022-07-28 "license MIT")
+![GitHub top language](https://img.shields.io/github/languages/top/kingrishabdugar/Green-Leaf-Gourmet) 
+[![GitHub release](https://img.shields.io/github/release/kingrishabdugar/Green-Leaf-Gourmet)](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/releases/latest)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/kingrishabdugar/Green-Leaf-Gourmet) 
+![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/kingrishabdugar/Green-Leaf-Gourmet) 
+![GitHub repo size](https://img.shields.io/github/repo-size/kingrishabdugar/Green-Leaf-Gourmet)
+
+
+</div>
+
+## About 🍃Green-Leaf-Gourmet🍃 
+<p align="center">
+<img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
+
+* *A full-stack Restaurant Management Desktop application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
+* *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*
+* *It combines all the benefits of traditional point-of-sale (POS) systems with tools that help in managing user information, taking table reservations, streamlining inventory management, managing bills, and building an online presence. It also integrates with the existing technology systems (such as accounting and employee management software)*
+* *In today's fast-moving world, the necessity of management software is frequently neglected. It is looked down upon as little more than a mobile cashier. Management Software Systems, on the other hand, are capable of much more. They streamline operations, minimize wait times, and have a significant impact on customer happiness, which has a direct impact on the success of any venture.*
+
+### Aim of the Project
+*The aim of the project is to provide a basic understanding of FullStack Software Development and how it can be achieved in Java and MySQL, without the use of any additional framework.*
+
+</p>
 
 ## Features 
 
-* *Attractive User Interface with separate sections for Ordering, viewing, editing & deleting categories & products, user details etc*
+* *Attractive User Interface with animated icons & separate sections for Ordering, viewing, editing & deleting categories & products, user details etc*
 * *User-Friendly options for retrieving security details viz. "Forgot Password", "Change Security Question" etc*
 * *Registration with Admin approval to manage all users with administrator access*
 * *Get the total bill value with the option to generate a Bill receipt in PDF format*
 * *View past Bill receipts generated with the option to filter by date and sort by time created*
 
-## 💻 Technologies used 
+## 💻 Tech Stacks used 
 <div align="center">  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" alt="Java" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" alt="MySQL" height="75" />  
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="75" />
-<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />   
+<img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />
+<img style="margin: 15px" src="https://user-images.githubusercontent.com/56007479/190919058-2d40191d-2b52-4c37-b4b3-a6d48b3c1edf.png" alt="Inno Setup" height="75" />   
 </div>
 
-## Overview 🪟
-### See the Application at Work 📲
-<div align="center">  
+## Demo | Working Example of the Application📲
 
-<a href=""><img src="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/ReadMe%20files/Demo%20Working%20of%20the%20application%20Green-Leaf-%20Gourmet.gif?raw=true" align="center" width="576" height="324" /></a>  
+>```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
+<div align="center">
 
+<!--- <a href="https://youtu.be/8T8trUddHDk"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
+
+[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://youtu.be/8T8trUddHDk)
+
+</div>
+
+<div align="center">
+<a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>
 </div>  
+  
+
+## Overview 🪟
+### Welcome Screen
+
+<p align="center">
+<img width="350" alt="Welcome" src="https://user-images.githubusercontent.com/56007479/208426337-7884cb88-117b-4428-bbb6-76e52dd1b3c2.png">
+<p align="center">
 
 ### Sign Up & Login
 <p align="center">
-<img width="500" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/181445850-f625af36-5b5f-42b9-ba4a-fd74bf19f8da.png"> <img style="margin: 55px" width="500" alt="Log In" src="https://user-images.githubusercontent.com/56007479/181445036-645f1820-b638-4a21-90ee-4fbe3f8e29da.png">
+<img width="350" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/190919453-b04b72a8-1aa7-49d0-9751-5f05007063b9.png">
+<img style="margin: 70px" width="350" alt="Log In" src="https://user-images.githubusercontent.com/56007479/190920150-7e71e6f4-efb5-4bbd-b39a-c77519b042b0.png">
 <p align="center">
 
 ### Home Page | Admin & User Interface View
 <p align="center">
-<img width="500" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/181444897-95cfdd8e-454a-49ff-8a3f-19f36af31415.png"> <img style="margin: 55px" width="500" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/181448491-2281e3c0-7929-4b9d-a3f6-3640324cdb66.png">
+<img width="350" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
+<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
 <p align="center">
 
 #### *A user can Signup / Login (after Admin approval) and has access to the following features :*
@@ -49,22 +93,52 @@
 * Verify & Approve New Users
 * Manage & Add/Delete Categories ,
 * Add New Product ,
-* View,Edit and Delete any Product
+* View, Edit and Delete any Product
+* Changes to Admin login details and security question are not allowed to prevent unauthorized access
 </p>
+</p>
+
+## Invoice 📃 | Sample Generated Invoice 
+<p align="center">
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/56007479/208430991-3cb77f8e-f49e-4bc3-8388-a2cd334ed495.png"><br>
+</p>
+
+<h3 align="center">Library :</h3>
+
+<p align="center">
+<img src="https://itextpdf.com/sites/default/files/2018-12/other%20-%20webimages_526x341px_V2%20-%20no%20background_iText%20resource%20center_0.png" alt="iText" height="175" /> 
+
 </p>
 
 ## Database 
 <p align="center">
-<img width="500" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png">
 
+<img width="350" src="https://user-images.githubusercontent.com/56007479/208425885-354f3a62-d1b0-4226-afc5-7fdf8ee7b7b1.png"> 
+<img width="350" src="https://user-images.githubusercontent.com/56007479/181438353-d490bcbc-f2c3-4c7d-970c-b8fafb0e7c1d.png"> 
 
-####  *To create a new MySQL database via MySQL Command Line Client:*
+>Update : Releases v2.1.1
+  
+- User can now choose on which database to work, i.e. the default online Database or the comparatively faster local MySQL Database
+- User need not create any database manually, only sign in to MySQL CLI is required
+
+####  *To connect to a Local MySQL server as a Database:*
 * Check if MySQL is Running . On Windows : Win + R -> services.msc -> MySQL -> Right-Click -> Start Service
-* Run the client
+* Run the MySQL client
 * Enter your password
-* Execute the create database command.
-* Remember to update your Password On Line no. 19 in dao -> ConnectionProvider.java besides root for the application to RUN and connect with your database locally.
+* Launch the Application and choose the option of "Connect to Local MySQL Server" -> Enter the required details -> Good to Go !
+* For more detailed instructions read the guide at [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/CONTRIBUTING.md)
+
 </p>
+
+## CONTRIBUTE 
+
+Read the [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/CONTRIBUTING.md) to know how to contribute,
+
+* Find an issue to resolve
+* Comment on the issue
+* Fork the repository
+* Make changes and push
+* Make a pull request and wait for merging
 
 ---
 

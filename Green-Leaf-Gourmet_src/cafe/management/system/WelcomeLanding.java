@@ -132,8 +132,9 @@ public class WelcomeLanding extends javax.swing.JFrame {
             ConnectionProvider.getid(1);
         } // selected, do something...
         else {
-            ConnectionProvider.getid(0);
+             
             new LocalSQLConnection().setVisible(true);
+            
             // un-selected, do something else..
         }
     }//GEN-LAST:event_databaseActionPerformed

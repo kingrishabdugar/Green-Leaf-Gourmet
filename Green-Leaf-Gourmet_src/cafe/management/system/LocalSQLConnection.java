@@ -3,12 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
+import com.mysql.cj.Query;
 import dao.ConnectionProvider;
+import dao.DbOperations;
 import java.util.Iterator;
 import dao.ProductDao;
+import dao.tables;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -23,36 +31,38 @@ public class LocalSQLConnection extends javax.swing.JFrame {
      */
     public LocalSQLConnection() {
         initComponents();
-       // initComponents();
-       Seticon();
+        // initComponents();
+        Seticon();
         connectbtn.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-       // setResizable(false);
+        // setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
-        setSize(550,420);
+        setSize(550, 420);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
     }
+
     public void validateFields() {
         String Username = username.getText();
         String Password = password.getText();
         String Server = server.getText();
-        if(!Username.equals("") && !Server.equals("") && !password.equals(""))
+        if (!Username.equals("") && !Server.equals("") && !password.equals("")) {
             connectbtn.setEnabled(true);
-        else
+        } else {
             connectbtn.setEnabled(false);
+        }
     }
 
     /**
@@ -164,13 +174,55 @@ public class LocalSQLConnection extends javax.swing.JFrame {
 
     private void connectbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectbtnActionPerformed
 // TODO add your handling code here:
+        //new Login().setVisible(true);
+        
+        String DB_URL="jdbc:mysql://localhost/";
+        String USER=username.getText();
+        String PASS = password.getText();
+        try ( Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);  
+                Statement stmt = conn.createStatement();) 
+        {
+            String sql = "CREATE DATABASE IF NOT EXISTS GreenLeafGourmet";
+            stmt.executeUpdate(sql);
+            stmt.executeUpdate("USE GreenLeafGourmet");
+            ImageIcon icon = new ImageIcon("src\\images\\database.gif");
+            JOptionPane.showMessageDialog(null, "Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            
+            //local database
+            String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address varchar(200),password varchar(200),securityQuestion varchar(200),answer varchar(200),status varchar(20),UNIQUE(email))";
+            String adminDetails = "insert into user(name,email,mobileNumber,address,password,securityQuestion,answer,status) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true')";
+            String categoryTable = "create table if not exists category (id int AUTO_INCREMENT primary key,name varchar(200))";
+            String productTable = "create table if not exists product(id int AUTO_INCREMENT primary key,name varchar(200),category varchar(200),price varchar(200))";
+            String billTable = "create table if not exists bill(id int primary key,name varchar(200),mobileNumber varchar(200),email varchar(200),date varchar(50),total varchar(200),createdBy varchar(200))";
+            
+            stmt.executeUpdate(userTable);
+            stmt.executeUpdate(adminDetails);
+            stmt.executeUpdate(categoryTable);
+            stmt.executeUpdate(productTable);
+            stmt.executeUpdate(billTable);
+            
+            JOptionPane.showMessageDialog(null, "User Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Admin Details Added Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Category Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Product Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Bill Table Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+         
+            
+        } 
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        
+        ConnectionProvider.getid(0);
         ConnectionProvider.setusername(username.getText());
         ConnectionProvider.setpassword(password.getText());
         ConnectionProvider.setserver(server.getText());
-        //new Login().setVisible(true);
+        
+        
         ImageIcon icon = new ImageIcon("src\\images\\database.gif");
-        JOptionPane.showMessageDialog(null, "Details Saved! Proceed to Signup/Login !!", "Connecting to the Server...", JOptionPane.INFORMATION_MESSAGE, icon);
-                
+        JOptionPane.showMessageDialog(null, "Local Database Created! Proceed to Signup/Login !!", "Connecting to the Server...", JOptionPane.INFORMATION_MESSAGE, icon);
+
         setVisible(false);
     }//GEN-LAST:event_connectbtnActionPerformed
 

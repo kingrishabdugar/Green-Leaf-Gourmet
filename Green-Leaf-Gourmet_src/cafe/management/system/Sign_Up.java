@@ -3,36 +3,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
 import javax.swing.JOptionPane;
+import common.BackgroundPane;
+import common.PanelScale;
 import model.User;
 import dao.UserDao;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author kingr
  */
 public class Sign_Up extends javax.swing.JFrame {
+
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     public String mobileNumberPattern = "^[0-9]*$";
+
+    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    int width = (int)screenSize.getWidth();
+    int height = (int)screenSize.getHeight();
 
     /**
      * Creates new form Sign_Up
      */
     public Sign_Up() {
+        
         initComponents();
+        setLocationRelativeTo(null);
         Seticon();
+        setAlwaysOnTop(true);
         btnSave.setEnabled(false);//save button
-        setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        setSize(1024,616);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+              
+        
+        
+        //StackOverFlow NULL's solution
+        setSize(1280,720);//not centered
+      //  setLayout(null);
+      //  jPanel1.setBounds(0, 0, width, height);
+        //jPanel1.repaint();
     }
-    
-    public void clear(){
+
+    public void clear() {
         txtName.setText("");
         txtEmail.setText("");
         txtMobileNumber.setText("");
@@ -41,11 +63,11 @@ public class Sign_Up extends javax.swing.JFrame {
         txtAnswer.setText("");
         txtPassword.setText("");
         btnSave.setEnabled(false);
-        
+
     }
     //Check all the fields like Email pattern 10 digit mobile number etc
-    
-    public void validateFields(){
+
+    public void validateFields() {
         String name = txtName.getText();
         String email = txtEmail.getText();
         String mobileNumber = txtMobileNumber.getText();
@@ -53,14 +75,13 @@ public class Sign_Up extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String securityQuestion = txtSecurityQuestion.getText();
         String answer = txtAnswer.getText();
-        if(!name.equals("") && email.matches(emailPattern) && mobileNumber.matches(mobileNumberPattern) && mobileNumber.length()== 10 && !address.equals("") && !password.equals("") && !securityQuestion.equals("") && !answer.equals(""))
+        if (!name.equals("") && email.matches(emailPattern) && mobileNumber.matches(mobileNumberPattern) && mobileNumber.length() == 10 && !address.equals("") && !password.equals("") && !securityQuestion.equals("") && !answer.equals("")) {
             btnSave.setEnabled(true);
-        else
+        } else {
             btnSave.setEnabled(false);
-        
+        }
+
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,135 +92,39 @@ public class Sign_Up extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtMobileNumber = new javax.swing.JTextField();
-        txtAddress = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
-        txtSecurityQuestion = new javax.swing.JTextField();
-        txtAnswer = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        try
+        {
+            jPanel1 = new PanelScale("/images/FS_Sign_Up.png");
+            txtAnswer = new javax.swing.JTextField();
+            jLabel5 = new javax.swing.JLabel();
+            btnSave = new javax.swing.JButton();
+            jLabel6 = new javax.swing.JLabel();
+            btnExit = new javax.swing.JButton();
+            jLabel7 = new javax.swing.JLabel();
+            btnClear = new javax.swing.JButton();
+            jLabel8 = new javax.swing.JLabel();
+            jButton4 = new javax.swing.JButton();
+            txtName = new javax.swing.JTextField();
+            jButton5 = new javax.swing.JButton();
+            txtEmail = new javax.swing.JTextField();
+            txtMobileNumber = new javax.swing.JTextField();
+            txtAddress = new javax.swing.JTextField();
+            jLabel2 = new javax.swing.JLabel();
+            txtPassword = new javax.swing.JPasswordField();
+            jLabel3 = new javax.swing.JLabel();
+            txtSecurityQuestion = new javax.swing.JTextField();
+            jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel2.setText("Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 155, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel3.setText("Email");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 199, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel4.setText("Mobile Number");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 243, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel5.setText("Address");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 285, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel6.setText("Password");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 327, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel7.setText("Security Question");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 371, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel8.setText("Answer");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 415, -1, -1));
-
-        txtName.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
-            }
-        });
-        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNameKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 360, -1));
-
-        txtEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtEmailKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 194, 360, -1));
-
-        txtMobileNumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtMobileNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMobileNumberActionPerformed(evt);
-            }
-        });
-        txtMobileNumber.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtMobileNumberKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtMobileNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 238, 360, -1));
-
-        txtAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddressActionPerformed(evt);
-            }
-        });
-        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtAddressKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 282, 360, -1));
-
-        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPasswordKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 322, 360, -1));
-
-        txtSecurityQuestion.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtSecurityQuestion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSecurityQuestionActionPerformed(evt);
-            }
-        });
-        txtSecurityQuestion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSecurityQuestionKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtSecurityQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 366, 360, -1));
+            pack();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(Sign_Up.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jPanel1.setPreferredSize(new java.awt.Dimension(1280, 700));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAnswer.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtAnswer.addActionListener(new java.awt.event.ActionListener() {
@@ -212,7 +137,12 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtAnswerKeyReleased(evt);
             }
         });
-        getContentPane().add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 360, -1));
+        jPanel1.add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 432, 596, 30));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("Address");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 297, -1, 30));
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
@@ -223,7 +153,12 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 475, 153, 32));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel6.setText("Password");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 342, -1, 30));
 
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallexit.gif"))); // NOI18N
@@ -234,7 +169,12 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        getContentPane().add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(421, 460, -1, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 475, 154, 32));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel7.setText("Security Question");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 387, -1, 30));
 
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
@@ -245,7 +185,12 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 460, -1, -1));
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 475, 153, 32));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel8.setText("Answer");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 432, -1, 30));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure1.gif"))); // NOI18N
@@ -256,7 +201,21 @@ public class Sign_Up extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 507, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 520, 279, 41));
+
+        txtName.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtName.setName(""); // NOI18N
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 162, 596, 30));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
@@ -267,14 +226,89 @@ public class Sign_Up extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 507, -1, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 520, 189, 41));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(1024, 576));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1024, 576));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1024, 576));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        txtEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmailKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 207, 596, 30));
+
+        txtMobileNumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtMobileNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMobileNumberActionPerformed(evt);
+            }
+        });
+        txtMobileNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMobileNumberKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtMobileNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 252, 596, 30));
+
+        txtAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAddressActionPerformed(evt);
+            }
+        });
+        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAddressKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 297, 596, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2.setText("Name");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 162, -1, 30));
+
+        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 342, 596, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setText("Email");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 207, -1, 30));
+
+        txtSecurityQuestion.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtSecurityQuestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSecurityQuestionActionPerformed(evt);
+            }
+        });
+        txtSecurityQuestion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSecurityQuestionKeyReleased(evt);
+            }
+        });
+        jPanel1.add(txtSecurityQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 387, 596, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel4.setText("Mobile Number");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 252, -1, 30));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -359,9 +393,8 @@ public class Sign_Up extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?","Select",JOptionPane.YES_NO_CANCEL_OPTION);
-        if(a==0)
-        {
+        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (a == 0) {
             System.exit(0);
         }
     }//GEN-LAST:event_btnExitActionPerformed
@@ -386,7 +419,7 @@ public class Sign_Up extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -411,8 +444,9 @@ public class Sign_Up extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+       
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){
                 new Sign_Up().setVisible(true);
             }
         });
@@ -424,7 +458,6 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -432,6 +465,7 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAnswer;
     private javax.swing.JTextField txtEmail;
@@ -441,7 +475,7 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JTextField txtSecurityQuestion;
     // End of variables declaration//GEN-END:variables
 
-     private void Seticon() {
+    private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }
 }

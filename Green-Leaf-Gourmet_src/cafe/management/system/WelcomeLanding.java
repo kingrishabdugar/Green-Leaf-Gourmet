@@ -3,13 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
-
+import common.PanelScale;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
-
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import dao.ConnectionProvider;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JFrame;
 
 /**
  *
@@ -25,9 +28,10 @@ public class WelcomeLanding extends javax.swing.JFrame {
         Seticon();
 //        setUndecorated(true);
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024, 616);
+        setAlwaysOnTop(true);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(1280,720); 
     }
 
     /**
@@ -42,32 +46,32 @@ public class WelcomeLanding extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        signup = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        login = new javax.swing.JButton();
-        database = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        try
+        {
+            jPanel1 = new PanelScale("/images/FS_Welcome.png");
+            jButton3 = new javax.swing.JButton();
+            signup = new javax.swing.JButton();
+            login = new javax.swing.JButton();
+            database = new javax.swing.JComboBox<>();
+            jLabel1 = new javax.swing.JLabel();
+            jLabel3 = new javax.swing.JLabel();
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
+            jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
 
-        jButton1.setText("jButton1");
+            jButton1.setText("jButton1");
 
-        jButton2.setText("jButton2");
+            jButton2.setText("jButton2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(WelcomeLanding.class.getResource("salad-2.png")));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setIconImage(Toolkit.getDefaultToolkit().getImage(WelcomeLanding.class.getResource("salad-2.png")));
 
-        signup.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
-        signup.setText("Sign Up");
-        signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signupActionPerformed(evt);
-            }
-        });
-        getContentPane().add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+            pack();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(WelcomeLanding.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
         jButton3.setContentAreaFilled(false);
@@ -78,7 +82,18 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 30, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 432, 50, 42));
+
+        signup.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
+        signup.setText("Sign Up");
+        signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupActionPerformed(evt);
+            }
+        });
+        jPanel1.add(signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 355, 156, 42));
 
         login.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
@@ -89,7 +104,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 310, -1, -1));
+        jPanel1.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 355, 137, 42));
 
         database.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         database.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Connect to Online Database", "       Connect to Local MySQL Server" }));
@@ -100,11 +115,24 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 databaseActionPerformed(evt);
             }
         });
-        getContentPane().add(database, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 360, -1));
+        jPanel1.add(database, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 432, 380, 42));
         database.getAccessibleContext().setAccessibleName("");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Green-Leaf-Gourmet (1).png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setText("  New User ? Register !  ");
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 293, 204, 42));
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setText(" Returning User ? Welcome ! ");
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 293, 246, 42));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,8 +208,10 @@ public class WelcomeLanding extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login;
     private javax.swing.JButton signup;
     // End of variables declaration//GEN-END:variables

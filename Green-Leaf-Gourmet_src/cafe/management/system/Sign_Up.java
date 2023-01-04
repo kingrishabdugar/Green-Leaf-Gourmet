@@ -44,14 +44,7 @@ public class Sign_Up extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         btnSave.setEnabled(false);//save button
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-              
-        
-        
-        //StackOverFlow NULL's solution
-        setSize(1280,720);//not centered
-      //  setLayout(null);
-      //  jPanel1.setBounds(0, 0, width, height);
-        //jPanel1.repaint();
+        setSize(1100,680);     
     }
 
     public void clear() {
@@ -114,17 +107,19 @@ public class Sign_Up extends javax.swing.JFrame {
             jLabel3 = new javax.swing.JLabel();
             txtSecurityQuestion = new javax.swing.JTextField();
             jLabel4 = new javax.swing.JLabel();
+            jLabel1 = new javax.swing.JLabel();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             pack();
+            setLocationRelativeTo(null);
         }
         catch (IOException ex)
         {
             Logger.getLogger(Sign_Up.class.getName()).log(Level.SEVERE, null, ex);
         }
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 700));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAnswer.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtAnswer.addActionListener(new java.awt.event.ActionListener() {
@@ -137,12 +132,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtAnswerKeyReleased(evt);
             }
         });
-        jPanel1.add(txtAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 432, 596, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel5.setText("Address");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 297, -1, 30));
+        jLabel5.setText("Address :");
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
@@ -153,12 +146,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 475, 153, 32));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel6.setText("Password");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 342, -1, 30));
+        jLabel6.setText("Password :");
 
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallexit.gif"))); // NOI18N
@@ -169,12 +160,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 475, 154, 32));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel7.setText("Security Question");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 387, -1, 30));
+        jLabel7.setText("Security Question :");
 
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
@@ -185,12 +174,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 btnClearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 475, 153, 32));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel8.setText("Answer");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 432, -1, 30));
+        jLabel8.setText("Answer :");
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure1.gif"))); // NOI18N
@@ -201,7 +188,6 @@ public class Sign_Up extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 520, 279, 41));
 
         txtName.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtName.setName(""); // NOI18N
@@ -215,7 +201,6 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtNameKeyReleased(evt);
             }
         });
-        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 162, 596, 30));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
@@ -226,7 +211,6 @@ public class Sign_Up extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(632, 520, 189, 41));
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +223,6 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtEmailKeyReleased(evt);
             }
         });
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 207, 596, 30));
 
         txtMobileNumber.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtMobileNumber.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +235,6 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtMobileNumberKeyReleased(evt);
             }
         });
-        jPanel1.add(txtMobileNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 252, 596, 30));
 
         txtAddress.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -265,12 +247,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtAddressKeyReleased(evt);
             }
         });
-        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 297, 596, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 162, -1, 30));
+        jLabel2.setText("Name :");
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -283,12 +263,10 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtPasswordKeyReleased(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 342, 596, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel3.setText("Email");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 207, -1, 30));
+        jLabel3.setText("Email :");
 
         txtSecurityQuestion.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         txtSecurityQuestion.addActionListener(new java.awt.event.ActionListener() {
@@ -301,12 +279,120 @@ public class Sign_Up extends javax.swing.JFrame {
                 txtSecurityQuestionKeyReleased(evt);
             }
         });
-        jPanel1.add(txtSecurityQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 387, 596, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel4.setText("Mobile Number");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 252, -1, 30));
+        jLabel4.setText("Mobile No. :");
+
+        jLabel1.setBackground(new java.awt.Color(255, 200, 35));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel1.setText(" SIGN UP ");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        jLabel1.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel3)
+                        .addGap(106, 106, 106)
+                        .addComponent(txtEmail))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel5)
+                        .addGap(86, 86, 86)
+                        .addComponent(txtAddress))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel6)
+                        .addGap(75, 75, 75)
+                        .addComponent(txtPassword))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel8)
+                        .addGap(91, 91, 91)
+                        .addComponent(txtAnswer))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addGap(68, 68, 68)
+                        .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addGap(68, 68, 68)
+                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(225, 225, 225)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(128, 128, 128)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel4)
+                        .addGap(61, 61, 61)
+                        .addComponent(txtMobileNumber))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2)
+                        .addGap(103, 103, 103)
+                        .addComponent(txtName))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel7)
+                        .addGap(9, 9, 9)
+                        .addComponent(txtSecurityQuestion)))
+                .addContainerGap(459, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel1)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMobileNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSecurityQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAnswer, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(94, 94, 94))
+        );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -458,6 +544,7 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

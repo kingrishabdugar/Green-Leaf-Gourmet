@@ -39,12 +39,15 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         btnLogin.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100, 680);  
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
     }
 
     public void clear() {

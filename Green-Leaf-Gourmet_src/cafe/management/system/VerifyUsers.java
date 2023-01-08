@@ -20,7 +20,10 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
-//import sun.swing.table.DefaultTableCellHeaderRenderer;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,9 +38,12 @@ public class VerifyUsers extends javax.swing.JFrame {
     public VerifyUsers() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        setSize(1024,616);
+        setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
        addWindowListener(new WindowAdapter() {
                     @Override
@@ -61,9 +67,13 @@ public class VerifyUsers extends javax.swing.JFrame {
     public VerifyUsers(String email) {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        setSize(1024,616);
+        //setResizable(false);
+        setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
        addWindowListener(new WindowAdapter() {
                     @Override
@@ -109,27 +119,34 @@ public class VerifyUsers extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        txtemail = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        try
+        {
+            jPanel1 = new common.PanelScale("/images/FS_Verify.png");
+            jLabel2 = new javax.swing.JLabel();
+            txtemail = new javax.swing.JTextField();
+            jScrollPane1 = new javax.swing.JScrollPane();
+            jTable1 = new javax.swing.JTable();
+            jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1024, 576));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setMinimumSize(new java.awt.Dimension(1024, 576));
+            addComponentListener(new java.awt.event.ComponentAdapter() {
+                public void componentShown(java.awt.event.ComponentEvent evt) {
+                    formComponentShown(evt);
+                }
+            });
+
+            pack();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.gif"))); // NOI18N
         jLabel2.setText("Search");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 138, -1, -1));
 
         txtemail.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -137,7 +154,6 @@ public class VerifyUsers extends javax.swing.JFrame {
                 txtemailKeyReleased(evt);
             }
         });
-        getContentPane().add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 135, 329, -1));
 
         jTable1.setFont(new java.awt.Font("Palatino Linotype", 1, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -162,15 +178,42 @@ public class VerifyUsers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 184, 980, 272));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Instructions : Click/Tap on Row to Change User Status & Drag the Row to Delete User !");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Verify User Page.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(423, 423, 423)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addContainerGap(424, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane1)
+                .addGap(74, 74, 74))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtemail)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,7 +301,7 @@ public class VerifyUsers extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtemail;

@@ -30,6 +30,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        //setAlwaysOnTop(true);
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
         setSize(625,390);

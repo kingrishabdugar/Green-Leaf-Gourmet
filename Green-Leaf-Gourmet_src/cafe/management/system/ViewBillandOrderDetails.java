@@ -21,8 +21,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 import model.Bill;
-//import sun.swing.table.DefaultTableCellHeaderRenderer;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author kingrishabdugar
@@ -37,10 +39,13 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     public ViewBillandOrderDetails() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024,616);
+        setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
        addWindowListener(new WindowAdapter() {
                     @Override
@@ -70,10 +75,12 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     public ViewBillandOrderDetails(String email) {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024,616);
+        setExtendedState(MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         userEmail = email;
        addWindowListener(new WindowAdapter() {
@@ -134,41 +141,39 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        try
+        {
+            jPanel1 = new common.PanelScale("/images/FS_BillOrder.png");
+            ;
+            jLabel2 = new javax.swing.JLabel();
+            jComboBox1 = new javax.swing.JComboBox<>();
+            jScrollPane1 = new javax.swing.JScrollPane();
+            jTable1 = new javax.swing.JTable();
+            jLabel3 = new javax.swing.JLabel();
+            jLabel1 = new javax.swing.JLabel();
+            jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+            addComponentListener(new java.awt.event.ComponentAdapter() {
+                public void componentShown(java.awt.event.ComponentEvent evt) {
+                    formComponentShown(evt);
+                }
+            });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Filter By Date");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 150, -1, -1));
+            pack();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(ViewBillandOrderDetails.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 143, 200, 33));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel2.setText("Change Order By ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 150, -1, -1));
+        jLabel2.setText("Change Order By ID :");
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INC", "DESC" }));
         jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -177,7 +182,6 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 143, 200, 33));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -196,15 +200,62 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 193, 980, 217));
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Instructions : Click On Row To Refund Bill/Delete Order !");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/View Bills & Order Placed Page.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Filter By Date :");
+        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(19, 19, 19)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                        .addGap(156, 156, 156)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(19, 19, 19)
+                        .addComponent(jComboBox1, 0, 259, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(165, 165, 165)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(175, Short.MAX_VALUE))
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jLabel1, jLabel2, jTextField1});
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,7 +331,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;

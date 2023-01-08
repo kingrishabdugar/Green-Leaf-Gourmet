@@ -79,9 +79,12 @@ public class PlaceOrder extends javax.swing.JFrame {
     public PlaceOrder() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
-        setSize(1100, 680);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -115,9 +118,12 @@ public class PlaceOrder extends javax.swing.JFrame {
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
         boldheader2.setFont(new Font("Segoe UI", Font.BOLD, 15));
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
-        setSize(1100, 680);       
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);       
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         //setSize(1024, 616);
@@ -294,7 +300,6 @@ public class PlaceOrder extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
         try
         {
             jPanel1 = new PanelScale("/images/FS_PlaceOrder.png");
@@ -328,8 +333,6 @@ public class PlaceOrder extends javax.swing.JFrame {
             jLabel9 = new javax.swing.JLabel();
             txtgrandtotal = new javax.swing.JLabel();
             txtcusmobile = new javax.swing.JTextField();
-
-            jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Place Order Page.png"))); // NOI18N
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -944,7 +947,6 @@ public class PlaceOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

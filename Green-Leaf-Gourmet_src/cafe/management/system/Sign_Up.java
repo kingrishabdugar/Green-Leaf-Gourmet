@@ -41,10 +41,13 @@ public class Sign_Up extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         Seticon();
-        setAlwaysOnTop(true);
+        setTitle(" Green-Leaf-Gourmet ");
+        //setAlwaysOnTop(true);
         btnSave.setEnabled(false);//save button
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setSize(1100,680);     
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
     }
 
     public void clear() {

@@ -35,6 +35,7 @@ public class ManageCategory extends javax.swing.JFrame {
     public ManageCategory() {
         initComponents();
         Seticon();
+        //setAlwaysOnTop(true);
         btnsave.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);

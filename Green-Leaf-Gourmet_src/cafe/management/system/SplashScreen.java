@@ -27,6 +27,7 @@ public class SplashScreen extends javax.swing.JFrame {
         Seticon();
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        setAlwaysOnTop(true);
         //setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 600, 338, 50, 50));
         setSize(600, 338);

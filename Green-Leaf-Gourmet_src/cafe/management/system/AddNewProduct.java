@@ -33,6 +33,7 @@ public class AddNewProduct extends javax.swing.JFrame {
     public AddNewProduct() {
         initComponents();
         Seticon();
+        //setAlwaysOnTop(true);
         btnsave.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import dao.ConnectionProvider;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -26,12 +27,17 @@ public class WelcomeLanding extends javax.swing.JFrame {
     public WelcomeLanding() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
 //        setUndecorated(true);
         setLocationRelativeTo(null); //makes aligned at center of screen
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setAlwaysOnTop(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setAlwaysOnTop(false);
+        setLocationRelativeTo(null);
         setSize(1100,680); 
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -47,7 +53,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         try
         {
-            jPanel1 = new PanelScale("/images/FS_Welcome.png");
+            jPanel1 = new PanelScale("/images/FS_WelcomeLanding.png");
             jButton3 = new javax.swing.JButton();
             signup = new javax.swing.JButton();
             login = new javax.swing.JButton();
@@ -104,14 +110,16 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("  New User ? Register !  ");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLabel1.setOpaque(true);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(" Returning User ? Welcome ! ");
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jLabel3.setOpaque(true);
 
         database.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
@@ -152,8 +160,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(293, 293, 293)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(signup, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)

@@ -41,6 +41,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btndelete.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        //setAlwaysOnTop(true);
        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024,616);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -83,7 +84,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                             setVisible(false);
                             dispose();
-                            new Home(userEmail).setVisible(true);
+                            //new Home(userEmail).setVisible(true);
                         }
                     }
                 });

@@ -11,6 +11,12 @@ import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import common.PanelScale;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -26,19 +32,27 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
+
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        setSize(1024,616);
+        setResizable(true);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
     }
 
     public Home(String userEmail) {
         initComponents();
         Seticon();
+        setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        setResizable(false);
-        setResizable(false);
-        //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35)); //round edges in window
-        setSize(1024,616);
+        setResizable(true);
+        //setResizable(false);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setSize(1100,680); 
+        setLocationRelativeTo(null);
         email = userEmail;
         // when Admin Logins this should not be visible
         if (!email.equals("admin@gmail.com")) {
@@ -59,123 +73,34 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnbillandorder = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        btnmc = new javax.swing.JButton();
-        btnnp = new javax.swing.JButton();
-        btnvedp = new javax.swing.JButton();
-        btnvu = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        try
+        {
+            jPanel2 = new PanelScale("/images/FS_Home.png");
+            ;
+            btnvu = new javax.swing.JButton();
+            jButton7 = new javax.swing.JButton();
+            jButton1 = new javax.swing.JButton();
+            jButton2 = new javax.swing.JButton();
+            btnbillandorder = new javax.swing.JButton();
+            jButton4 = new javax.swing.JButton();
+            jButton5 = new javax.swing.JButton();
+            jButton6 = new javax.swing.JButton();
+            btnmc = new javax.swing.JButton();
+            btnnp = new javax.swing.JButton();
+            btnvedp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setResizable(false);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.gif"))); // NOI18N
-        jButton1.setText("LogOut");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 51, -1, -1));
+            pack();
+            setLocationRelativeTo(null);
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placeorder.gif"))); // NOI18N
-        jButton2.setText("Place Order");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 51, -1, -1));
-
-        btnbillandorder.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnbillandorder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill&order.gif"))); // NOI18N
-        btnbillandorder.setText("Bill & Order Details");
-        btnbillandorder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnbillandorder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbillandorderActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnbillandorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 51, -1, -1));
-
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure2.gif"))); // NOI18N
-        jButton4.setText("Change Password");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 51, -1, -1));
-
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure3.gif"))); // NOI18N
-        jButton5.setText("Modify Security Question");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 51, -1, -1));
-
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.gif"))); // NOI18N
-        jButton6.setText("Exit");
-        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(879, 485, -1, -1));
-
-        btnmc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnmc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.gif"))); // NOI18N
-        btnmc.setText("Manage Category");
-        btnmc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnmc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmcActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnmc, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 485, -1, -1));
-
-        btnnp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnnp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newproduct.gif"))); // NOI18N
-        btnnp.setText("New Product");
-        btnnp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnnp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnnpActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnnp, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 485, -1, -1));
-
-        btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnvedp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_edit.gif"))); // NOI18N
-        btnvedp.setText("View, Edit & Delete Product");
-        btnvedp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnvedp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnvedpActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnvedp, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 485, -1, -1));
-
-        btnvu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnvu.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         btnvu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify.gif"))); // NOI18N
         btnvu.setText("Verify Users");
         btnvu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -184,16 +109,162 @@ public class Home extends javax.swing.JFrame {
                 btnvuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnvu, new org.netbeans.lib.awtextra.AbsoluteConstraints(709, 485, -1, -1));
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/splashscreen small.gif"))); // NOI18N
         jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 204, 0), 3, true));
         jButton7.setContentAreaFilled(false);
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home-page.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.gif"))); // NOI18N
+        jButton1.setText("LogOut");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placeorder.gif"))); // NOI18N
+        jButton2.setText("Place Order");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        btnbillandorder.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnbillandorder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill&order.gif"))); // NOI18N
+        btnbillandorder.setText("Bill & Order Details");
+        btnbillandorder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnbillandorder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbillandorderActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure2.gif"))); // NOI18N
+        jButton4.setText("Change Password");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure3.gif"))); // NOI18N
+        jButton5.setText("Modify Security Question");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.gif"))); // NOI18N
+        jButton6.setText("Exit");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        btnmc.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnmc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.gif"))); // NOI18N
+        btnmc.setText("Manage Category");
+        btnmc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnmc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmcActionPerformed(evt);
+            }
+        });
+
+        btnnp.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnnp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newproduct.gif"))); // NOI18N
+        btnnp.setText("New Product");
+        btnnp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnnp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnpActionPerformed(evt);
+            }
+        });
+
+        btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnvedp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_edit.gif"))); // NOI18N
+        btnvedp.setText("View, Edit & Delete Product");
+        btnvedp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnvedp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvedpActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnmc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnnp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 546, Short.MAX_VALUE)))
+                .addContainerGap(117, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(65, 65, 65)
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnmc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnnp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(127, 127, 127))
+        );
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,7 +299,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnvedpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvedpActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        //setVisible(false);
         new ViewEditDeleteProduct(email).setVisible(true);
     }//GEN-LAST:event_btnvedpActionPerformed
 
@@ -260,6 +331,10 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ModifySecurityQuestion(email).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +381,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
     private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));

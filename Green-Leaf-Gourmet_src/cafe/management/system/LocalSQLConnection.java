@@ -36,6 +36,7 @@ public class LocalSQLConnection extends javax.swing.JFrame {
         connectbtn.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
+        //setAlwaysOnTop(true);
         // setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
         setSize(550, 420);
@@ -191,6 +192,9 @@ public class LocalSQLConnection extends javax.swing.JFrame {
             //local database
             String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address varchar(200),password varchar(200),securityQuestion varchar(200),answer varchar(200),status varchar(20),UNIQUE(email))";
             String adminDetails = "insert into user(name,email,mobileNumber,address,password,securityQuestion,answer,status) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true')";
+            
+            //String adminDetails = "insert into user(name,email,mobileNumber,address,password,securityQuestion,answer,status) select * from (values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true') as s(name,email,mobileNumber,address,password,securityQuestion,answer,status) where not exists (select * from user t with (updlock)where s.name = t.name and s.email = t.email and s.mobileNumber=t.mobileNumber and s.address=t.address and s.password=t.password and s.securityQuestion=t.securityQuestion and s.answer=t.answer and s.status =t.status)";
+            
             String categoryTable = "create table if not exists category (id int AUTO_INCREMENT primary key,name varchar(200))";
             String productTable = "create table if not exists product(id int AUTO_INCREMENT primary key,name varchar(200),category varchar(200),price varchar(200))";
             String billTable = "create table if not exists bill(id int primary key,name varchar(200),mobileNumber varchar(200),email varchar(200),date varchar(50),total varchar(200),createdBy varchar(200))";

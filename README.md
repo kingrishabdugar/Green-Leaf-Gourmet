@@ -19,7 +19,10 @@
 
 ## About 🍃Green-Leaf-Gourmet🍃 
 <p align="center">
+
 <img width="500" src="Green-Leaf-Gourmet_src/images/FS_WelcomeLanding.png">
+
+<p align="center">
 
 * *A full-stack Restaurant Management Desktop application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
 * *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*
@@ -81,7 +84,7 @@
 ### Home Page | Admin & User Interface View
 <p align="center">
 <img width="400" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/211459348-1ad48f31-9aed-493d-b6bd-83f878eefee4.png"> 
-<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/211462617-41cf65c7-ec03-442e-bd01-5b2fbf84d147.png">
+<img style="margin: 70px" width="400" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/211462617-41cf65c7-ec03-442e-bd01-5b2fbf84d147.png">
 <p align="center">
 
 ### Place Order

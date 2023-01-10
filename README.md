@@ -80,8 +80,13 @@
 
 ### Home Page | Admin & User Interface View
 <p align="center">
-<img width="350" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
-<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
+<img width="400" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/211459348-1ad48f31-9aed-493d-b6bd-83f878eefee4.png"> 
+<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/211462617-41cf65c7-ec03-442e-bd01-5b2fbf84d147.png">
+<p align="center">
+
+### Place Order
+<p align="center">
+<img width="500" alt="Place Order" src="https://user-images.githubusercontent.com/56007479/211462080-518c7ef9-f8e3-4f97-bf0c-260e9bdf0a2f.png">
 <p align="center">
 
 #### *A user can Signup / Login (after Admin approval) and has access to the following features :*

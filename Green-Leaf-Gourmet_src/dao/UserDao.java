@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import model.User;
 import java.sql.*;
 import java.util.ArrayList;
+import common.Encryption;
 /**
  *
  * @author kingrishabdugar
@@ -17,17 +18,27 @@ public class UserDao {
     
     /*Value should be of User Type as in User.java in models*/
     public static void save(User user) {
-        String query = "insert into user(name, email, mobileNumber, address, password, securityQuestion, answer, status) values('" + user.getName() + "','" + user.getEmail() + "','" + user.getMobileNumber() + "','" + user.getAddress() + "','" + user.getPassword() + "','" + user.getSecurityQuestion() + "','" + user.getAnswer() + "','false')";
+        String salt = Encryption.genRandomSalt();
+        String encPassword = Encryption.encryptPassword(user.getPassword(),salt);
+        String encSecurityAnswer = Encryption.encryptPassword(user.getAnswer(),salt);
+      //String sqlInsert = "INSERT INTO staff (name,salt,password,age,salary) VALUES ( '" + name + "', '" + salt + "', '" + encPass + "', " + age + ", " + salary + " )";
+        String query = "insert into user(name, email, mobileNumber, address, password, securityQuestion, answer, salt , status) values('" + user.getName() + "','" + user.getEmail() + "','" + user.getMobileNumber() + "','" + user.getAddress() + "','" + encPassword + "','" + user.getSecurityQuestion() + "','" + encSecurityAnswer + "','" + salt + "','false')";
         DbOperations.setDataorDelete(query, "Registered Successfully! Wait for Admin Approval!!");
     }
 
     public static User login(String email, String password) {
         User user = null;
         try {
-            ResultSet rs = DbOperations.getData("select * from user where email ='" + email + "'and password ='" + password + "'");
+            ResultSet rs = DbOperations.getData("select * from user where email ='" + email + "'");
             while (rs.next()) {
+            String dbSalt = rs.getString("salt");
+            String dbPass = rs.getString("password");
+            String pass = Encryption.encryptPassword(password,dbSalt);
+                if(dbPass.equals(pass))
+                {
                 user = new User();
                 user.setStatus(rs.getString("status"));
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -134,3 +145,61 @@ public class UserDao {
     }
 
 }
+
+
+
+
+/* String sqlSelect = "SELECT salt,password from staff WHERE name = '" + name+ "'";
+ ResultSet rSet = stmt.executeQuery(sqlSelect);
+ rSet.next();
+ String dbSalt = rSet.getString("salt");
+ String dbPass = rSet.getString("password");
+ String pass = Utils.encryptPassword(password,dbSalt);
+ if(dbPass.equals(pass))
+ status = true;
+ }
+ catch(SQLException ex){
+ ex.printStackTrace();
+ }
+ return status;
+} 
+
+           String salt = Utils.genRandomSalt();
+            String encPass = Utils.encryptPassword(password,salt);
+            String sqlInsert = "INSERT INTO staff (name,salt,password,age,salary) VALUES ( '" + name + "', '" + salt + "', '" + encPass + "', " + age + ", " +
+            salary + " )";
+
+ public static String encryptPassword(String password,String salt)
+    {
+        String encryptedPassword = null;
+        try
+        {
+            MessageDigest md=MessageDigest.getInstance("SHA-512");
+            md.update(salt.getBytes(StandardCharsets.UTF_8));
+            byte[] bytes= md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb=new StringBuilder();
+            for(byte aByte : bytes)
+            {
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+            }
+            encryptedPassword=sb.toString();
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            System.out.println(e);
+        }
+        return encryptedPassword;
+    }
+    public static String genRandomSalt()
+    {
+        SecureRandom random = new SecureRandom();
+        String gensalt = random.ints(48,122+1)
+                .filter(i -> (i<=57 || i>=65) && (i<=90 || i>=97))
+                .limit(10)
+                .collect(StringBuilder ::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .substring(0);
+        
+        return gensalt;
+        
+    }
+*/

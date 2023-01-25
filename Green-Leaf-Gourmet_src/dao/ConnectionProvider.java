@@ -36,7 +36,7 @@ public class ConnectionProvider {
             //Local Server
             if(id == 0)
             {
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:"+server+"/cms?useSSL=false",username,password);
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:"+server+"/GreenLeafGourmet2?useSSL=false",username,password);
                 return con;
             }
             else

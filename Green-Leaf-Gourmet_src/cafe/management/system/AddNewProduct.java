@@ -17,6 +17,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -39,22 +41,44 @@ public class AddNewProduct extends javax.swing.JFrame {
         setResizable(false);
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
-        setSize(625,390);
+        setSize(625, 390);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
     }
+    public boolean onlyDigits(String str) {
+        // Regex to check string
+        // contains only digits
+        String regex = "[0-9]+";
 
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+
+        // If the string is empty
+        // return false
+        if (str == null) {
+            return false;
+        }
+
+        // Find match between given string
+        // and regular expression
+        // using Pattern.matcher()
+        Matcher m = p.matcher(str);
+
+        // Return if the string
+        // matched the ReGex
+        return m.matches();
+    }
     public void validateFields() {
         String name = txtname.getText();
         String price = txtprice.getText();
@@ -63,7 +87,6 @@ public class AddNewProduct extends javax.swing.JFrame {
         } else {
             btnsave.setEnabled(false);
         }
-
     }
 
     /**
@@ -160,19 +183,30 @@ public class AddNewProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnameActionPerformed
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
+        if(!onlyDigits(txtprice.getText()))
+        {
+            JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Price should be in Digits only. Please ignore adding currency !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+            setVisible(false);
+            new AddNewProduct().setVisible(true);
+        }
+        else
+        {
         Product product = new Product();
-        product.setName(txtname.getText());
+        product.setName(CafeManagementSystem.apostrophe(txtname.getText()));
         product.setCategory((String) txtcategory.getSelectedItem());
         product.setPrice(txtprice.getText());
         ProductDao.save(product);
         setVisible(false);
         new AddNewProduct().setVisible(true);
+        }
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
@@ -202,8 +236,8 @@ public class AddNewProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -248,7 +282,7 @@ public class AddNewProduct extends javax.swing.JFrame {
     private javax.swing.JTextField txtprice;
     // End of variables declaration//GEN-END:variables
 
-        private void Seticon() {
+    private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }
 }

@@ -20,6 +20,8 @@ import java.sql.Statement;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import common.Encryption;
+        
 /**
  *
  * @author kingr
@@ -183,15 +185,18 @@ public class LocalSQLConnection extends javax.swing.JFrame {
         try ( Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);  
                 Statement stmt = conn.createStatement();) 
         {
-            String sql = "CREATE DATABASE IF NOT EXISTS GreenLeafGourmet";
+            String sql = "CREATE DATABASE IF NOT EXISTS GreenLeafGourmet2";
             stmt.executeUpdate(sql);
-            stmt.executeUpdate("USE GreenLeafGourmet");
+            stmt.executeUpdate("USE GreenLeafGourmet2");
             ImageIcon icon = new ImageIcon("src\\images\\database.gif");
             JOptionPane.showMessageDialog(null, "Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
             
             //local database
-            String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address varchar(200),password varchar(200),securityQuestion varchar(200),answer varchar(200),status varchar(20),UNIQUE(email))";
-            String adminDetails = "insert into user(name,email,mobileNumber,address,password,securityQuestion,answer,status) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true')";
+            String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address nvarchar(200),password nvarchar(200) NOT NULL,securityQuestion nvarchar(200),answer nvarchar(200) NOT NULL,status varchar(20),UNIQUE(email),salt nvarchar(200))";
+            String alter = "ALTER TABLE user ADD COLUMN salt nvarchar(200) AFTER email;";// add salt column
+
+            //String adminpass = Encryption.encryptPassword("admin","admin");
+            String adminDetails = "insert ignore into user(name,email,mobileNumber,address,password,securityQuestion,answer,status,salt) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true','admin')";
             
             //String adminDetails = "insert into user(name,email,mobileNumber,address,password,securityQuestion,answer,status) select * from (values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true') as s(name,email,mobileNumber,address,password,securityQuestion,answer,status) where not exists (select * from user t with (updlock)where s.name = t.name and s.email = t.email and s.mobileNumber=t.mobileNumber and s.address=t.address and s.password=t.password and s.securityQuestion=t.securityQuestion and s.answer=t.answer and s.status =t.status)";
             

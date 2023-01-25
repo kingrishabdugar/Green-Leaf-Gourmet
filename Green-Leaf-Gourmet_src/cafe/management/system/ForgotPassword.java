@@ -446,7 +446,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
-        String answer = txtans.getText();
+        String answer = CafeManagementSystem.apostrophe(txtans.getText());
         String newPassword = txtpassword.getText();
         if (answer.equals(dbAnswer)) {
             UserDao.update(email, newPassword);

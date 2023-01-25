@@ -12,11 +12,21 @@ import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import common.PanelScale;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import javax.swing.*;
 
 /**
  *
@@ -29,17 +39,31 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
+    JDialog dialogLoading = new JDialog();
+
     public Home() {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
-
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(true);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
+    }
+
+    public void createDialog(JDialog d, String gif) {
+        d.setUndecorated(true);
+        d.setLocationRelativeTo(null);
+        d.setBackground(new Color(0, 0, 0, 0));
+        JLabel l = new JLabel(new ImageIcon(("src/images/" + gif)));
+        d.setSize(200, 200);
+        d.add(l);
+        d.setVisible(true);
+        d.setAlwaysOnTop(true);
+        d.setLocationRelativeTo(null);
+        d.setBackground(new Color(0, 0, 0, 0));
     }
 
     public Home(String userEmail) {
@@ -51,7 +75,7 @@ public class Home extends javax.swing.JFrame {
         //setResizable(false);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         email = userEmail;
         // when Admin Logins this should not be visible
@@ -60,7 +84,6 @@ public class Home extends javax.swing.JFrame {
             btnnp.setVisible(false);
             btnvedp.setVisible(false);
             btnvu.setVisible(false);
-
         }
     }
 
@@ -80,7 +103,7 @@ public class Home extends javax.swing.JFrame {
             btnvu = new javax.swing.JButton();
             jButton7 = new javax.swing.JButton();
             jButton1 = new javax.swing.JButton();
-            jButton2 = new javax.swing.JButton();
+            PlaceOrderbtn = new javax.swing.JButton();
             btnbillandorder = new javax.swing.JButton();
             jButton4 = new javax.swing.JButton();
             jButton5 = new javax.swing.JButton();
@@ -100,7 +123,7 @@ public class Home extends javax.swing.JFrame {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        btnvu.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnvu.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnvu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/verify.gif"))); // NOI18N
         btnvu.setText("Verify Users");
         btnvu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -119,7 +142,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.gif"))); // NOI18N
         jButton1.setText("LogOut");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -129,17 +152,17 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placeorder.gif"))); // NOI18N
-        jButton2.setText("Place Order");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        PlaceOrderbtn.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        PlaceOrderbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placeorder.gif"))); // NOI18N
+        PlaceOrderbtn.setText("Place Order");
+        PlaceOrderbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PlaceOrderbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                PlaceOrderbtnActionPerformed(evt);
             }
         });
 
-        btnbillandorder.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnbillandorder.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnbillandorder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill&order.gif"))); // NOI18N
         btnbillandorder.setText("Bill & Order Details");
         btnbillandorder.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -149,7 +172,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure2.gif"))); // NOI18N
         jButton4.setText("Change Password");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -159,7 +182,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure3.gif"))); // NOI18N
         jButton5.setText("Modify Security Question");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,7 +192,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.gif"))); // NOI18N
         jButton6.setText("Exit");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,7 +202,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnmc.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnmc.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnmc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/category.gif"))); // NOI18N
         btnmc.setText("Manage Category");
         btnmc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -189,7 +212,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnnp.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnnp.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnnp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/newproduct.gif"))); // NOI18N
         btnnp.setText("New Product");
         btnnp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -199,7 +222,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnvedp.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnvedp.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnvedp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view_edit.gif"))); // NOI18N
         btnvedp.setText("View, Edit & Delete Product");
         btnvedp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -214,40 +237,42 @@ public class Home extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnmc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnnp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 546, Short.MAX_VALUE)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PlaceOrderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnmc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnnp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(91, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PlaceOrderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -261,7 +286,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(127, 127, 127))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -306,14 +331,72 @@ public class Home extends javax.swing.JFrame {
     private void btnvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvuActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new VerifyUsers(email).setVisible(true);
+        String gif = "Orange_Loading.gif";//Name of gif file
+        if (btnvu == evt.getSource()) {
+            createDialog(dialogLoading, gif);
+            SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+                @Override
+                protected Boolean doInBackground() throws Exception {
+                    new VerifyUsers(email).setVisible(true); // this is the long process
+                    return true;
+                }
+
+                protected void done() {
+                    boolean status;
+                    try {
+                        status = get();
+                        if (status) {
+                            Thread.sleep(5000);
+                            dialogLoading.setVisible(false);
+                        }
+                    } catch (InterruptedException | ExecutionException e) {
+                    }
+                    // This is thrown if we throw an exception
+                    // from doInBackground
+                }
+            };
+            worker.execute();
+        }
     }//GEN-LAST:event_btnvuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void PlaceOrderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderbtnActionPerformed
         // TODO add your handling code here:
+
         setVisible(false);
-        new PlaceOrder(email).setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String gif = "Apple_Loading2.gif";//Name of gif file
+        if (PlaceOrderbtn == evt.getSource()) {
+            createDialog(dialogLoading, gif);
+            SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+                @Override
+                protected Boolean doInBackground() throws Exception {
+                    new PlaceOrder(email).setVisible(true); // this is the long process
+                    return true;
+                }
+
+                @Override
+                protected void done() {
+                    boolean status;
+                    try {
+                        status = get();
+                        Timer timer = new Timer(5000, new ActionListener() {
+                            public void actionPerformed(ActionEvent evt) {
+                                if (status) {
+                                    dialogLoading.setVisible(false);
+                                }
+                            }
+                        });
+                        timer.setRepeats(false);
+                        timer.start();
+                    } catch (InterruptedException | ExecutionException e) {
+                    }
+                    // This is thrown if we throw an exception
+                    // from doInBackground.
+
+                }
+            };
+            worker.execute();
+        }
+    }//GEN-LAST:event_PlaceOrderbtnActionPerformed
 
     private void btnbillandorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillandorderActionPerformed
         // TODO add your handling code here:
@@ -370,13 +453,13 @@ public class Home extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton PlaceOrderbtn;
     private javax.swing.JButton btnbillandorder;
     private javax.swing.JButton btnmc;
     private javax.swing.JButton btnnp;
     private javax.swing.JButton btnvedp;
     private javax.swing.JButton btnvu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

@@ -225,8 +225,8 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
         String password = txtpassword.getText();
-        String securityQuestion = txtnewsq.getText();
-        String answer = txtans.getText();
+        String securityQuestion = CafeManagementSystem.apostrophe(txtnewsq.getText());
+        String answer = CafeManagementSystem.apostrophe(txtans.getText());
         UserDao.changeSecurityQuestion(userEmail, password, securityQuestion, answer);
         setVisible(false);
         new ModifySecurityQuestion(userEmail).setVisible(true);

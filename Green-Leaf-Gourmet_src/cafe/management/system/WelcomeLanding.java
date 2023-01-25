@@ -75,6 +75,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
             Logger.getLogger(WelcomeLanding.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
         jButton3.setBorder(new javax.swing.border.MatteBorder(null));
         jButton3.setFocusTraversalPolicyProvider(true);
@@ -88,7 +89,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
             }
         });
 
-        signup.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        signup.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         signup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         signup.setText("Sign Up");
         signup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -98,7 +99,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
             }
         });
 
-        login.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        login.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         login.setText("Login");
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -109,20 +110,20 @@ public class WelcomeLanding extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("  New User ? Register !  ");
-        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
         jLabel1.setOpaque(true);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(" Returning User ? Welcome ! ");
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jLabel3.setBorder(new javax.swing.border.MatteBorder(null));
         jLabel3.setOpaque(true);
 
-        database.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        database.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         database.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "    Connect to Online Database", "    Connect to Local MySQL Server" }));
         database.setBorder(new javax.swing.border.MatteBorder(null));
         database.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -140,19 +141,21 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 .addGap(200, 200, 200)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(179, 179, 179))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(132, 132, 132)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(498, 498, 498))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(signup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(180, 180, 180)
-                        .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(607, 607, 607))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(database, 0, 338, Short.MAX_VALUE)
+                        .addComponent(database, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(700, 700, 700))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,8 +167,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(signup, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(database, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)

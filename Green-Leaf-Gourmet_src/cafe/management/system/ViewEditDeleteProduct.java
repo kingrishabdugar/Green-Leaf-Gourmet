@@ -260,7 +260,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         Product product = new Product();
         int id = Integer.parseInt(txtid.getText()); //String to Integer type
         product.setId(id);
-        product.setName(txtname.getText());
+        product.setName(CafeManagementSystem.apostrophe(txtname.getText()));
         product.setCategory((String) jComboBox1.getSelectedItem());
         product.setPrice(txtprice.getText());
         ProductDao.update(product);

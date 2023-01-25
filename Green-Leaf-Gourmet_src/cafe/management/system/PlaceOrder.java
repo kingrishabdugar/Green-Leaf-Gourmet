@@ -57,6 +57,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import common.PanelScale;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.Timer;
 /**
  *
  * @author kingrishabdugar
@@ -80,6 +85,12 @@ public class PlaceOrder extends javax.swing.JFrame {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
+        
+        
+        
+         Seticon();
+        
+        
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
@@ -100,10 +111,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         });
         //new Home().setVisible(true);
 
-        JTableHeader boldheader1 = jTable1.getTableHeader();
-        JTableHeader boldheader2 = jTable2.getTableHeader();
-        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
-        boldheader2.setFont(new Font("Segoe UI", Font.BOLD, 15));
+
 //        TableCellRenderer renderer = boldheader1.getDefaultRenderer();
 //        renderer.setVerticalAlignment(SwingConstants.CENTER
 //        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -350,37 +358,37 @@ public class PlaceOrder extends javax.swing.JFrame {
         }
         jPanel1.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel1.setText("Email");
+        jLabel1.setText("Email :");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtcusemail.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtcusemail.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtcusemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtcusemailKeyReleased(evt);
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(242, 242, 242));
         jLabel15.setText("--");
         jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel11.setText("Search");
+        jLabel11.setText("Search :");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtsearch.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtsearch.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtsearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtsearchActionPerformed(evt);
@@ -392,7 +400,7 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 2, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -408,43 +416,43 @@ public class PlaceOrder extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        txtproductname.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtproductname.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel12.setText("Quantity");
+        jLabel12.setText("Quantity :");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jSpinner1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jSpinner1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinner1StateChanged(evt);
             }
         });
 
-        txtprice.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtprice.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel13.setText("Total");
+        jLabel13.setText("Total :");
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText(" CUSTOMER DETAILS ");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setOpaque(true);
 
-        txttotal.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txttotal.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel3.setText("Category");
+        jLabel3.setText("Category :");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
@@ -453,12 +461,12 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel4.setText("Price");
+        jLabel4.setText("Price :");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        btnaddtocart.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnaddtocart.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnaddtocart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add to cart.gif"))); // NOI18N
         btnaddtocart.setText("Add to Cart");
         btnaddtocart.addActionListener(new java.awt.event.ActionListener() {
@@ -467,12 +475,12 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel5.setText("Name");
+        jLabel5.setText("Name :");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTable2.setFont(new java.awt.Font("Lucida Sans Unicode", 2, 15)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -490,26 +498,26 @@ public class PlaceOrder extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText(" BILL ID : ");
         jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.setOpaque(true);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel8.setText("Name");
+        jLabel8.setText("Name :");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtcusname.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtcusname.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtcusname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtcusnameKeyReleased(evt);
             }
         });
 
-        btnbill.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnbill.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnbill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/generate bill.gif"))); // NOI18N
         btnbill.setText("Generate Bill & Print");
         btnbill.addActionListener(new java.awt.event.ActionListener() {
@@ -518,22 +526,22 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel21.setText("Grand Total :  ₹");
+        jLabel21.setText("Grand Total : Rs.  ");
         jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel9.setText("Mobile Number");
+        jLabel9.setText("Mobile Number :");
         jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtgrandtotal.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtgrandtotal.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtgrandtotal.setForeground(new java.awt.Color(242, 242, 242));
         txtgrandtotal.setText("-----");
         txtgrandtotal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtcusmobile.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtcusmobile.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtcusmobile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcusmobileActionPerformed(evt);
@@ -550,7 +558,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(txtcusname, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,7 +573,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                         .addComponent(jLabel15)))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel11)
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -573,11 +581,11 @@ public class PlaceOrder extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
+                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtgrandtotal)
+                        .addComponent(txtgrandtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnbill, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnbill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtproductname)
@@ -593,7 +601,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnaddtocart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnclear, jLabel12, jLabel5, jSpinner1, txtproductname});
@@ -601,7 +609,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(130, 130, 130)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel15)
@@ -612,8 +620,8 @@ public class PlaceOrder extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtproductname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtproductname, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -630,36 +638,32 @@ public class PlaceOrder extends javax.swing.JFrame {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txttotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtcusmobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel1)
-                                .addGap(14, 14, 14)
-                                .addComponent(txtcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(btnclear))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnclear)
                             .addComponent(btnaddtocart))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtcusmobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel1)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnbill)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtgrandtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(127, 127, 127))
+                    .addComponent(btnbill, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtgrandtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(129, 129, 129))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jLabel2, jSpinner1, txtcusemail, txtcusmobile, txtcusname, txtprice, txtproductname, txtsearch, txttotal});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -668,7 +672,7 @@ public class PlaceOrder extends javax.swing.JFrame {
 
     private void btnbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillActionPerformed
         // TODO add your handling code here:
-        String customerName = txtcusname.getText();
+        String customerName = CafeManagementSystem.apostrophe(txtcusname.getText());
         String customerMobileNumber = txtcusmobile.getText();
         String customerEmail = txtcusemail.getText();
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");

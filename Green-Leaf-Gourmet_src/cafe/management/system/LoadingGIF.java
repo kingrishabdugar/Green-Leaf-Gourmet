@@ -4,6 +4,8 @@
  */
 package cafe.management.system;
 
+import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,35 +14,36 @@ import java.util.logging.Logger;
 import javax.swing.Timer;
 
 import java.awt.geom.RoundRectangle2D;
-
 /**
  *
  * @author kingr
  */
-public class SplashScreen extends javax.swing.JFrame {
+public class LoadingGIF extends javax.swing.JFrame {
 
     /**
-     * Creates new form SplashScreen
+     * Creates new form LoadingGIF
      */
-    public SplashScreen() {
+    public LoadingGIF() {
         initComponents();
+        //initComponents();
+        setType(Type.UTILITY);
         Seticon();
         //Seticon();
-        setTitle(" Green-Leaf-Gourmet ");
+        setTitle(" Loading.... - Green Leaf Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-        setAlwaysOnTop(true);
-        //setResizable(false);
-        //setShape(new RoundRectangle2D.Double(0,0, 600, 338, 50, 50));
-        setSize(600, 338);
-        Timer timer = new Timer(8500, new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                dispose();
-                new WelcomeLanding().setVisible(true);
-            }
-        });
-        timer.setRepeats(false);
-        timer.start();
+        //setAlwaysOnTop(true);
+        setSize(200, 200);
+        setBackground(new Color(0,0,0,(float)0.5));
+//        Timer timer = new Timer(8500, new ActionListener() {
+//            public void actionPerformed(ActionEvent evt) {
+//                dispose();
+//                //new WelcomeLanding().setVisible(true);
+//            }
+//        });
+//        timer.setRepeats(false);
+//        timer.start();
+//       
     }
 
     /**
@@ -58,8 +61,8 @@ public class SplashScreen extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/splashscreen_1.gif"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Apple loading.gif"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -81,19 +84,20 @@ public class SplashScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingGIF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingGIF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingGIF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoadingGIF.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SplashScreen().setVisible(true);
+                new LoadingGIF().setVisible(true);
             }
         });
     }
@@ -101,6 +105,7 @@ public class SplashScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
 private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }

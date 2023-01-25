@@ -23,12 +23,30 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import java.awt.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author kingrishabdugar
  */
 public class CafeManagementSystem {
+
+     public static String apostrophe(String s)
+    {
+            s = s.replace("\'", "\\\'");
+        return s;
+    }
+    public static void setUIFont(javax.swing.plaf.FontUIResource f) {
+        java.util.Enumeration keys = UIManager.getDefaults().keys();
+        while (keys.hasMoreElements()) {
+            Object key = keys.nextElement();
+            Object value = UIManager.get(key);
+            if (value instanceof javax.swing.plaf.FontUIResource) {
+                UIManager.put(key, f);
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -39,11 +57,18 @@ public class CafeManagementSystem {
         try {
             // TODO code application logic here
             Properties p = new Properties();
-            p.put("windowTitleFont", "Ebrima PLAIN 15");
+            p.put("windowTitleFont", "Lucida Grande PLAIN 15");
             p.put("logoString", "");
             p.put("windowDecoration", "off");
             McWinLookAndFeel.setCurrentTheme(p);
-            UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel"); 
+            //font of popups dialogs etc
+            setUIFont(new javax.swing.plaf.FontUIResource("lucida sans unicode", Font.PLAIN, 13));
+             //font of JTable Headers overall
+            Font font = UIManager.getFont("TableHeader.font");
+            font = new Font("lucida sans unicode", Font.BOLD, 15);
+            UIManager.put("TableHeader.font", font);
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CafeManagementSystem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

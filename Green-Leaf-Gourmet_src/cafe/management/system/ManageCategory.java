@@ -98,15 +98,19 @@ public class ManageCategory extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add New Category");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 74, -1, -1));
+        jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 78, 225, 34));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
-        jLabel2.setText("View Category");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 42, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(" View Category ");
+        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 45, 330, 34));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 13)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -114,8 +118,17 @@ public class ManageCategory extends javax.swing.JFrame {
             new String [] {
                 "ID", "CATEGORY"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -123,9 +136,9 @@ public class ManageCategory extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 74, 330, 240));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 92, 330, 213));
 
-        txtname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtname.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnameActionPerformed(evt);
@@ -136,9 +149,9 @@ public class ManageCategory extends javax.swing.JFrame {
                 txtnameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 118, 225, -1));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 125, 225, -1));
 
-        btnsave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnsave.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
         btnsave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -147,9 +160,9 @@ public class ManageCategory extends javax.swing.JFrame {
                 btnsaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 174, 225, -1));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -158,11 +171,11 @@ public class ManageCategory extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 223, 225, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        jLabel3.setText("*Click on row to delete category");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel3.setText(" Tip : Click on row to delete category ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 318, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Manage Category Page.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -216,7 +229,7 @@ public class ManageCategory extends javax.swing.JFrame {
         TableModel model = jTable1.getModel();
         String id = model.getValueAt(index, 0).toString();
         String name = model.getValueAt(index, 1).toString();
-        int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete " + name + "Category", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete " + name + " Category ❓", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
         if (a == 0) {
             CategoryDao.delete(id);
             setVisible(false);

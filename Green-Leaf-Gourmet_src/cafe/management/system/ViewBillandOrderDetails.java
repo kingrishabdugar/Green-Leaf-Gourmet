@@ -4,16 +4,25 @@
  */
 package cafe.management.system;
 
+import static cafe.management.system.CafeManagementSystem.createDialog;
 import common.OpenPdf;
 import dao.BillDao;
+import dao.UserDao;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+//for spinners
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JSpinner;
+
 import java.util.Date;
+import java.util.Calendar;
+
 import java.util.Iterator;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,8 +32,19 @@ import javax.swing.table.TableModel;
 import model.Bill;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.Timer;
+import model.User;
+
 /**
  *
  * @author kingrishabdugar
@@ -34,44 +54,53 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     /**
      * Creates new form ViewBillandOrderDetails
      */
-        public String userEmail;
+    public String userEmail;
+
+    private static final String[] DAYS = {"ALL", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10",
+        "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
+        "26", "27", "28", "29", "30", "31"};
+    private static final String[] MONTHS = {"ALL", "January", "February", "March", "April", "May", "June", "July", "August",
+        "September", "October", "November", "December"};
+
+    Calendar calendar = Calendar.getInstance();
+    int currentDay = calendar.get(Calendar.DAY_OF_MONTH) + 1;
+    int currentMonth = (calendar.get(Calendar.MONTH)) + 1;
+    int currentYear = calendar.get(Calendar.YEAR);
 
     public ViewBillandOrderDetails() {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
         setLocationRelativeTo(null); //makes aligned at center of screen
-        //setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
-             //   new Home().setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
+        //   new Home().setVisible(true);
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         String todayDate = dFormat.format(date);
-        jTextField1.setText(todayDate);
-        
-        
+//        jTextField1.setText(todayDate);
+
         JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
         //((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       
+
     }
-    
+
     public ViewBillandOrderDetails(String email) {
         initComponents();
         Seticon();
@@ -79,57 +108,98 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         userEmail = email;
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                            new Home(userEmail).setVisible(true);
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    new Home(userEmail).setVisible(true);
+                }
+            }
+        });
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
         String todayDate = dFormat.format(date);
-        jTextField1.setText(todayDate);
-        
-        
+        //jTextField1.setText(todayDate);
+
         JTableHeader boldheader1 = jTable1.getTableHeader();
-        boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+        boldheader1.setFont(new Font("Lucida Sans Unicode", Font.BOLD, 17));
         //((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       
+
     }
 
     public void tableDetails() {
-        String date = jTextField1.getText();
-        String incDec = (String) jComboBox1.getSelectedItem();
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-        if (incDec.equals("INC")) {
-            ArrayList<Bill> list = BillDao.getAllRecordsByInc(date);
-            Iterator<Bill> itr = list.iterator();
-            while (itr.hasNext()) {
-                Bill billobj = itr.next();
-                dtm.addRow(new Object[]{billobj.getId(), billobj.getName(), billobj.getMobileNumber(), billobj.getEmail(), billobj.getDate(), billobj.getTotal(), billobj.getCreatedBy()});
 
-            }
-        } else {
-            ArrayList<Bill> list = BillDao.getAllRecordsByDesc(date);
-            Iterator<Bill> itr = list.iterator();
-            while (itr.hasNext()) {
-                Bill billobj = itr.next();
-                dtm.addRow(new Object[]{billobj.getId(), billobj.getName(), billobj.getMobileNumber(), billobj.getEmail(), billobj.getDate(), billobj.getTotal(), billobj.getCreatedBy()});
-
-            }
+        Map<String, String> monthMap = new HashMap<>();
+        monthMap.put(MONTHS[0], "ALL");
+        for (int i = 1; i < 13; i++) {
+            monthMap.put(MONTHS[i], DAYS[i]); //days is just used as a temporary array for months 01-12
         }
+
+        JDialog dialogLoading = new JDialog();
+        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Orange.gif");
+        String month = "", day = "", year = "";
+
+        day = (String) dayComboBox.getSelectedItem() + "-";
+
+        String monthName = (String) monthComboBox.getSelectedItem();
+        month = monthMap.get(monthName) + "-";
+
+        year = (String) yearComboBox.getSelectedItem();
+
+        String date1 = (day.equals("ALL-")? "" : day) + (month.equals("ALL-")? "" : month) + (year.equals("ALL")? "" : year);
+        
+        if(date1.equals("ALL-ALL-ALL"))
+        date1="";
+        
+        String date = date1;
+        String incDec = (String) jComboBox1.getSelectedItem();
+
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0);
+                if (incDec.equals("INC")) {
+                    ArrayList<Bill> list = BillDao.getAllRecordsByInc(date);
+                    Iterator<Bill> itr = list.iterator();
+                    while (itr.hasNext()) {
+                        Bill billobj = itr.next();
+                        dtm.addRow(new Object[]{billobj.getId(), billobj.getName(), billobj.getMobileNumber(), billobj.getEmail(), billobj.getDate(), billobj.getTotal(), billobj.getCreatedBy()});
+
+                    }
+                } else {
+                    ArrayList<Bill> list = BillDao.getAllRecordsByDesc(date);
+                    Iterator<Bill> itr = list.iterator();
+                    while (itr.hasNext()) {
+                        Bill billobj = itr.next();
+                        dtm.addRow(new Object[]{billobj.getId(), billobj.getName(), billobj.getMobileNumber(), billobj.getEmail(), billobj.getDate(), billobj.getTotal(), billobj.getCreatedBy()});
+
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.setVisible(false);
+                    }
+                });
+            }
+        };
+        worker.execute();
+
     }
 
     /**
@@ -151,7 +221,13 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
             jTable1 = new javax.swing.JTable();
             jLabel3 = new javax.swing.JLabel();
             jLabel1 = new javax.swing.JLabel();
-            jTextField1 = new javax.swing.JTextField();
+            dayComboBox = new javax.swing.JComboBox<>(DAYS);
+            monthComboBox = new javax.swing.JComboBox<>((MONTHS));
+            String[] years = new String[3];
+            years[2] = "ALL";
+            years[1] = String.valueOf(currentYear-1);
+            years[0] = String.valueOf(currentYear);
+            yearComboBox = new javax.swing.JComboBox<>(years);
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -168,12 +244,12 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
             Logger.getLogger(ViewBillandOrderDetails.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Change Order By ID :");
         jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INC", "DESC" }));
         jComboBox1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -183,7 +259,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -191,8 +267,17 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
             new String [] {
                 "ID", "Name", "Mob No.", "Email", "Date", "Total Amount", "Created By"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -200,19 +285,35 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Instructions : Click On Row To Refund Bill/Delete Order !");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Filter By Date :");
         jLabel1.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+        dayComboBox.setSelectedIndex(currentDay - 1);
+        dayComboBox.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        dayComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dayComboBoxActionPerformed(evt);
+            }
+        });
+
+        monthComboBox.setSelectedIndex(currentMonth);
+        monthComboBox.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        monthComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthComboBoxActionPerformed(evt);
+            }
+        });
+
+        yearComboBox.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        yearComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearComboBoxActionPerformed(evt);
             }
         });
 
@@ -221,75 +322,111 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(171, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(19, 19, 19)
-                        .addComponent(jComboBox1, 0, 259, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(20, 20, 20)
+                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel2)
+                        .addGap(20, 20, 20)
+                        .addComponent(jComboBox1, 0, 166, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(172, Short.MAX_VALUE))
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(163, 163, 163)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(yearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
+                .addGap(15, 15, 15)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(77, 77, 77)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jLabel1, jLabel2, jTextField1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dayComboBox, jComboBox1, jLabel1, jLabel2, monthComboBox, yearComboBox});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        // TODO add your handling code here:
-        tableDetails();
-    }//GEN-LAST:event_jTextField1KeyReleased
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         tableDetails();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-         //TODO add your handling code here:
+        //TODO add your handling code here:
+        JDialog dialogLoading = new JDialog();
+        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Burger.gif");
+        dialogLoading.setAlwaysOnTop(false);
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String id = model.getValueAt(index, 0).toString();
         String name = model.getValueAt(index, 1).toString();
         int a = JOptionPane.showConfirmDialog(null, "Do you want to Cancel/Refund " + name + "'s Order ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
         if (a == 0) {
-            BillDao.delete(id);
-            setVisible(false);
-            new ViewBillandOrderDetails(userEmail).setVisible(true);
+            SwingWorker<Void, Void> worker;
+            worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    BillDao.delete(id);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            setVisible(false);
+                            setVisible(true);
+                            dialogLoading.setVisible(false);
+                        }
+                    });
+                }
+            };
+            worker.execute();
         }
-         
-        //OpenPdf.openById(id);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         tableDetails();
     }//GEN-LAST:event_formComponentShown
+
+    private void yearComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearComboBoxActionPerformed
+        // TODO add your handling code here
+        tableDetails();
+    }//GEN-LAST:event_yearComboBoxActionPerformed
+
+    private void monthComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthComboBoxActionPerformed
+        // TODO add your handling code here:
+        tableDetails();
+    }//GEN-LAST:event_monthComboBoxActionPerformed
+
+    private void dayComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dayComboBoxActionPerformed
+        // TODO add your handling code here:
+        tableDetails();
+    }//GEN-LAST:event_dayComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -327,6 +464,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> dayComboBox;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -334,9 +472,10 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> monthComboBox;
+    private javax.swing.JComboBox<String> yearComboBox;
     // End of variables declaration//GEN-END:variables
-  
+
     private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }

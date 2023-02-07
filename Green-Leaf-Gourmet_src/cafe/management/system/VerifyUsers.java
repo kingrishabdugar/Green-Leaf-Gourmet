@@ -24,6 +24,9 @@ import javax.swing.table.TableModel;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -96,19 +99,37 @@ public class VerifyUsers extends javax.swing.JFrame {
        userEmail = email;
     }
 
-    public void getAllRecords(String email) {
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-        ArrayList<User> list = UserDao.getAllRecords(email);
-        Iterator<User> itr = list.iterator();
-        while (itr.hasNext()) {
-            User userObj = itr.next();
-            //whenever search is done all rows are removed from the table and only searched row is displayed
-            if (!userObj.getEmail().equals("admin@gmail.com")) {
-                dtm.addRow(new Object[]{userObj.getId(), userObj.getName(), userObj.getEmail(), userObj.getMobileNumber(), userObj.getAddress(), userObj.getSecurityQuestion(), userObj.getStatus()});
+public void getAllRecords(String email) {
+        JDialog dialogLoading = new JDialog();
+        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Orange.gif");
+
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                ArrayList<User> list = UserDao.getAllRecords(email);
+                Iterator<User> itr = list.iterator();
+                while (itr.hasNext()) {
+                    User userObj = itr.next();
+                    if (!userObj.getEmail().equals("admin@gmail.com")) {
+                        dtm.addRow(new Object[]{userObj.getId(), userObj.getName(), userObj.getEmail(), userObj.getMobileNumber(), userObj.getAddress(), userObj.getSecurityQuestion(), userObj.getStatus()});
+                    }
+                }
+                return null;
             }
-        }
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.setVisible(false);
+                    }
+                });
+            }
+        };
+        worker.execute();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -143,19 +164,19 @@ public class VerifyUsers extends javax.swing.JFrame {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.gif"))); // NOI18N
         jLabel2.setText("Search");
 
-        txtemail.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtemail.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtemailKeyReleased(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Palatino Linotype", 1, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -178,7 +199,7 @@ public class VerifyUsers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Instructions : Click/Tap on Row to Change User Status & Drag the Row to Delete User !");
@@ -191,8 +212,8 @@ public class VerifyUsers extends javax.swing.JFrame {
                 .addGap(423, 423, 423)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(19, 19, 19)
-                .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addContainerGap(420, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(jScrollPane1)
@@ -204,14 +225,16 @@ public class VerifyUsers extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtemail)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, txtemail});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 

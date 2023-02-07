@@ -119,19 +119,19 @@ public class AddNewProduct extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel1.setText("Name");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 110, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel1.setText("Name :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 80, -1, 34));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel2.setText("Category");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 151, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel2.setText("Category :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 129, -1, 34));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel3.setText("Price");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 192, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel3.setText("Price :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 178, -1, 34));
 
-        txtname.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtname.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnameActionPerformed(evt);
@@ -142,17 +142,17 @@ public class AddNewProduct extends javax.swing.JFrame {
                 txtnameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 107, 260, -1));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 80, 260, -1));
 
-        txtprice.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        txtprice.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtprice.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtpriceKeyReleased(evt);
             }
         });
-        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 195, 260, -1));
+        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 178, 260, -1));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -161,9 +161,9 @@ public class AddNewProduct extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 276, 260, -1));
 
-        btnsave.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnsave.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnsave.setText("Save");
         btnsave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -172,10 +172,10 @@ public class AddNewProduct extends javax.swing.JFrame {
                 btnsaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 251, -1, -1));
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 227, 260, -1));
 
-        txtcategory.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 151, 260, -1));
+        txtcategory.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 129, 260, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/addnewproduct.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

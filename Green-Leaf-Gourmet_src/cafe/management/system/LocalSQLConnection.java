@@ -90,7 +90,7 @@ public class LocalSQLConnection extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        username.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        username.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         username.setText("root");
         username.setMinimumSize(new java.awt.Dimension(96, 25));
         username.setPreferredSize(new java.awt.Dimension(96, 25));
@@ -104,9 +104,9 @@ public class LocalSQLConnection extends javax.swing.JFrame {
                 usernameKeyReleased(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 250, 31));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 72, 239, 31));
 
-        connectbtn.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        connectbtn.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         connectbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/database.gif"))); // NOI18N
         connectbtn.setText("Connect");
         connectbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -117,18 +117,18 @@ public class LocalSQLConnection extends javax.swing.JFrame {
                 connectbtnActionPerformed(evt);
             }
         });
-        getContentPane().add(connectbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, -1, -1));
+        getContentPane().add(connectbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 205, 239, -1));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel11.setText(" localhost: ");
+        jLabel11.setText(" localhost : ");
         jLabel11.setBorder(new javax.swing.border.MatteBorder(null));
         jLabel11.setMaximumSize(new java.awt.Dimension(88, 25));
         jLabel11.setMinimumSize(new java.awt.Dimension(88, 25));
         jLabel11.setPreferredSize(new java.awt.Dimension(88, 25));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 155, -1, 31));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 156, 130, 31));
 
-        password.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        password.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         password.setMaximumSize(new java.awt.Dimension(2147483647, 34));
         password.setMinimumSize(new java.awt.Dimension(96, 25));
         password.setPreferredSize(new java.awt.Dimension(96, 25));
@@ -142,9 +142,9 @@ public class LocalSQLConnection extends javax.swing.JFrame {
                 passwordKeyReleased(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 112, 250, 31));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 114, 239, 31));
 
-        server.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        server.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         server.setText("3306");
         server.setMinimumSize(new java.awt.Dimension(96, 25));
         server.setPreferredSize(new java.awt.Dimension(96, 25));
@@ -158,8 +158,9 @@ public class LocalSQLConnection extends javax.swing.JFrame {
                 serverKeyReleased(evt);
             }
         });
-        getContentPane().add(server, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 154, 167, 31));
+        getContentPane().add(server, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 156, 103, 31));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Connect to MySQL database.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -189,7 +190,7 @@ public class LocalSQLConnection extends javax.swing.JFrame {
             stmt.executeUpdate(sql);
             stmt.executeUpdate("USE GreenLeafGourmet2");
             ImageIcon icon = new ImageIcon("src\\images\\database.gif");
-            JOptionPane.showMessageDialog(null, "Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Database Created Successfully !", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
             
             //local database
             String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address nvarchar(200),password nvarchar(200) NOT NULL,securityQuestion nvarchar(200),answer nvarchar(200) NOT NULL,status varchar(20),UNIQUE(email),salt nvarchar(200))";
@@ -210,17 +211,17 @@ public class LocalSQLConnection extends javax.swing.JFrame {
             stmt.executeUpdate(productTable);
             stmt.executeUpdate(billTable);
             
-            JOptionPane.showMessageDialog(null, "User Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Admin Details Added Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Category Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Product Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Bill Table Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-         
+            //JOptionPane.showMessageDialog(null, "User Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Admin Access Enabled !", "Initializing Database 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
+            //JOptionPane.showMessageDialog(null, "Category Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            //JOptionPane.showMessageDialog(null, "Product Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            //JOptionPane.showMessageDialog(null, "Bill Table Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "Local Database Created! Proceed to Signup/Login ... ", "Connecting to the Server 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
             
         } 
         catch (SQLException e) 
         {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "\t Cannot Connect to the Database :( \n Please recheck the details and try again !", "Error ❌", JOptionPane.ERROR_MESSAGE);
         }
         
         ConnectionProvider.getid(0);
@@ -230,8 +231,6 @@ public class LocalSQLConnection extends javax.swing.JFrame {
         
         
         ImageIcon icon = new ImageIcon("src\\images\\database.gif");
-        JOptionPane.showMessageDialog(null, "Local Database Created! Proceed to Signup/Login !!", "Connecting to the Server...", JOptionPane.INFORMATION_MESSAGE, icon);
-
         setVisible(false);
     }//GEN-LAST:event_connectbtnActionPerformed
 

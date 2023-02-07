@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
 import common.PanelScale;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
@@ -13,13 +14,20 @@ import dao.ConnectionProvider;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.Timer;
 
 /**
  *
  * @author kingrishabdugar
  */
 public class WelcomeLanding extends javax.swing.JFrame {
+
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form WelcomeLanding
@@ -35,9 +43,9 @@ public class WelcomeLanding extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setAlwaysOnTop(false);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -187,14 +195,12 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Sign_Up().setVisible(true);
+        CafeManagementSystem.loadWithGif(this, new Sign_Up(), "src/images/Loading GIFs/HotChoco.gif");
     }//GEN-LAST:event_signupActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Login().setVisible(true);
+        CafeManagementSystem.loadWithGif(this, new Login(), "src/images/Loading GIFs/Coffee.gif");
     }//GEN-LAST:event_loginActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -203,14 +209,15 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
     private void databaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseActionPerformed
         // TODO add your handling code here:
-         String db = (String)database.getSelectedItem();
-         if (db.trim()=="Connect to Online Database") {
+
+        String db = (String) database.getSelectedItem();
+        if (db.trim() == "Connect to Online Database") {
             ConnectionProvider.getid(1);
         } // selected, do something...
         else {
-             
+
             new LocalSQLConnection().setVisible(true);
-            
+
             // un-selected, do something else..
         }
     }//GEN-LAST:event_databaseActionPerformed
@@ -244,8 +251,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() { 
-               // new WelcomeLanding().setUndecorated(true);
+            public void run() {
+                // new WelcomeLanding().setUndecorated(true);
                 new WelcomeLanding().setVisible(true);
             }
         });

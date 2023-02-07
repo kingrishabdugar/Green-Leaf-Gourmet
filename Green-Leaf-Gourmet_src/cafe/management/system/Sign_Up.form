@@ -101,7 +101,7 @@
                                   <Component id="btnClear" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jButton5" max="32767" attributes="0"/>
+                                      <Component id="loginbtn" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
                                           <Component id="btnExit" max="32767" attributes="0"/>
@@ -164,7 +164,7 @@
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton4" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton5" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="loginbtn" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
@@ -307,7 +307,7 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyReleased"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="loginbtn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Lucida Sans Unicode" size="17" style="1"/>
@@ -321,7 +321,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginbtnActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtEmail">

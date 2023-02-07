@@ -126,47 +126,47 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Old Security Question");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 76, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel2.setText("Old Security Question :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 71, -1, 34));
 
-        txtoldsq.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtoldsq.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtoldsq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtoldsqActionPerformed(evt);
             }
         });
-        getContentPane().add(txtoldsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 71, 342, -1));
+        getContentPane().add(txtoldsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 71, 342, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("New Security Question");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 127, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel3.setText("New Security Question :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 121, -1, 34));
 
-        txtnewsq.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnewsq.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtnewsq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnewsqKeyReleased(evt);
             }
         });
-        getContentPane().add(txtnewsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 122, 342, -1));
+        getContentPane().add(txtnewsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 121, 342, -1));
 
-        txtans.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtans.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtans.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtansKeyReleased(evt);
             }
         });
-        getContentPane().add(txtans, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 175, 342, -1));
+        getContentPane().add(txtans, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 171, 342, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("New Answer");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 180, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel4.setText("New Answer :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 171, -1, 34));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 227, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel5.setText("Password :");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 221, -1, 34));
 
-        txtpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswordActionPerformed(evt);
@@ -177,9 +177,9 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 txtpasswordKeyReleased(evt);
             }
         });
-        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 222, 342, -1));
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 221, 342, -1));
 
-        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnupdate.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -188,9 +188,9 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 btnupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 270, -1, -1));
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 271, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         jButton3.setText("Clear");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -199,7 +199,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 271, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Modify Security Question.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

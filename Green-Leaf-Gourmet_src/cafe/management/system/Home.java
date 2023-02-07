@@ -15,6 +15,8 @@ import common.PanelScale;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -27,6 +29,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import javax.swing.*;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
@@ -51,6 +55,20 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    new WelcomeLanding().setVisible(true);
+                }
+            }
+        });
     }
 
     public void createDialog(JDialog d, String gif) {
@@ -85,6 +103,20 @@ public class Home extends javax.swing.JFrame {
             btnvedp.setVisible(false);
             btnvu.setVisible(false);
         }
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    new WelcomeLanding().setVisible(true);
+                }
+            }
+        });
     }
 
     /**
@@ -269,25 +301,27 @@ public class Home extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PlaceOrderbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnbillandorder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PlaceOrderbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnbillandorder, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton4)
+                        .addComponent(jButton5)))
                 .addGap(65, 65, 65)
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnmc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnnp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnvedp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(85, Short.MAX_VALUE))
+                    .addComponent(btnmc, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnnp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvedp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PlaceOrderbtn, btnbillandorder, btnmc, btnnp, btnvedp, btnvu, jButton1, jButton4, jButton5, jButton6});
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -330,31 +364,40 @@ public class Home extends javax.swing.JFrame {
 
     private void btnvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvuActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
         String gif = "Orange_Loading.gif";//Name of gif file
-        if (btnvu == evt.getSource()) {
-            createDialog(dialogLoading, gif);
-            SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+        createDialog(dialogLoading, gif);
+        if (evt.getSource() == btnvu) {
+            setVisible(false);
+            dialogLoading.setVisible(false);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
                 @Override
-                protected Boolean doInBackground() throws Exception {
+                protected Void doInBackground() throws Exception {
                     new VerifyUsers(email).setVisible(true); // this is the long process
-                    return true;
+                    return null;
                 }
 
+                @Override
                 protected void done() {
-                    boolean status;
-                    try {
-                        status = get();
-                        if (status) {
-                            Thread.sleep(5000);
-                            dialogLoading.setVisible(false);
-                        }
-                    } catch (InterruptedException | ExecutionException e) {
-                    }
-                    // This is thrown if we throw an exception
-                    // from doInBackground
+                    Timer timer = new Timer(3000, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogLoading.setVisible(false);
+                            }
+                        });
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
+                    // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
                 }
             };
+            
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
             worker.execute();
         }
     }//GEN-LAST:event_btnvuActionPerformed
@@ -362,46 +405,82 @@ public class Home extends javax.swing.JFrame {
     private void PlaceOrderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderbtnActionPerformed
         // TODO add your handling code here:
 
-        setVisible(false);
-        String gif = "Apple_Loading2.gif";//Name of gif file
+        String gif = "Apple_Loading.gif";//Name of gif file
+        createDialog(dialogLoading, gif);
         if (PlaceOrderbtn == evt.getSource()) {
-            createDialog(dialogLoading, gif);
-            SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+            setVisible(false);
+            dialogLoading.setVisible(false);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
                 @Override
-                protected Boolean doInBackground() throws Exception {
+                protected Void doInBackground() throws Exception {
                     new PlaceOrder(email).setVisible(true); // this is the long process
-                    return true;
+                    return null;
                 }
 
                 @Override
                 protected void done() {
-                    boolean status;
-                    try {
-                        status = get();
-                        Timer timer = new Timer(5000, new ActionListener() {
-                            public void actionPerformed(ActionEvent evt) {
-                                if (status) {
-                                    dialogLoading.setVisible(false);
-                                }
+                    Timer timer = new Timer(5000, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogLoading.setVisible(false);
                             }
                         });
-                        timer.setRepeats(false);
-                        timer.start();
-                    } catch (InterruptedException | ExecutionException e) {
-                    }
-                    // This is thrown if we throw an exception
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
                     // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
 
                 }
             };
+            
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
             worker.execute();
         }
     }//GEN-LAST:event_PlaceOrderbtnActionPerformed
 
     private void btnbillandorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillandorderActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ViewBillandOrderDetails(email).setVisible(true);
+       
+        String gif = "Apple_Loading.gif";//Name of gif file
+        createDialog(dialogLoading, gif);
+        if (evt.getSource() == btnbillandorder) {
+            setVisible(false);
+            dialogLoading.setVisible(false);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    new ViewBillandOrderDetails(email).setVisible(true); // this is the long process
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    Timer timer = new Timer(5000, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(() -> {
+                            dialogLoading.setVisible(false);
+                        });
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
+                    // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
+
+                }
+            };
+            //lambda expression suggested by NetBeans itself
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
+            worker.execute();
+        }
     }//GEN-LAST:event_btnbillandorderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

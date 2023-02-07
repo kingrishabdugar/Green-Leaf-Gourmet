@@ -5,6 +5,7 @@
 package cafe.management.system;
 
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
+import common.Encryption;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
@@ -12,11 +13,14 @@ import java.awt.Toolkit;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 import common.PanelScale;
+import dao.DbOperations;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -29,9 +33,11 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class ForgotPassword extends javax.swing.JFrame {
 
     private String dbAnswer = null;
+    private String dbSalt = null;
     private String email = null;
     private String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
-    public String userEmail="";
+    public String userEmail = "";
+
     /**
      * Creates new form ForgotPassword
      */
@@ -42,24 +48,23 @@ public class ForgotPassword extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         btnupdate.setEnabled(false);
         btnsearch.setEnabled(false);
         txtsq.setEditable(false);//security question cannot be changed !
 
     }
-    
-     public ForgotPassword(String email) {
+
+    public ForgotPassword(String email) {
         initComponents();
         Seticon();
         userEmail = email;
         txtemail.setText(userEmail);
         validateEmail();
-        if (email.matches(emailPattern)&& !email.equals("admin@gmail.com")) {
+        if (email.matches(emailPattern) && !email.equals("admin@gmail.com")) {
             btnsearch.setEnabled(true);
-        }
-        else if(email.equals("admin@gmail.com")) //Admin Details Secured 
+        } else if (email.equals("admin@gmail.com")) //Admin Details Secured 
         {
             JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
             btnsearch.setEnabled(false);
@@ -68,24 +73,24 @@ public class ForgotPassword extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         btnupdate.setEnabled(false);
         txtsq.setEditable(false);//security question cannot be changed !
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                         //   new Home(email).setVisible(true);
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    //   new Home(email).setVisible(true);
+                }
+            }
+        });
     }
 
     public void clear() {
@@ -102,15 +107,13 @@ public class ForgotPassword extends javax.swing.JFrame {
     //Admin Details cannot be changed 
     public void validateEmail() {
         email = txtemail.getText();
-        if (email.matches(emailPattern)&& !email.equals("admin@gmail.com")) {
+        if (email.matches(emailPattern) && !email.equals("admin@gmail.com")) {
             btnsearch.setEnabled(true);
-        }
-        else if(email.equals("admin@gmail.com")) //Admin Details Secured 
+        } else if (email.equals("admin@gmail.com")) //Admin Details Secured 
         {
             JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
             btnsearch.setEnabled(false);
-        }
-        else {
+        } else {
             btnsearch.setEnabled(false);
         }
     }
@@ -164,7 +167,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        txtsq.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtsq.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         txtsq.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtsq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -172,7 +175,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        txtans.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtans.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         txtans.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +188,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        txtpassword.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         txtpassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtpassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -193,7 +196,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnupdate.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +205,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +214,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        btnexit.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnexit.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         btnexit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/smallexit.gif"))); // NOI18N
         btnexit.setText("Exit");
         btnexit.addActionListener(new java.awt.event.ActionListener() {
@@ -221,14 +224,14 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
 
         jLabel1.setBackground(new java.awt.Color(172, 72, 12));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText(" Email : ");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(112, 40, 6), 2, true));
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setOpaque(true);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
         jButton4.setText("Login");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -238,14 +241,14 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
 
         jLabel2.setBackground(new java.awt.Color(172, 72, 12));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText(" Security Question : ");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(112, 40, 6), 2, true));
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setOpaque(true);
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.gif"))); // NOI18N
         jButton5.setText("Sign Up");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -255,14 +258,14 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
 
         jLabel3.setBackground(new java.awt.Color(172, 72, 12));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText(" Your Answer : ");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(112, 40, 6), 2, true));
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.setOpaque(true);
 
-        btnsearch.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnsearch.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         btnsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.gif"))); // NOI18N
         btnsearch.setText("Search");
         btnsearch.addActionListener(new java.awt.event.ActionListener() {
@@ -272,14 +275,14 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
 
         jLabel4.setBackground(new java.awt.Color(172, 72, 12));
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText(" Enter New Password : ");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(112, 40, 6), 2, true));
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.setOpaque(true);
 
-        txtemail.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        txtemail.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
         txtemail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +300,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(238, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
@@ -310,9 +313,9 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addComponent(txtans)
                     .addComponent(txtpassword)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(136, 136, 136)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnupdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(28, 28, 28)
@@ -320,42 +323,31 @@ public class ForgotPassword extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(btnexit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(15, 15, 15)
-                .addComponent(btnsearch, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addComponent(btnsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(230, 230, 230)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))
-                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
                     .addComponent(btnsearch))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))
-                    .addComponent(txtsq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))
-                    .addComponent(txtans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3))
-                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtsq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtans, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnupdate)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -367,6 +359,8 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addComponent(jButton5))
                 .addGap(200, 200, 200))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, txtans, txtemail, txtpassword, txtsq});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -384,18 +378,15 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void btnexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexitActionPerformed
         // TODO add your handling code here:
-        if(userEmail != "")
-        {
+        if (userEmail != "") {
             setVisible(false);
-        }
-        else
-        {
-        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
-        if (a == 0) {
-            System.exit(0);
-        }
-        //setVisible(false);
-        //new Thankyou().setVisible(true);
+        } else {
+            int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (a == 0) {
+                System.exit(0);
+            }
+            //setVisible(false);
+            //new Thankyou().setVisible(true);
         }
     }//GEN-LAST:event_btnexitActionPerformed
 
@@ -421,8 +412,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Login().setVisible(true);
+        CafeManagementSystem.loadWithGif(this, new Login(), "src/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
@@ -438,6 +428,7 @@ public class ForgotPassword extends javax.swing.JFrame {
             btnsearch.setEnabled(false);
             txtemail.setEditable(false);
             dbAnswer = user.getAnswer();
+            dbSalt = user.getSalt();
             txtsq.setText(user.getSecurityQuestion());
             validateFields();
 
@@ -446,7 +437,18 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
+
+        try {
+            ResultSet rs = DbOperations.getData("select * from user where email like '%" + userEmail + "%'");
+            while (rs.next()) {
+                dbSalt = rs.getString("salt");
+                String dbPass = rs.getString("password");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ForgotPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String answer = CafeManagementSystem.apostrophe(txtans.getText());
+        answer = Encryption.encryptPassword(answer, dbSalt);
         String newPassword = txtpassword.getText();
         if (answer.equals(dbAnswer)) {
             UserDao.update(email, newPassword);
@@ -458,8 +460,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Sign_Up().setVisible(true);
+        CafeManagementSystem.loadWithGif(this,new Sign_Up(), "src/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
@@ -521,7 +522,7 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JTextField txtsq;
     // End of variables declaration//GEN-END:variables
 
-        private void Seticon() {
+    private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }
 }

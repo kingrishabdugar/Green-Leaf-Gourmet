@@ -29,7 +29,8 @@ import model.Category;
  * @author kingrishabdugar
  */
 public class ViewEditDeleteProduct extends javax.swing.JFrame {
-        public String userEmail;
+
+    public String userEmail;
 
     /**
      * Creates new form ViewEditDeleteProduct
@@ -42,26 +43,26 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         //setAlwaysOnTop(true);
-       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024,616);
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024, 616);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
-               // new Home().setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
+        // new Home().setVisible(true);
         JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
 //        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       
+
     }
 
     public ViewEditDeleteProduct(String email) {
@@ -71,28 +72,28 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         btndelete.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
-       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        setSize(1024,616);
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setSize(1024, 616);
         userEmail = email;
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                            //new Home(userEmail).setVisible(true);
-                        }
-                    }
-                });
-               // new Home().setVisible(true);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    //new Home(userEmail).setVisible(true);
+                }
+            }
+        });
+        // new Home().setVisible(true);
         JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
 //        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       
+
     }
 
     public void validateField() {
@@ -128,7 +129,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtid = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -138,23 +139,23 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel1.setText("ID");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 161, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel1.setText("ID :");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 140, -1, 34));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel2.setText("Name");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 211, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel2.setText("Name :");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 194, -1, 34));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel3.setText("Category");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 268, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel3.setText("Category :");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 248, -1, 34));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        jLabel4.setText("Price");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 325, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        jLabel4.setText("Price :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 302, -1, 34));
 
-        txtname.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtname.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnameActionPerformed(evt);
@@ -165,21 +166,21 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 txtnameKeyReleased(evt);
             }
         });
-        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 206, 340, -1));
+        getContentPane().add(txtname, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 194, 301, -1));
 
-        txtprice.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        txtprice.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtprice.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtpriceKeyReleased(evt);
             }
         });
-        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 320, 340, -1));
+        getContentPane().add(txtprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 302, 301, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 263, 340, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 248, 301, -1));
 
-        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnupdate.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate.setText("Update");
         btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -188,9 +189,9 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 btnupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 387, -1, -1));
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 356, 147, -1));
 
-        btndelete.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btndelete.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.gif"))); // NOI18N
         btndelete.setText("Delete");
         btndelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -199,9 +200,9 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 btndeleteActionPerformed(evt);
             }
         });
-        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 387, -1, -1));
+        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 356, 144, -1));
 
-        btnclear.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btnclear.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -210,9 +211,9 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 387, -1, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 408, 301, -1));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 13)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -220,8 +221,21 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
             new String [] {
                 "ID", "NAME", "CATEGORY", "PRICE"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jTable1.setShowHorizontalLines(true);
+        jTable1.setShowVerticalLines(true);
+        jTable1.getTableHeader().setResizingAllowed(false);
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -229,14 +243,14 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, 370));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 140, 535, 326));
 
-        txtid.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        txtid.setText("01");
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 161, -1, -1));
+        txtid.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
+        txtid.setText("---");
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 140, 301, 34));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete page.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view edit delete page.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -299,6 +313,10 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
 //clicked on a row in the table -> should display on left side in text boxes and category
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        
+        
+        
+        
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String id = model.getValueAt(index, 0).toString();
@@ -368,7 +386,7 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel txtid;

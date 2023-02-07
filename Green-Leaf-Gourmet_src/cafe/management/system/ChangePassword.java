@@ -27,6 +27,7 @@ public class ChangePassword extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //makes aligned at center of screen
         //setAlwaysOnTop(true);
+        Seticon();
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(625, 390);
@@ -126,7 +127,7 @@ public class ChangePassword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtconfirm.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtconfirm.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtconfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtconfirmActionPerformed(evt);
@@ -139,7 +140,7 @@ public class ChangePassword extends javax.swing.JFrame {
         });
         getContentPane().add(txtconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 178, 282, 40));
 
-        txtold.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtold.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtold.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtoldActionPerformed(evt);
@@ -152,15 +153,15 @@ public class ChangePassword extends javax.swing.JFrame {
         });
         getContentPane().add(txtold, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 76, 282, 40));
 
-        txtoldpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtoldpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtoldpassword.setText("Old Password :");
-        getContentPane().add(txtoldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 75, 128, 40));
+        getContentPane().add(txtoldpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 76, 166, 40));
 
-        txtnewpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnewpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtnewpassword.setText("New Password :");
-        getContentPane().add(txtnewpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 126, 136, 40));
+        getContentPane().add(txtnewpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 127, 166, 40));
 
-        txtnew.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtnew.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtnew.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtnewKeyReleased(evt);
@@ -168,7 +169,7 @@ public class ChangePassword extends javax.swing.JFrame {
         });
         getContentPane().add(txtnew, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 127, 282, 40));
 
-        forgotpassword.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        forgotpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         forgotpassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure1.gif"))); // NOI18N
         forgotpassword.setText("Forgot Password ?");
         forgotpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -178,11 +179,11 @@ public class ChangePassword extends javax.swing.JFrame {
         });
         getContentPane().add(forgotpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 278, 282, -1));
 
-        txtconfirmpassword.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txtconfirmpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtconfirmpassword.setText("Confirm Password :");
-        getContentPane().add(txtconfirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 177, 166, 40));
+        getContentPane().add(txtconfirmpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 178, 166, 40));
 
-        btnupdate4.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        btnupdate4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnupdate4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
         btnupdate4.setText("Update");
         btnupdate4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,7 +194,7 @@ public class ChangePassword extends javax.swing.JFrame {
         });
         getContentPane().add(btnupdate4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 228, 132, 40));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
         jButton3.setText("Clear");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -202,7 +203,7 @@ public class ChangePassword extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 228, 114, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 228, 132, 40));
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/secure1.gif"))); // NOI18N

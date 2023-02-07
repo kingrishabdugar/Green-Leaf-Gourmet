@@ -49,6 +49,20 @@ public class Login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100,680); 
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    new WelcomeLanding().setVisible(true);
+                }
+            }
+        });
     }
 
     public void clear() {

@@ -50,8 +50,6 @@ import javax.swing.table.JTableHeader;
 //import sun.swing.table.DefaultTableCellHeaderRenderer;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
-
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,12 +59,18 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import javax.swing.Timer;
+
 /**
  *
  * @author kingrishabdugar
  */
 public class PlaceOrder extends javax.swing.JFrame {
+
+    JDialog dialogLoading = new JDialog();
 
     //private static final Font BOLDFont = new Font(Font.getFamily("SEGOE_UI"),15,Font.BOLD);
     public int billId = 1;
@@ -85,16 +89,13 @@ public class PlaceOrder extends javax.swing.JFrame {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
-        
-        
-        
-         Seticon();
-        
-        
+
+        Seticon();
+
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -110,7 +111,6 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
         //new Home().setVisible(true);
-
 
 //        TableCellRenderer renderer = boldheader1.getDefaultRenderer();
 //        renderer.setVerticalAlignment(SwingConstants.CENTER
@@ -130,8 +130,8 @@ public class PlaceOrder extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
-        setLocationRelativeTo(null);       
+        setSize(1100, 680);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         //setSize(1024, 616);
@@ -373,7 +373,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(242, 242, 242));
         jLabel15.setText("--");
-        jLabel15.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
+        jLabel15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jComboBox1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
@@ -400,7 +400,7 @@ public class PlaceOrder extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 2, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 13)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -408,7 +408,16 @@ public class PlaceOrder extends javax.swing.JFrame {
             new String [] {
                 "Name"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -437,11 +446,10 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel13.setText("Total :");
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setBackground(new java.awt.Color(250, 200, 35));
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText(" CUSTOMER DETAILS ");
-        jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
+        jLabel2.setBorder(new javax.swing.border.MatteBorder(null));
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setOpaque(true);
 
@@ -480,7 +488,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         jLabel5.setText("Name :");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jTable2.setFont(new java.awt.Font("Lucida Sans Unicode", 2, 15)); // NOI18N
+        jTable2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 13)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -488,7 +496,15 @@ public class PlaceOrder extends javax.swing.JFrame {
             new String [] {
                 "Name", "Price", "Quantity", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable2.getTableHeader().setReorderingAllowed(false);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -497,11 +513,10 @@ public class PlaceOrder extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setBackground(new java.awt.Color(250, 200, 35));
         jLabel6.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText(" BILL ID : ");
-        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(242, 242, 242), 1, true));
+        jLabel6.setBorder(new javax.swing.border.MatteBorder(null));
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel6.setOpaque(true);
 
@@ -528,7 +543,7 @@ public class PlaceOrder extends javax.swing.JFrame {
 
         jLabel21.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel21.setText("Grand Total : Rs.  ");
+        jLabel21.setText("Grand Total : INR ");
         jLabel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel9.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
@@ -569,7 +584,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                     .addComponent(txtcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(15, 15, 15)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel15)))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,13 +593,13 @@ public class PlaceOrder extends javax.swing.JFrame {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(49, 49, 49)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(11, 11, 11)
                         .addComponent(txtgrandtotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(40, 40, 40)
                         .addComponent(btnbill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,7 +616,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnaddtocart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnclear, jLabel12, jLabel5, jSpinner1, txtproductname});
@@ -609,15 +624,16 @@ public class PlaceOrder extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(128, 128, 128)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel15)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
                         .addComponent(jLabel4)))
-                .addGap(16, 16, 16)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -632,7 +648,7 @@ public class PlaceOrder extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
                         .addComponent(jLabel13)))
-                .addGap(14, 14, 14)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtcusname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -644,16 +660,16 @@ public class PlaceOrder extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnclear)
                             .addComponent(btnaddtocart))
-                        .addGap(18, 18, 18)
+                        .addGap(17, 17, 17)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addGap(14, 14, 14)
+                        .addGap(15, 15, 15)
                         .addComponent(txtcusmobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addComponent(jLabel1)
-                        .addGap(14, 14, 14)
+                        .addGap(15, 15, 15)
                         .addComponent(txtcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -672,108 +688,119 @@ public class PlaceOrder extends javax.swing.JFrame {
 
     private void btnbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillActionPerformed
         // TODO add your handling code here:
-        String customerName = CafeManagementSystem.apostrophe(txtcusname.getText());
-        String customerMobileNumber = txtcusmobile.getText();
-        String customerEmail = txtcusemail.getText();
-        SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
-        Date date = new Date();
-        String todaydate = dFormat.format(date);
-        String total = String.valueOf(grandTotal);
-        String createdBy = userEmail;
-        Bill bill = new Bill();
-        bill.setId(billId);
-        bill.setName(customerName);
-        bill.setMobileNumber(customerMobileNumber);
-        bill.setEmail(customerEmail);
-        bill.setDate(todaydate);
-        bill.setTotal(total);
-        bill.setCreatedBy(createdBy);
-        BillDao.save(bill);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-        Date date1 = new Date();
-        formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");
-        DateToday = formatter.format(date1);
+        String gif = "StirFry.gif";//Name of gif file
+        CafeManagementSystem.createDialog(dialogLoading, gif);
+        //setVisible(false);
+        dialogLoading.setVisible(false);
+        dialogLoading.setAlwaysOnTop(false);
 
-        //Creating document
-        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int ra = j.showSaveDialog(null);
-        String path = "D:\\Generated_Bills\\";
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                // this is the very long process
 
-        if (ra == JFileChooser.APPROVE_OPTION) {
-            // set the label to the path of the selected directory
-            path = j.getSelectedFile().getAbsolutePath();
-        } // if the user cancelled the operation
-        else {
-            path = "D:\\";
-        }
+                String customerName = CafeManagementSystem.apostrophe(txtcusname.getText());
+                String customerMobileNumber = txtcusmobile.getText();
+                String customerEmail = txtcusemail.getText();
+                SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = new Date();
+                String todaydate = dFormat.format(date);
+                String total = String.valueOf(grandTotal);
+                String createdBy = userEmail;
+                Bill bill = new Bill();
+                bill.setId(billId);
+                bill.setName(customerName);
+                bill.setMobileNumber(customerMobileNumber);
+                bill.setEmail(customerEmail);
+                bill.setDate(todaydate);
+                bill.setTotal(total);
+                bill.setCreatedBy(createdBy);
+                BillDao.save(bill);
 
-        com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
-        try {
-            //file name generated here
-            //location\\ + "Green-Leaf-Gourmet_Bill_" +id(file name of bill)
+                SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+                Date date1 = new Date();
+                formatter = new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss z");
+                DateToday = formatter.format(date1);
 
-            PdfWriter.getInstance(doc, new FileOutputStream(path + "\\" + "" + "Green-Leaf-Gourmet_Bill_" + billId + ".pdf"));
-            doc.open();
-            //Code to Add Header Image in Invoice after Bill
-            String header = "JRE\\src\\images\\Invoice_Header.png";
-            Image image_header = Image.getInstance(header);
-            image_header.setAlignment(Image.MIDDLE);
-            //Fit Maximum along Margins
-            float documentWidth = doc.getPageSize().getWidth() - doc.leftMargin() - doc.rightMargin();
-            float documentHeight = doc.getPageSize().getHeight() - doc.topMargin() - doc.bottomMargin();
-            image_header.scaleToFit(documentWidth, documentHeight);
-            doc.add(image_header);
+                //Creating document
+                JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+                j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                int ra = j.showSaveDialog(null);
+                String path = "D:\\Generated_Bills\\";
 
-            //Code to Add LineBreak Image in Invoice after Bill
-            String line = "JRE\\src\\images\\Invoice_LineBreak.png";
-            Image image_line = Image.getInstance(line);
-            image_line.setAlignment(Image.MIDDLE);
-            image_line.scaleToFit(documentWidth, documentHeight);
+                if (ra == JFileChooser.APPROVE_OPTION) {
+                    // set the label to the path of the selected directory
+                    path = j.getSelectedFile().getAbsolutePath();
+                } // if the user cancelled the operation
+                else {
+                    path = "D:\\";
+                }
 
-            //Code to Add Footer Image in Invoice
-            String footer = "JRE\\src\\images\\Invoice_Footer.png";
-            Image image_footer = Image.getInstance(footer);
-            image_footer.setAlignment(Image.MIDDLE);
-            image_footer.scaleToFit(documentWidth, documentHeight);
-            
-            String qr = "JRE\\src\\images\\InvoiceQR.png";
-            Image image_qr = Image.getInstance(qr);
-            image_qr.setAlignment(Image.MIDDLE);
-            image_qr.scaleToFit(documentWidth, documentHeight);
-            
+                com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+                try {
+                    //file name generated here
+                    //location\\ + "Green-Leaf-Gourmet_Bill_" +id(file name of bill)
+
+                    PdfWriter.getInstance(doc, new FileOutputStream(path + "\\" + "" + "Green-Leaf-Gourmet_Bill_" + billId + ".pdf"));
+                    doc.open();
+                    //Code to Add Header Image in Invoice after Bill
+                    String header = "JRE\\src\\images\\Invoice_Header.png";
+                    Image image_header = Image.getInstance(header);
+                    image_header.setAlignment(Image.MIDDLE);
+                    //Fit Maximum along Margins
+                    float documentWidth = doc.getPageSize().getWidth() - doc.leftMargin() - doc.rightMargin();
+                    float documentHeight = doc.getPageSize().getHeight() - doc.topMargin() - doc.bottomMargin();
+                    image_header.scaleToFit(documentWidth, documentHeight);
+                    doc.add(image_header);
+
+                    //Code to Add LineBreak Image in Invoice after Bill
+                    String line = "JRE\\src\\images\\Invoice_LineBreak.png";
+                    Image image_line = Image.getInstance(line);
+                    image_line.setAlignment(Image.MIDDLE);
+                    image_line.scaleToFit(documentWidth, documentHeight);
+
+                    //Code to Add Footer Image in Invoice
+                    String footer = "JRE\\src\\images\\Invoice_Footer.png";
+                    Image image_footer = Image.getInstance(footer);
+                    image_footer.setAlignment(Image.MIDDLE);
+                    image_footer.scaleToFit(documentWidth, documentHeight);
+
+                    String qr = "JRE\\src\\images\\InvoiceQR.png";
+                    Image image_qr = Image.getInstance(qr);
+                    image_qr.setAlignment(Image.MIDDLE);
+                    image_qr.scaleToFit(documentWidth, documentHeight);
 
 //            Paragraph cafeName = new Paragraph("Green-Leaf-Gourmet\nPeace starts on our plate ^_~ \n");
 //            doc.add(cafeName);
 //            Paragraph starLine = new Paragraph("****************************************************************************************************************");
-            doc.add(image_line); //After Header
-            String total_paid =" ( Rupees "+convertNumberToWord(grandTotal)+" Only )"; 
-            Paragraph paragraph3 = new Paragraph("\tBill ID: " + billId + "\nCustomer Name: " + customerName + "\nTotal Paid: INR " + grandTotal +total_paid+"\nInvoice Date: " + DateToday);
-            doc.add(paragraph3);
-            doc.add(image_line);
-            PdfPTable tb1 = new PdfPTable(4);            
-            tb1.addCell("Name");
-            tb1.addCell("Price");
-            tb1.addCell("Quantity");
-            tb1.addCell("Total");
-            for (int i = 0; i < jTable2.getRowCount(); i++) {
-                String n = jTable2.getValueAt(i, 0).toString();
-                String d = "INR " + jTable2.getValueAt(i, 1).toString();
-                String r = jTable2.getValueAt(i, 2).toString();
-                String q = "INR " + jTable2.getValueAt(i, 3).toString();
-                tb1.addCell(n);
-                tb1.addCell(d);
-                tb1.addCell(r);
-                tb1.addCell(q);
-            }
-            doc.add(tb1);
+                    doc.add(image_line); //After Header
+                    String total_paid = " ( Rupees " + convertNumberToWord(grandTotal) + " Only )";
+                    Paragraph paragraph3 = new Paragraph("\tBill ID: " + billId + "\nCustomer Name: " + customerName + "\nTotal Paid: INR " + grandTotal + total_paid + "\nInvoice Date: " + DateToday);
+                    doc.add(paragraph3);
+                    doc.add(image_line);
+                    PdfPTable tb1 = new PdfPTable(4);
+                    tb1.addCell("Name");
+                    tb1.addCell("Price");
+                    tb1.addCell("Quantity");
+                    tb1.addCell("Total");
+                    for (int i = 0; i < jTable2.getRowCount(); i++) {
+                        String n = jTable2.getValueAt(i, 0).toString();
+                        String d = "INR " + jTable2.getValueAt(i, 1).toString();
+                        String r = jTable2.getValueAt(i, 2).toString();
+                        String q = "INR " + jTable2.getValueAt(i, 3).toString();
+                        tb1.addCell(n);
+                        tb1.addCell(d);
+                        tb1.addCell(r);
+                        tb1.addCell(q);
+                    }
+                    doc.add(tb1);
 //            doc.add(starLine);
 
-            doc.add(image_line);
+                    doc.add(image_line);
 
-            doc.add(image_footer);
-            doc.add(image_qr);
+                    doc.add(image_footer);
+                    doc.add(image_qr);
 //            String id = String.valueOf(billId);
 //            if((new File(path+"Green-Leaf-Gourmet_Bill_"+id+".pdf")).exists()){
 //                String fph = "rundll32 url.dll,FileProtocolHandler"+path;
@@ -782,13 +809,42 @@ public class PlaceOrder extends javax.swing.JFrame {
 //            }
 //            else
 //                JOptionPane.showMessageDialog(null, "File does not Exist");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-        OpenPdf.openById(String.valueOf(billId), path + "\\");
-        doc.close();
-        setVisible(false);
-        new PlaceOrder(createdBy).setVisible(true);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured ❗",JOptionPane.ERROR_MESSAGE);
+                }
+                OpenPdf.openById(String.valueOf(billId), path + "\\");
+                doc.close();
+                setVisible(false);
+                new PlaceOrder(createdBy).setVisible(true);
+
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                Timer timer = new Timer(2000, (ActionEvent evt1) -> {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialogLoading.setVisible(false);
+                        }
+                    });
+                    ((Timer) evt1.getSource()).stop();
+                }); // This is thrown if we throw an exception
+                // from doInBackground.
+                timer.setRepeats(false);
+                timer.start();
+
+            }
+        };
+
+        SwingUtilities.invokeLater(() -> {
+            dialogLoading.setVisible(true);
+        });
+
+        worker.execute();
+
+
     }//GEN-LAST:event_btnbillActionPerformed
 
     private void txtcusmobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcusmobileActionPerformed
@@ -813,7 +869,7 @@ public class PlaceOrder extends javax.swing.JFrame {
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String productName = model.getValueAt(index, 0).toString();
-        Product product = ProductDao.getProductByname(productName);
+        Product product = ProductDao.getProductByname(CafeManagementSystem.apostrophe(productName));
         txtproductname.setText(product.getName());
         txtprice.setText(product.getPrice());
         jSpinner1.setValue(1);

@@ -9,16 +9,25 @@ import common.BackgroundPane;
 import common.PanelScale;
 import model.User;
 import dao.UserDao;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.Timer;
 
 /**
  *
@@ -28,16 +37,17 @@ public class Sign_Up extends javax.swing.JFrame {
 
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
     public String mobileNumberPattern = "^[0-9]*$";
+    JDialog dialogLoading = new JDialog();
 
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    int width = (int)screenSize.getWidth();
-    int height = (int)screenSize.getHeight();
+    int width = (int) screenSize.getWidth();
+    int height = (int) screenSize.getHeight();
 
     /**
      * Creates new form Sign_Up
      */
     public Sign_Up() {
-        
+
         initComponents();
         setLocationRelativeTo(null);
         Seticon();
@@ -46,8 +56,23 @@ public class Sign_Up extends javax.swing.JFrame {
         btnSave.setEnabled(false);//save button
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
+
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                    new WelcomeLanding().setVisible(true);
+                }
+            }
+        });
     }
 
     public void clear() {
@@ -59,7 +84,8 @@ public class Sign_Up extends javax.swing.JFrame {
         txtAnswer.setText("");
         txtPassword.setText("");
         btnSave.setEnabled(false);
-
+        setVisible(false);
+        new Sign_Up().setVisible(true);
     }
     //Check all the fields like Email pattern 10 digit mobile number etc
 
@@ -78,7 +104,6 @@ public class Sign_Up extends javax.swing.JFrame {
         }
 
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +126,7 @@ public class Sign_Up extends javax.swing.JFrame {
             jLabel8 = new javax.swing.JLabel();
             jButton4 = new javax.swing.JButton();
             txtName = new javax.swing.JTextField();
-            jButton5 = new javax.swing.JButton();
+            loginbtn = new javax.swing.JButton();
             txtEmail = new javax.swing.JTextField();
             txtMobileNumber = new javax.swing.JTextField();
             txtAddress = new javax.swing.JTextField();
@@ -205,13 +230,13 @@ public class Sign_Up extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
-        jButton5.setText("Login");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        loginbtn.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        loginbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login30.gif"))); // NOI18N
+        loginbtn.setText("Login");
+        loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                loginbtnActionPerformed(evt);
             }
         });
 
@@ -343,7 +368,7 @@ public class Sign_Up extends javax.swing.JFrame {
                                 .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(20, 20, 20)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(loginbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(33, 33, 33)
                                         .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
@@ -390,13 +415,13 @@ public class Sign_Up extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(loginbtn))
                 .addGap(94, 94, 94))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, txtAddress, txtAnswer, txtEmail, txtMobileNumber, txtName, txtPassword, txtSecurityQuestion});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClear, btnExit, btnSave, jButton4, jButton5});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClear, btnExit, btnSave, jButton4, loginbtn});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -468,17 +493,55 @@ public class Sign_Up extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        User user = new User();
-        user.setName(CafeManagementSystem.apostrophe(txtName.getText()));
-        user.setEmail(CafeManagementSystem.apostrophe(txtEmail.getText()));
-        user.setMobileNumber(txtMobileNumber.getText());
-        user.setAddress(CafeManagementSystem.apostrophe(txtAddress.getText()));
-        user.setPassword(txtPassword.getText());
-        user.setSecurityQuestion(CafeManagementSystem.apostrophe(txtSecurityQuestion.getText()));
-        user.setAnswer(CafeManagementSystem.apostrophe(txtAnswer.getText()));
-        UserDao.save(user); // save function imported from UserDao
-        // this will execute the query taken from the object user
-        clear();
+
+        String gif = "Burger.gif";//Name of gif file
+        CafeManagementSystem.createDialog(dialogLoading, gif);
+            //setVisible(false);
+            dialogLoading.setVisible(false);
+            dialogLoading.setAlwaysOnTop(false); // loading gif stays below the dialog
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+
+                    // this is the long process
+                    User user = new User();
+                    user.setName(CafeManagementSystem.apostrophe(txtName.getText()));
+                    user.setEmail(CafeManagementSystem.apostrophe(txtEmail.getText()));
+                    user.setMobileNumber(txtMobileNumber.getText());
+                    user.setAddress(CafeManagementSystem.apostrophe(txtAddress.getText()));
+                    user.setPassword(txtPassword.getText());
+                    user.setSecurityQuestion(CafeManagementSystem.apostrophe(txtSecurityQuestion.getText()));
+                    user.setAnswer(CafeManagementSystem.apostrophe(txtAnswer.getText()));
+                    UserDao.save(user); // save function imported from UserDao
+                    // this will execute the query taken from the object user
+                    
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    Timer timer = new Timer(10, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogLoading.setVisible(false);
+                                clear();
+                            }
+                        });
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
+                    // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
+                    
+                }
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
+            worker.execute();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -496,20 +559,87 @@ public class Sign_Up extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ForgotPassword().setVisible(true);
+        String gif = "RockOrange.gif";//Name of gif file
+        CafeManagementSystem.createDialog(dialogLoading, gif);
+            setVisible(false);
+            dialogLoading.setVisible(false);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    new ForgotPassword().setVisible(true); // this is the long process
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    Timer timer = new Timer(1500, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogLoading.setVisible(false);
+                            }
+                        });
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
+                    // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
+
+                }
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
+            worker.execute();
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Login().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+         String gif = "Orange.gif";//Name of gif file
+         CafeManagementSystem.createDialog(dialogLoading, gif);
+            setVisible(false);
+            dialogLoading.setVisible(false);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    new Login().setVisible(true); // this is the long process
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    Timer timer = new Timer(1500, (ActionEvent evt1) -> {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialogLoading.setVisible(false);
+                            }
+                        });
+                        ((Timer) evt1.getSource()).stop();
+                    }); // This is thrown if we throw an exception
+                    // from doInBackground.
+                    timer.setRepeats(false);
+                    timer.start();
+
+                }
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
+            worker.execute();
+    }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]){
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -534,9 +664,8 @@ public class Sign_Up extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-       
-        java.awt.EventQueue.invokeLater(new Runnable(){
-            public void run(){
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new Sign_Up().setVisible(true);
             }
         });
@@ -547,7 +676,6 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -557,6 +685,7 @@ public class Sign_Up extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginbtn;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAnswer;
     private javax.swing.JTextField txtEmail;

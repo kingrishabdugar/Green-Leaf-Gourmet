@@ -19,6 +19,7 @@ public class User {
     private String securityQuestion;
     private String answer;
     private String status;
+    private String salt;
 
     public int getId() {
         return id;
@@ -55,7 +56,15 @@ public class User {
     public String getAddress() {
         return address;
     }
-
+    
+    public String getSalt() {
+        return salt;
+    }
+      
+    public void setSalt(String salt) {
+         this.salt = salt;
+    }
+    
     public void setAddress(String address) {
         this.address = address;
     }

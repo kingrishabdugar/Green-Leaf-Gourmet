@@ -4,6 +4,8 @@
  */
 package dao;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author kingrishabdugar
@@ -47,8 +49,13 @@ public class ConnectionProvider {
             return con;
             }
         }
-        catch(Exception e){
-            return null;
-        }   
+        catch(SQLException ex){
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (ClassNotFoundException ex) {   
+            Logger.getLogger(ConnectionProvider.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

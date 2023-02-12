@@ -3,27 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 //dao : data access object (queries and all stuff) Java Package
-
 package dao;
+
 import javax.swing.JOptionPane;
 import model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import common.Encryption;
+import java.awt.HeadlessException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author kingrishabdugar
  */
 public class UserDao {
-    
+
     /*Value should be of User Type as in User.java in models*/
     public static void save(User user) {
         String salt = Encryption.genRandomSalt();
-        String encPassword = Encryption.encryptPassword(user.getPassword(),salt);
-        String encSecurityAnswer = Encryption.encryptPassword(user.getAnswer(),salt);
-      //String sqlInsert = "INSERT INTO staff (name,salt,password,age,salary) VALUES ( '" + name + "', '" + salt + "', '" + encPass + "', " + age + ", " + salary + " )";
+        String encPassword = Encryption.encryptPassword(user.getPassword(), salt);
+        String encSecurityAnswer = Encryption.encryptPassword(user.getAnswer(), salt);
+        //String sqlInsert = "INSERT INTO staff (name,salt,password,age,salary) VALUES ( '" + name + "', '" + salt + "', '" + encPass + "', " + age + ", " + salary + " )";
         String query = "insert into user(name, email, mobileNumber, address, password, securityQuestion, answer, salt , status) values('" + user.getName() + "','" + user.getEmail() + "','" + user.getMobileNumber() + "','" + user.getAddress() + "','" + encPassword + "','" + user.getSecurityQuestion() + "','" + encSecurityAnswer + "','" + salt + "','false')";
-        DbOperations.setDataorDelete(query, "Registered Successfully! Wait for Admin Approval!!");
+        DbOperations.setDataorDelete(query,"<html><b style=\"color:Green\">Registered Successfully ✅ Wait for Admin Approval ❗</b></html>");
     }
 
     public static User login(String email, String password) {
@@ -31,17 +35,16 @@ public class UserDao {
         try {
             ResultSet rs = DbOperations.getData("select * from user where email ='" + email + "'");
             while (rs.next()) {
-            String dbSalt = rs.getString("salt");
-            String dbPass = rs.getString("password");
-            String pass = Encryption.encryptPassword(password,dbSalt);
-                if(dbPass.equals(pass))
-                {
-                user = new User();
-                user.setStatus(rs.getString("status"));
+                String dbSalt = rs.getString("salt");
+                String dbPass = rs.getString("password");
+                String pass = Encryption.encryptPassword(password, dbSalt);
+                if (dbPass.equals(pass)) {
+                    user = new User();
+                    user.setStatus(rs.getString("status"));
                 }
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "<html><b style=\"color:Red\">Some Error ❌ Occured ❗ </b></html>", JOptionPane.ERROR_MESSAGE);
 
         }
         return user;
@@ -59,21 +62,33 @@ public class UserDao {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+             JOptionPane.showMessageDialog(null, e, "<html><b style=\"color:Red\">Some Error ❌ Occured ❗ </b></html>",JOptionPane.ERROR_MESSAGE);
         }
         return user;
     }
 
     public static void update(String email, String newPassword) {
-        String query = "update user set password = '" + newPassword + "' where email = '" + email + "'";
-        DbOperations.setDataorDelete(query, " Password Changed Successfully ");
+//        User user = null;
+        try {
+            ResultSet rs = DbOperations.getData("select * from user where email ='" + email + "'");
+            if (rs.next()) {
+                //user = new User();
+                String dbSalt = rs.getString("salt");
+                String pass = Encryption.encryptPassword(newPassword, dbSalt);
+                String query = "update user set password = '" + pass + "' where email = '" + email + "'";
+                DbOperations.setDataorDelete(query, "<html><b style=\"color:Green\">Password 🔐 Changed Successfully ❗</b></html>");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
-    
-    public static ArrayList<User> getAllRecords(String email){
+//models.User gets filled here 
+
+    public static ArrayList<User> getAllRecords(String email) {
         ArrayList<User> arrayList = new ArrayList<>();
-        try{
-            ResultSet rs = DbOperations.getData("select * from user where email like '%"+email+"%'");
-            while(rs.next()){
+        try {
+            ResultSet rs = DbOperations.getData("select * from user where email like '%" + email + "%'");
+            while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
@@ -82,124 +97,78 @@ public class UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setSecurityQuestion(rs.getString("securityQuestion"));
                 user.setStatus(rs.getString("status"));
+                user.setSalt(rs.getString("salt"));
                 arrayList.add(user);
-                
+
             }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured ❗",JOptionPane.ERROR_MESSAGE);
         }
         return arrayList;
-        
-    }
-    
-    public static void changeStatus(String email,String status){
-        String query = "update user set status ='"+status+"' where email ='"+email+"'";
-        DbOperations.setDataorDelete(query," Status Changed Successfully");
-        
-    }
-    
-    public static void changePassword(String email,String oldPassword,String newPassword){
-        try{
-            ResultSet rs = DbOperations.getData("select * from user where email ='"+email+"' and password ='"+oldPassword+"'");
-            if(rs.next()){
-                update(email, newPassword);
-                
-            }
-            else{
-                
-                JOptionPane.showMessageDialog(null,"Old Password is Worng");
-            }
-        }
-    
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    public static void changeSecurityQuestion(String email,String password,String securityQuestion,String answer){
-        try{
-            ResultSet rs = DbOperations.getData("select * from user where email='"+email+"' and password='"+password+"'");
-            if(rs.next()){
-                update(email, securityQuestion, answer);
-                
-            }
-            else{
-                    JOptionPane.showMessageDialog(null,"Password is Wrong");
-                    }
-            
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
-    
-    public static void update(String email,String securityQuestion,String answer){
-        String query = "update user set securityQuestion='"+securityQuestion+"',answer='"+answer+"' where email='"+email+"'";
-        DbOperations.setDataorDelete(query, "Security Question Changed Successfully");
-    }
-     public static void delete(String id){
-        String query = "delete from user where id ='"+id+"' "; // delete from user
-        DbOperations.setDataorDelete(query, "User deleted successfully!");
-        
+
     }
 
+    public static void changeStatus(String email, String status) {
+        String query = "update user set status ='" + status + "' where email ='" + email + "'";
+        DbOperations.setDataorDelete(query, "<html><b style=\"color:Green\">Status ✅ Changed Successfully ❗</b></html>");
+
+    }
+
+    public static void changePassword(String email, String oldPassword, String newPassword) {
+        try {
+            ResultSet rs = DbOperations.getData("select * from user where email = '" + email + "'");
+            while (rs.next()) {
+                String dbSalt = rs.getString("salt");
+                String dbPass = rs.getString("password");
+
+                String pass = Encryption.encryptPassword(oldPassword, dbSalt);
+                if (pass.equals(dbPass)) {
+                    update(email, newPassword);
+                    JOptionPane.showMessageDialog(null, "<html><b style=\"color:Green\">Password 🔐 Updated Successfully ❗</b></html>");
+                } else {
+                    JOptionPane.showMessageDialog(null, "<html><b style=\"color:Red\">Old Password 🔐 is Incorrect ❌</b></html>");
+                }
+            }
+        } catch (HeadlessException | SQLException e) {
+             JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured ❗",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void changeSecurityQuestion(String email, String password, String securityQuestion, String answer) {
+
+        String dbSalt = "", dbPass = "", pass = "";
+        try {
+            ResultSet rs = DbOperations.getData("select * from user where email = '" + email + "'");
+
+            while (rs.next()) {
+                dbSalt = rs.getString("salt");
+                dbPass = rs.getString("password");
+
+                answer = Encryption.encryptPassword(answer, dbSalt);
+                pass = Encryption.encryptPassword(password, dbSalt);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (pass.equals(dbPass)) {
+            String query = "update user set securityQuestion='" + securityQuestion + "',answer='" + answer + "' where email='" + email + "'";
+            DbOperations.setDataorDelete(query, "<html><b style=\"color:Green\">Security Question 🔒 Changed Successfully ❗</b></html>");
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:Red\">Incorrect Password ❌ ❗</b></html>");
+        }
+    }
+//function overloading
+//
+//    public static void update(String email, String securityQuestion, String answer) {
+//        String query = "update user set securityQuestion='" + securityQuestion + "',answer='" + answer + "' where email='" + email + "'";
+//        DbOperations.setDataorDelete(query, "Security Question Changed Successfully");
+//    }
+
+    public static void delete(String id) {
+        String query = "delete from user where id ='" + id + "' "; // delete from user
+        DbOperations.setDataorDelete(query, "<html><b style=\"color:Red\">User 👤 Deleted Successfully ❗</b></html>");
+
+    }
 }
 
-
-
-
-/* String sqlSelect = "SELECT salt,password from staff WHERE name = '" + name+ "'";
- ResultSet rSet = stmt.executeQuery(sqlSelect);
- rSet.next();
- String dbSalt = rSet.getString("salt");
- String dbPass = rSet.getString("password");
- String pass = Utils.encryptPassword(password,dbSalt);
- if(dbPass.equals(pass))
- status = true;
- }
- catch(SQLException ex){
- ex.printStackTrace();
- }
- return status;
-} 
-
-           String salt = Utils.genRandomSalt();
-            String encPass = Utils.encryptPassword(password,salt);
-            String sqlInsert = "INSERT INTO staff (name,salt,password,age,salary) VALUES ( '" + name + "', '" + salt + "', '" + encPass + "', " + age + ", " +
-            salary + " )";
-
- public static String encryptPassword(String password,String salt)
-    {
-        String encryptedPassword = null;
-        try
-        {
-            MessageDigest md=MessageDigest.getInstance("SHA-512");
-            md.update(salt.getBytes(StandardCharsets.UTF_8));
-            byte[] bytes= md.digest(password.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb=new StringBuilder();
-            for(byte aByte : bytes)
-            {
-                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
-            }
-            encryptedPassword=sb.toString();
-        }
-        catch(NoSuchAlgorithmException e)
-        {
-            System.out.println(e);
-        }
-        return encryptedPassword;
-    }
-    public static String genRandomSalt()
-    {
-        SecureRandom random = new SecureRandom();
-        String gensalt = random.ints(48,122+1)
-                .filter(i -> (i<=57 || i>=65) && (i<=90 || i>=97))
-                .limit(10)
-                .collect(StringBuilder ::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .substring(0);
-        
-        return gensalt;
-        
-    }
-*/

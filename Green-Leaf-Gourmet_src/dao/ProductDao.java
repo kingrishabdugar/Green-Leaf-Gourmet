@@ -17,7 +17,7 @@ public class ProductDao {
 
     public static void save(Product product) {
         String query = "insert into product (name,category,price) values('" + product.getName() + "','" + product.getCategory() + "','" + product.getPrice() + "') ";
-        DbOperations.setDataorDelete(query, "Product Added Successfully");
+        DbOperations.setDataorDelete(query, "Product Added Successfully !");
 
     }
 
@@ -34,8 +34,8 @@ public class ProductDao {
                 arrayList.add(product);
             }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
+           JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured !",JOptionPane.ERROR_MESSAGE);
         }
 
         return arrayList;
@@ -44,12 +44,12 @@ public class ProductDao {
 
     public static void update(Product product) {
         String query = "update product set name ='" + product.getName() + "',category ='" + product.getCategory() + "', price = '" + product.getPrice() + "' where id = '" + product.getId() + "'";
-        DbOperations.setDataorDelete(query, "Product Updated Successfully");
+        DbOperations.setDataorDelete(query, "Product Updated Successfully !");
     }
 
     public static void delete(String id) {
         String query = "delete from product where id = '" + id + "'";
-        DbOperations.setDataorDelete(query, "Product Deleted Successfully");
+        DbOperations.setDataorDelete(query, "Product Deleted Successfully !");
 
     }
 
@@ -63,8 +63,8 @@ public class ProductDao {
                 arrayList.add(product);
             }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
+             JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured !",JOptionPane.ERROR_MESSAGE);
 
         }
         return arrayList;
@@ -79,8 +79,8 @@ public class ProductDao {
                 product.setName(rs.getString("name"));
                 arrayList.add(product);
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured !",JOptionPane.ERROR_MESSAGE);
 
         }
         return arrayList;
@@ -95,8 +95,8 @@ public class ProductDao {
                 product.setCategory(rs.getString(3));
                 product.setPrice(rs.getString(4));
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured !",JOptionPane.ERROR_MESSAGE);
         }
         return product;
     }

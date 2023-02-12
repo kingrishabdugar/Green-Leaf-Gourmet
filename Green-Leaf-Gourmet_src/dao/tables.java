@@ -26,11 +26,22 @@ public class tables {
 //            DbOperations.setDataorDelete(categoryTable, "Category Database Created Successfully");
 //            DbOperations.setDataorDelete(productTable, "Product Database Created Successfully");
 //            DbOperations.setDataorDelete(billTable, "Bill Table Created Successfully");
+         
+
+            String updateapplication = "create table updateapp(id int AUTO_INCREMENT primary key,current_version nvarchar(200),EXE_URL nvarchar(5000),latest_version nvarchar(200))";
+            String exe = "insert into updateapp (current_version,EXE_URL,latest_version) values('0','null','null') " ;
+            //String alter = "ALTER TABLE user ADD COLUMN salt nvarchar(200) AFTER email;";
+            String alter="DROP table updateapp";
+            String alter2="CREATE TABLE IF NOT EXISTS updateapp ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, current_version VARCHAR(255) NOT NULL, EXE_URL VARCHAR(255) NOT NULL, latest_version VARCHAR(255) NOT NULL ); ALTER TABLE updateapp ADD UNIQUE INDEX (id); INSERT INTO updateapp (id, current_version, EXE_URL, latest_version) VALUES (1, '0', 'null', '0') ON DUPLICATE KEY UPDATE current_version = updateapp.current_version, EXE_URL = updateapp.EXE_URL, latest_version = updateapp.latest_version;";
             
-            String alter = "ALTER TABLE user ADD COLUMN salt nvarchar(200) AFTER email;";
-            alter="DELETE FROM user WHERE name='Admin';";
-            alter="insert ignore into user(name,email,mobileNumber,address,password,securityQuestion,answer,status,salt) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true','admin');";
-            DbOperations.setDataorDelete(alter, "test pass");
+            
+            /*In this example, the table updateapp is created with a unique index on the id column. The INSERT statement will either insert a new row with the values specified or, if a row with the id value of 1 already exists, it will do nothing and no values will be updated.
+*/
+           //alter="insert ignore into user(name,email,mobileNumber,address,password,securityQuestion,answer,status,salt) values('Admin','admin@gmail.com','1234567890','India','admin','Favorite Cartoon?','Doraemon','true','admin');";
+            DbOperations.setDataorDelete("CREATE TABLE IF NOT EXISTS updateapp ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, current_version VARCHAR(255) NOT NULL, EXE_URL VARCHAR(255) NOT NULL, latest_version VARCHAR(255) NOT NULL );", "test pass");
+            DbOperations.setDataorDelete("ALTER TABLE updateapp ADD UNIQUE INDEX (id);","test pass");
+            DbOperations.setDataorDelete("INSERT INTO updateapp (id, current_version, EXE_URL, latest_version) VALUES (1, '2.5.1', 'null', '2.5.1') ON DUPLICATE KEY UPDATE current_version = updateapp.current_version, EXE_URL = updateapp.EXE_URL, latest_version = updateapp.latest_version;","test pass");
+            //DbOperations.setDataorDelete("ALTER TABLE updateapp ADD UNIQUE INDEX (id);","test pass");
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

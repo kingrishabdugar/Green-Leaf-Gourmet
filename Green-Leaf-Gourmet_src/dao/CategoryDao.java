@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class CategoryDao {
      public static void save(Category category){
         String query = "insert into category (name) Values ('"+category.getName()+"')";
-        DbOperations.setDataorDelete(query, "Category Added Successfully");
+        DbOperations.setDataorDelete(query, "Category Added Successfully !");
         
     }
     
@@ -30,8 +30,9 @@ public class CategoryDao {
                 
             }
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
+        catch(SQLException e){
+            
+            JOptionPane.showMessageDialog(null, "Offline🔌 Check your connection 🛰 and try again !", "Some Error ❌ Occured !",JOptionPane.ERROR_MESSAGE);
             
         }
         return arrayList;
@@ -40,7 +41,7 @@ public class CategoryDao {
     
     public static void delete(String id){
         String query = "delete from category where id ='"+id+"' ";
-        DbOperations.setDataorDelete(query, "Category Deleted Successfully");
+        DbOperations.setDataorDelete(query, "Category Deleted Successfully !");
         
     }
     

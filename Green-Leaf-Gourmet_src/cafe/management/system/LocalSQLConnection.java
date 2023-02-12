@@ -46,11 +46,10 @@ public class LocalSQLConnection extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
                     dispose();
                 }
             }
@@ -190,7 +189,7 @@ public class LocalSQLConnection extends javax.swing.JFrame {
             stmt.executeUpdate(sql);
             stmt.executeUpdate("USE GreenLeafGourmet2");
             ImageIcon icon = new ImageIcon("src\\images\\database.gif");
-            JOptionPane.showMessageDialog(null, "Database Created Successfully !", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:Green\">Database 🌐 Created Successfully ✔</b></html>", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
             
             //local database
             String userTable = "create table if not exists user(id int AUTO_INCREMENT primary key, name varchar(200),email varchar(200),mobileNumber varchar(10),address nvarchar(200),password nvarchar(200) NOT NULL,securityQuestion nvarchar(200),answer nvarchar(200) NOT NULL,status varchar(20),UNIQUE(email),salt nvarchar(200))";
@@ -205,23 +204,35 @@ public class LocalSQLConnection extends javax.swing.JFrame {
             String productTable = "create table if not exists product(id int AUTO_INCREMENT primary key,name varchar(200),category varchar(200),price varchar(200))";
             String billTable = "create table if not exists bill(id int primary key,name varchar(200),mobileNumber varchar(200),email varchar(200),date varchar(50),total varchar(200),createdBy varchar(200))";
             
+            
+            String updatetable = "CREATE TABLE IF NOT EXISTS updateapp ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, current_version VARCHAR(255) NOT NULL, EXE_URL VARCHAR(255) NOT NULL, latest_version VARCHAR(255) NOT NULL );";
+            String uniqueindex = "ALTER TABLE updateapp ADD UNIQUE INDEX (id);";
+            String updaterow ="INSERT INTO updateapp (id, current_version, EXE_URL, latest_version) VALUES (1, '2.5.1', 'null', '0') ON DUPLICATE KEY UPDATE current_version = updateapp.current_version, EXE_URL = updateapp.EXE_URL, latest_version = updateapp.latest_version;";
+            
+            stmt.executeUpdate(updatetable);
+            stmt.executeUpdate(uniqueindex);
+            stmt.executeUpdate(updaterow);
+            
+            /*Here the table updateapp is created with a unique index on the id column. The INSERT statement will either insert a new row with the values specified or, if a row with the id value of 1 already exists, it will do nothing and no values will be updated.*/
+            
             stmt.executeUpdate(userTable);
             stmt.executeUpdate(adminDetails);
             stmt.executeUpdate(categoryTable);
             stmt.executeUpdate(productTable);
             stmt.executeUpdate(billTable);
+
             
             //JOptionPane.showMessageDialog(null, "User Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Admin Access Enabled !", "Initializing Database 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null,"<html><b style=\"color:Green\">Admin 💻 Access Enabled ✔</b></html>", "Initializing Database 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
             //JOptionPane.showMessageDialog(null, "Category Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
             //JOptionPane.showMessageDialog(null, "Product Database Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
             //JOptionPane.showMessageDialog(null, "Bill Table Created Successfully!", "Initializing Database...", JOptionPane.INFORMATION_MESSAGE, icon);
-            JOptionPane.showMessageDialog(null, "Local Database Created! Proceed to Signup/Login ... ", "Connecting to the Server 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:Green\">Local Database Created 🌐 Proceed to Signup/Login ❗</b></html>", "Connecting to the Server 📡...", JOptionPane.INFORMATION_MESSAGE, icon);
             
         } 
         catch (SQLException e) 
         {
-            JOptionPane.showMessageDialog(null, "\t Cannot Connect to the Database :( \n Please recheck the details and try again !", "Error ❌", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:Red\">Cannot Connect 🔌 to the Database 🌐 Please recheck the details and try again ☹ ❗ </b></html>", "Error ❌", JOptionPane.ERROR_MESSAGE);
         }
         
         ConnectionProvider.getid(0);

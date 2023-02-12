@@ -51,6 +51,7 @@ import model.User;
  */
 public class ViewBillandOrderDetails extends javax.swing.JFrame {
 
+    JDialog dialogLoading = new JDialog();
     /**
      * Creates new form ViewBillandOrderDetails
      */
@@ -76,17 +77,23 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                     setVisible(false);
+                    dialogLoading.dispose();
                     dispose();
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
         //   new Home().setVisible(true);
@@ -101,7 +108,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
 
     }
 
-    public ViewBillandOrderDetails(String email) {
+    public ViewBillandOrderDetails(String email, JFrame oldclass) {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
@@ -110,19 +117,25 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         userEmail = email;
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
+                    oldclass.setVisible(true);
+                    dialogLoading.dispose();
                     dispose();
-                    new Home(userEmail).setVisible(true);
+                    setVisible(false);
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
         SimpleDateFormat dFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -144,8 +157,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
             monthMap.put(MONTHS[i], DAYS[i]); //days is just used as a temporary array for months 01-12
         }
 
-        JDialog dialogLoading = new JDialog();
-        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Orange.gif");
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Orange.gif");
         String month = "", day = "", year = "";
 
         day = (String) dayComboBox.getSelectedItem() + "-";
@@ -155,11 +167,12 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
 
         year = (String) yearComboBox.getSelectedItem();
 
-        String date1 = (day.equals("ALL-")? "" : day) + (month.equals("ALL-")? "" : month) + (year.equals("ALL")? "" : year);
-        
-        if(date1.equals("ALL-ALL-ALL"))
-        date1="";
-        
+        String date1 = (day.equals("ALL-") ? "" : day) + (month.equals("ALL-") ? "" : month) + (year.equals("ALL") ? "" : year);
+
+        if (date1.equals("ALL-ALL-ALL")) {
+            date1 = "";
+        }
+
         String date = date1;
         String incDec = (String) jComboBox1.getSelectedItem();
 
@@ -176,7 +189,8 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
                         dtm.addRow(new Object[]{billobj.getId(), billobj.getName(), billobj.getMobileNumber(), billobj.getEmail(), billobj.getDate(), billobj.getTotal(), billobj.getCreatedBy()});
 
                     }
-                } else {
+                } 
+                else {
                     ArrayList<Bill> list = BillDao.getAllRecordsByDesc(date);
                     Iterator<Bill> itr = list.iterator();
                     while (itr.hasNext()) {
@@ -193,7 +207,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        dialogLoading.setVisible(false);
+                        dialogLoading.dispose();
                     }
                 });
             }
@@ -375,8 +389,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //TODO add your handling code here:
-        JDialog dialogLoading = new JDialog();
-        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Burger.gif");
+        CafeManagementSystem.createDialog(dialogLoading, " /images/Loading GIFs/Burger.gif");
         dialogLoading.setAlwaysOnTop(false);
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
@@ -399,7 +412,7 @@ public class ViewBillandOrderDetails extends javax.swing.JFrame {
                         public void run() {
                             setVisible(false);
                             setVisible(true);
-                            dialogLoading.setVisible(false);
+                            dialogLoading.dispose();
                         }
                     });
                 }

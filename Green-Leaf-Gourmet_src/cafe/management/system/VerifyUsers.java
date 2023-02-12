@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
@@ -33,7 +34,9 @@ import javax.swing.SwingWorker;
  * @author kingrishabdugar
  */
 public class VerifyUsers extends javax.swing.JFrame {
+
     public String userEmail;
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form VerifyUsers
@@ -45,29 +48,31 @@ public class VerifyUsers extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
-              //  new Home().setVisible(true);
-       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
+        //  new Home().setVisible(true);
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
-      //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       
+        //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+
     }
-    public VerifyUsers(String email) {
+
+    public VerifyUsers(String email,JFrame oldclass) {
         initComponents();
         Seticon();
         setTitle(" Green-Leaf-Gourmet ");
@@ -75,38 +80,43 @@ public class VerifyUsers extends javax.swing.JFrame {
         //setResizable(false);
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                            new Home(email).setVisible(true);
-                        }
-                    }
-                });
-             
-       // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    oldclass.setVisible(true);
+                    dialogLoading.dispose();
+                    dispose();
+                    setVisible(false);
+                }
+            }
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
+            }
+        });
+
+        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
-      //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-       userEmail = email;
+        //  ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        userEmail = email;
     }
 
-public void getAllRecords(String email) {
-        JDialog dialogLoading = new JDialog();
-        CafeManagementSystem.createDialog(dialogLoading, "src/images/Loading GIFs/Orange.gif");
+    public void getAllRecords(String email) {
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Orange.gif");
 
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
                 DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0); //This line properly refreshed after update/delete
                 ArrayList<User> list = UserDao.getAllRecords(email);
                 Iterator<User> itr = list.iterator();
                 while (itr.hasNext()) {
@@ -117,19 +127,19 @@ public void getAllRecords(String email) {
                 }
                 return null;
             }
+
             @Override
             protected void done() {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        dialogLoading.setVisible(false);
+                        dialogLoading.dispose();
                     }
                 });
             }
         };
         worker.execute();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,7 +194,15 @@ public void getAllRecords(String email) {
             new String [] {
                 "ID", "Name", "Email", "Mobile Number", "Address", "Security Question", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -255,6 +273,10 @@ public void getAllRecords(String email) {
 //Here we don't delete row only change status
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+        JDialog dialogLoading = new JDialog();
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Burger.gif");
+        dialogLoading.setAlwaysOnTop(false);
+
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String email = model.getValueAt(index, 2).toString();  //indexes here are actually the column numbers viz id , name etc
@@ -264,25 +286,72 @@ public void getAllRecords(String email) {
         } else {
             status = "true";
         }
+
+        String userEmail = email;
+        String userStatus = status;
         int a = JOptionPane.showConfirmDialog(null, "Do you want to change status of " + email + "", "select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
-            UserDao.changeStatus(email, status);
-            setVisible(false);
-            new VerifyUsers(userEmail).setVisible(true);
+            SwingWorker<Void, Void> worker;
+            worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    UserDao.changeStatus(userEmail, userStatus);
+                    //((DefaultTableModel) jTable1.getModel()).fireTableStructureChanged();
+
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            setVisible(false);
+                            setVisible(true);
+                            dialogLoading.setVisible(false);
+                        }
+                    });
+                }
+            };
+            worker.execute();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseDragged
         // TODO add your handling code here:
+        //JDialog dialogLoading = new JDialog();
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Burger.gif");
+        dialogLoading.setAlwaysOnTop(false);
+
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();
         String id = model.getValueAt(index, 0).toString();
         String name = model.getValueAt(index, 1).toString();
         int a = JOptionPane.showConfirmDialog(null, "Do you want to Remove " + name + " User ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
         if (a == 0) {
-            UserDao.delete(id);
-            setVisible(false);
-            new VerifyUsers(userEmail).setVisible(true);
+            SwingWorker<Void, Void> worker;
+            worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    UserDao.delete(id);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            setVisible(false);
+                            setVisible(true);
+                            dialogLoading.setVisible(false);
+                        }
+                    });
+                }
+            };
+            worker.execute();
         }
     }//GEN-LAST:event_jTable1MouseDragged
 
@@ -329,7 +398,7 @@ public void getAllRecords(String email) {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
-    
+
     private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }

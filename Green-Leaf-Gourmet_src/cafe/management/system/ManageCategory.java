@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 // JFrame -> Component -> component shown event instead of key released for combo box in category and Table list
 package cafe.management.system;
 
+import dao.BillDao;
 import model.Category;
 import dao.CategoryDao;
 import java.awt.Font;
@@ -15,9 +15,12 @@ import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.table.DefaultTableModel;
 import java.util.*;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.JTableHeader;
@@ -28,6 +31,8 @@ import javax.swing.table.TableModel;
  * @author kingrishabdugar
  */
 public class ManageCategory extends javax.swing.JFrame {
+
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form ManageCategory
@@ -40,26 +45,38 @@ public class ManageCategory extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setResizable(false);
-      //  setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
-        setSize(625,390);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
-       JTableHeader boldheader1 = jTable1.getTableHeader();
+        //  setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
+        setSize(625, 390);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    dialogLoading.dispose();
+                    setVisible(false);
+                    dispose();
+                }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
+            }
+        });
+        JTableHeader boldheader1 = jTable1.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
         //((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-       
 
+    }
+
+    public void clear() {
+        txtname.setText("");
+        setVisible(false);
+        setVisible(true);
+        jTable1.repaint();
     }
 
     public void validateField() {
@@ -198,8 +215,7 @@ public class ManageCategory extends javax.swing.JFrame {
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ManageCategory().setVisible(true);
+        clear();
     }//GEN-LAST:event_btnclearActionPerformed
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
@@ -207,20 +223,42 @@ public class ManageCategory extends javax.swing.JFrame {
         Category category = new Category();
         category.setName(txtname.getText());
         CategoryDao.save(category);
-        setVisible(false);
-        new ManageCategory().setVisible(true);
+        clear();
     }//GEN-LAST:event_btnsaveActionPerformed
 //to show all categories added on the Table
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        ArrayList<Category> list = CategoryDao.getAllRecorded();
-        Iterator<Category> itr = list.iterator();
-        while (itr.hasNext()) 
-        {
-            Category categoryobj = itr.next();
-            dtm.addRow(new Object[]{categoryobj.getId(), categoryobj.getName()});
-        }    
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Tea.gif");
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    dtm.setRowCount(0);
+                    ArrayList<Category> list = CategoryDao.getAllRecorded();
+                    Iterator<Category> itr = list.iterator();
+                    while (itr.hasNext()) {
+                        Category categoryobj = itr.next();
+                        dtm.addRow(new Object[]{categoryobj.getId(), categoryobj.getName()});
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.dispose();
+                    }
+                });
+            }
+        };
+        worker.execute();
+
     }//GEN-LAST:event_formComponentShown
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -232,14 +270,13 @@ public class ManageCategory extends javax.swing.JFrame {
         int a = JOptionPane.showConfirmDialog(null, "Do you want to Delete " + name + " Category ❓", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
         if (a == 0) {
             CategoryDao.delete(id);
-            setVisible(false);
-            new ManageCategory().setVisible(true);
+            clear();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

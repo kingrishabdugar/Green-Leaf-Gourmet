@@ -30,13 +30,15 @@ public class SplashScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null); //makes aligned at center of screen
         setResizable(false);
         setAlwaysOnTop(true);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         //setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 600, 338, 50, 50));
         setSize(600, 338);
         Timer timer = new Timer(8500, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                dispose();
+                
                 new WelcomeLanding().setVisible(true);
+                dispose();
             }
         });
         timer.setRepeats(false);

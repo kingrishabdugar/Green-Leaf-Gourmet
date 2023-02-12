@@ -8,6 +8,8 @@ import dao.UserDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -17,8 +19,10 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  * @author kingrishabdugar
  */
 public class ChangePassword extends javax.swing.JFrame {
-
+    
+    JDialog dialogLoading = new JDialog();
     public String userEmail;
+    JFrame old;
 
     /**
      * Creates new form ChangePassword
@@ -36,7 +40,7 @@ public class ChangePassword extends javax.swing.JFrame {
        addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                         if( result==JOptionPane.OK_OPTION){
                             // NOW we change it to dispose on close..
                             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -47,11 +51,12 @@ public class ChangePassword extends javax.swing.JFrame {
                 });
     }
 
-    public ChangePassword(String email) {
+    public ChangePassword(String email,JFrame oldclass) {
         initComponents();
+        old=oldclass;
         if(email.equals("admin@gmail.com"))
         {
-            JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color: Red\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
             forgotpassword.setEnabled(false);
         }
         Seticon();
@@ -68,7 +73,8 @@ public class ChangePassword extends javax.swing.JFrame {
        addWindowListener(new WindowAdapter() {
                     @Override
                     public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                        dialogLoading.dispose();
+                        int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                         if( result==JOptionPane.OK_OPTION){
                             // NOW we change it to dispose on close..
                             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -79,6 +85,16 @@ public class ChangePassword extends javax.swing.JFrame {
                 });
     }
 
+    public void clear()
+    {
+        txtold.setText("");
+        txtnew.setText("");
+        txtconfirm.setText("");
+        btnupdate4.setEnabled(false);
+        setVisible(false);
+        setVisible(true);
+    }
+    
     public void validateField() {
         String oldPassword = txtold.getText();
         String newPassword = txtnew.getText();
@@ -287,8 +303,7 @@ public class ChangePassword extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ChangePassword(userEmail).setVisible(true);
+        clear();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldActionPerformed
@@ -300,14 +315,12 @@ public class ChangePassword extends javax.swing.JFrame {
         String oldPassword = txtold.getText();
         String newPassword = txtnew.getText();
         UserDao.changePassword(userEmail, oldPassword, newPassword);
-        setVisible(false);
-        new ChangePassword(userEmail).setVisible(true);
+        clear();
     }//GEN-LAST:event_btnupdate4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ForgotPassword().setVisible(true);
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -329,7 +342,7 @@ public class ChangePassword extends javax.swing.JFrame {
     private void forgotpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotpasswordActionPerformed
         // TODO add your handling code here:
         setVisible(false);
-        new ForgotPassword(userEmail).setVisible(true);
+        CafeManagementSystem.loadWithGif(old,new ForgotPassword(userEmail,old), "/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_forgotpasswordActionPerformed
 
     /**

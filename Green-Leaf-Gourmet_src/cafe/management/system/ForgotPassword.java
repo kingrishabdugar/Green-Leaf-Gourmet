@@ -23,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -56,7 +57,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     }
 
-    public ForgotPassword(String email) {
+    public ForgotPassword(String email, JFrame oldclass) {
         initComponents();
         Seticon();
         userEmail = email;
@@ -81,13 +82,14 @@ public class ForgotPassword extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                //dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    oldclass.setVisible(true);
                     setVisible(false);
                     dispose();
-                    //   new Home(email).setVisible(true);
                 }
             }
         });
@@ -101,7 +103,6 @@ public class ForgotPassword extends javax.swing.JFrame {
         txtsq.setText("");
         txtans.setText("");
         txtpassword.setText("");
-
     }
 
     //Admin Details cannot be changed 
@@ -412,7 +413,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        CafeManagementSystem.loadWithGif(this, new Login(), "src/images/Loading GIFs/Orange.gif");
+        CafeManagementSystem.loadWithGif(this, new Login(), "/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
@@ -460,7 +461,7 @@ public class ForgotPassword extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        CafeManagementSystem.loadWithGif(this,new Sign_Up(), "src/images/Loading GIFs/Orange.gif");
+        CafeManagementSystem.loadWithGif(this,new Sign_Up(), "/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed

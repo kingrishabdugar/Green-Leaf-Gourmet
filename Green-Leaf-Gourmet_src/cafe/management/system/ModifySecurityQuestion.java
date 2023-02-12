@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package cafe.management.system;
+
 import dao.UserDao;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -21,6 +23,7 @@ import model.User;
 public class ModifySecurityQuestion extends javax.swing.JFrame {
 
     public String userEmail;
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form ModifySecurityQuestion
@@ -33,20 +36,26 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         //setAlwaysOnTop(true);
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
-        setSize(625,390);
+        setSize(625, 390);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    dialogLoading.dispose();
+                    setVisible(false);
+                    dispose();
+                }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
+            }
+        });
 
     }
 
@@ -57,43 +66,43 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
         setResizable(false);
         setResizable(false);
         //setShape(new RoundRectangle2D.Double(0,0, 625, 350, 35, 35));
-        setSize(625,390);
+        setSize(625, 390);
         userEmail = email;
         txtoldsq.setEditable(false);
         btnupdate.setEnabled(false);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-       addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowClosing(WindowEvent e) {
-                        int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
-                        if( result==JOptionPane.OK_OPTION){
-                            // NOW we change it to dispose on close..
-                            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                            setVisible(false);
-                            dispose();
-                        }
-                    }
-                });
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
+                if (result == JOptionPane.OK_OPTION) {
+                    // NOW we change it to dispose on close..
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    setVisible(false);
+                    dispose();
+                }
+            }
+        });
     }
 
     public void validateField() {
         String password = txtpassword.getText();
         String securityQuestion = txtnewsq.getText();
         String answer = txtans.getText();
-        if(userEmail.equals("admin@gmail.com")) //Admin Details Secured 
+        if (userEmail.equals("admin@gmail.com")) //Admin Details Secured 
         {
             JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Admin Details cannot be changed !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
             btnupdate.setEnabled(false);
-        }
-        else
-        {
-        if (!password.equals("") && !securityQuestion.equals("") && !answer.equals("")) {
-            btnupdate.setEnabled(true);
         } else {
-            btnupdate.setEnabled(false);
-        }
+            if (!password.equals("") && !securityQuestion.equals("") && !answer.equals("")) {
+                btnupdate.setEnabled(true);
+            } else {
+                btnupdate.setEnabled(false);
+            }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,7 +137,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel2.setText("Old Security Question :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 71, -1, 34));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 55, -1, 34));
 
         txtoldsq.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtoldsq.addActionListener(new java.awt.event.ActionListener() {
@@ -136,11 +145,11 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 txtoldsqActionPerformed(evt);
             }
         });
-        getContentPane().add(txtoldsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 71, 342, -1));
+        getContentPane().add(txtoldsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 55, 252, -1));
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel3.setText("New Security Question :");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 121, -1, 34));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 100, -1, 34));
 
         txtnewsq.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtnewsq.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -148,7 +157,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 txtnewsqKeyReleased(evt);
             }
         });
-        getContentPane().add(txtnewsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 121, 342, -1));
+        getContentPane().add(txtnewsq, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 100, 252, -1));
 
         txtans.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtans.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -156,15 +165,15 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 txtansKeyReleased(evt);
             }
         });
-        getContentPane().add(txtans, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 171, 342, -1));
+        getContentPane().add(txtans, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 145, 252, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel4.setText("New Answer :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 171, -1, 34));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 145, -1, 34));
 
         jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jLabel5.setText("Password :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 221, -1, 34));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 190, -1, 34));
 
         txtpassword.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -177,7 +186,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 txtpasswordKeyReleased(evt);
             }
         });
-        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 221, 342, -1));
+        getContentPane().add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 190, 252, -1));
 
         btnupdate.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
@@ -188,7 +197,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 btnupdateActionPerformed(evt);
             }
         });
-        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 271, -1, -1));
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 235, 252, -1));
 
         jButton3.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clear.gif"))); // NOI18N
@@ -199,7 +208,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 271, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 280, 252, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Modify Security Question.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -240,7 +249,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
 
     private void txtoldsqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoldsqActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtoldsqActionPerformed
 
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
@@ -282,7 +291,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
 
         Properties p = new Properties();
         p.put("windowDecoration", "off");
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -305,7 +314,7 @@ public class ModifySecurityQuestion extends javax.swing.JFrame {
     private javax.swing.JTextField txtoldsq;
     private javax.swing.JPasswordField txtpassword;
     // End of variables declaration//GEN-END:variables
-   
+
     private void Seticon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
     }

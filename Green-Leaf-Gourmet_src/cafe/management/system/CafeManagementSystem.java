@@ -11,6 +11,7 @@ import com.jtattoo.plaf.luna.LunaLookAndFeel;
 import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import com.jtattoo.plaf.mint.MintLookAndFeel;
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
+import common.UpdateChecker;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.Color;
@@ -24,13 +25,16 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
 import javax.swing.UIDefaults;
+import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
@@ -57,10 +61,14 @@ public class CafeManagementSystem {
     }
 
     public static void createDialog(JDialog d, String gif) {
+        
+        URL url = CafeManagementSystem.class.getResource(gif);
+        ImageIcon icon = new ImageIcon(url);
+        //These two lines takes the path to the resource relative to the classpath as a parameter.In order to ensure that the ImageIcon is properly displayed when your application is packaged into a jar file, you should use a ClassLoader to load the image file. This way, the image file can be located and loaded correctly, regardless of the location of the jar file
         d.setUndecorated(true);
         d.setLocationRelativeTo(null);
         d.setBackground(new Color(0, 0, 0, 0));
-        JLabel l = new JLabel(new ImageIcon((gif)));
+        JLabel l = new JLabel(icon);
         d.setSize(200, 200);
         d.add(l);
         d.setVisible(true);
@@ -72,28 +80,29 @@ public class CafeManagementSystem {
 
     }
 
-    public static void loadWithGif(JFrame oldClass, JFrame newClass, String gifAddress) {
+    
+    public static void loadWithGif( JFrame oldClass, JFrame newClass, String gifAddress) {
 
         JDialog dialogLoading = new JDialog();
         createDialog(dialogLoading, gifAddress);
         dialogLoading.setVisible(false);
-        oldClass.setVisible(false);
-        oldClass.dispose();
-
+        oldClass.setDefaultCloseOperation(HIDE_ON_CLOSE);
+        
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                newClass.setVisible(true); // this is the long process
+                newClass.setVisible(true);
+                // this is the long process
+                oldClass.setVisible(false);
                 return null;
             }
-
-            @Override
+@Override
             protected void done() {
-                Timer timer = new Timer(2500, (ActionEvent evt1) -> {
+                Timer timer = new Timer(1000, (ActionEvent evt1) -> {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            dialogLoading.setVisible(false);
+                            dialogLoading.dispose();
                         }
                     });
                     ((Timer) evt1.getSource()).stop();
@@ -107,6 +116,7 @@ public class CafeManagementSystem {
 
         SwingUtilities.invokeLater(() -> {
             dialogLoading.setVisible(true);
+            //JOptionPane.showMessageDialog(null,dialogLoading.isVisible());
         });
 
         worker.execute();
@@ -115,6 +125,8 @@ public class CafeManagementSystem {
     /**
      * @param args the command line arguments
      */
+            
+            
     public static void main(String[] args) {
         java.net.URL url = ClassLoader.getSystemResource("salad-2.png");
 

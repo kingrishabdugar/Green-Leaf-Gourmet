@@ -5,6 +5,7 @@
 package cafe.management.system;
 
 import common.PanelScale;
+import common.UpdateChecker;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JOptionPane;
 import java.io.IOException;
@@ -15,11 +16,19 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 
 /**
  *
@@ -27,11 +36,18 @@ import javax.swing.Timer;
  */
 public class WelcomeLanding extends javax.swing.JFrame {
 
-    JDialog dialogLoading = new JDialog();
+    //JDialog dialogLoading = new JDialog();
+    public String EXE_DOWNLOAD_URL = null;
 
     /**
      * Creates new form WelcomeLanding
      */
+    
+       public static void createDialog(JDialog d, String gif) {
+
+
+    }
+       
     public WelcomeLanding() {
         initComponents();
         Seticon();
@@ -45,7 +61,21 @@ public class WelcomeLanding extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-
+        
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Going too soon ⁉</b></html>");
+                if (result == JOptionPane.OK_OPTION) {
+                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    // NOW we change it to dispose on close..
+                    dispose();
+                    setVisible(false);
+                }
+            }
+        });
+        
     }
 
     /**
@@ -57,6 +87,7 @@ public class WelcomeLanding extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogLoading = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         try
@@ -68,6 +99,18 @@ public class WelcomeLanding extends javax.swing.JFrame {
             jLabel1 = new javax.swing.JLabel();
             jLabel3 = new javax.swing.JLabel();
             database = new javax.swing.JComboBox<>();
+            checkForUpdatesButton = new javax.swing.JButton();
+
+            javax.swing.GroupLayout dialogLoadingLayout = new javax.swing.GroupLayout(dialogLoading.getContentPane());
+            dialogLoading.getContentPane().setLayout(dialogLoadingLayout);
+            dialogLoadingLayout.setHorizontalGroup(
+                dialogLoadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 400, Short.MAX_VALUE)
+            );
+            dialogLoadingLayout.setVerticalGroup(
+                dialogLoadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 300, Short.MAX_VALUE)
+            );
 
             jButton1.setText("jButton1");
 
@@ -141,6 +184,15 @@ public class WelcomeLanding extends javax.swing.JFrame {
             }
         });
 
+        checkForUpdatesButton.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 17)); // NOI18N
+        checkForUpdatesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Check For Updates icon.gif"))); // NOI18N
+        checkForUpdatesButton.setText("Check for Updates !");
+        checkForUpdatesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkForUpdatesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -148,6 +200,9 @@ public class WelcomeLanding extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(200, 200, 200)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(checkForUpdatesButton)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -171,8 +226,8 @@ public class WelcomeLanding extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(293, 293, 293)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(signup, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,10 +236,14 @@ public class WelcomeLanding extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(database, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(246, 246, 246))
+                .addGap(37, 37, 37)
+                .addComponent(checkForUpdatesButton)
+                .addGap(174, 174, 174))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {database, jButton3});
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {checkForUpdatesButton, login, signup});
 
         database.getAccessibleContext().setAccessibleName("");
 
@@ -195,12 +254,18 @@ public class WelcomeLanding extends javax.swing.JFrame {
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         // TODO add your handling code here:
-        CafeManagementSystem.loadWithGif(this, new Sign_Up(), "src/images/Loading GIFs/HotChoco.gif");
+        //setDefaultCloseOperation(HIDE_ON_CLOSE);
+        
+        CafeManagementSystem.loadWithGif(this, new Sign_Up(), "/images/Loading GIFs/HotChoco.gif");
+        
+        //dispose();
     }//GEN-LAST:event_signupActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        CafeManagementSystem.loadWithGif(this, new Login(), "src/images/Loading GIFs/Coffee.gif");
+        //setDefaultCloseOperation(HIDE_ON_CLOSE);
+        CafeManagementSystem.loadWithGif(this, new Login(), "/images/Loading GIFs/Coffee.gif");
+        //dispose();
     }//GEN-LAST:event_loginActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -221,6 +286,10 @@ public class WelcomeLanding extends javax.swing.JFrame {
             // un-selected, do something else..
         }
     }//GEN-LAST:event_databaseActionPerformed
+
+    private void checkForUpdatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkForUpdatesButtonActionPerformed
+           UpdateChecker.checkforupdates();
+    }//GEN-LAST:event_checkForUpdatesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +328,9 @@ public class WelcomeLanding extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton checkForUpdatesButton;
     private javax.swing.JComboBox<String> database;
+    private javax.swing.JDialog dialogLoading;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

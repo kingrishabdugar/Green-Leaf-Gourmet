@@ -59,18 +59,22 @@ public class Sign_Up extends javax.swing.JFrame {
         setSize(1100, 680);
         setLocationRelativeTo(null);
 
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
-                    dispose();
                     new WelcomeLanding().setVisible(true);
+                    dialogLoading.dispose();
+                    dispose();
                 }
+            }
+                public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
     }
@@ -85,7 +89,7 @@ public class Sign_Up extends javax.swing.JFrame {
         txtPassword.setText("");
         btnSave.setEnabled(false);
         setVisible(false);
-        new Sign_Up().setVisible(true);
+        setVisible(true);
     }
     //Check all the fields like Email pattern 10 digit mobile number etc
 
@@ -494,7 +498,7 @@ public class Sign_Up extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
 
-        String gif = "Burger.gif";//Name of gif file
+        String gif = "/images/Loading GIFs/Apple.gif";//Name of gif file
         CafeManagementSystem.createDialog(dialogLoading, gif);
             //setVisible(false);
             dialogLoading.setVisible(false);
@@ -559,81 +563,12 @@ public class Sign_Up extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        String gif = "RockOrange.gif";//Name of gif file
-        CafeManagementSystem.createDialog(dialogLoading, gif);
-            setVisible(false);
-            dialogLoading.setVisible(false);
-
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    new ForgotPassword().setVisible(true); // this is the long process
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    Timer timer = new Timer(1500, (ActionEvent evt1) -> {
-                        SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                dialogLoading.setVisible(false);
-                            }
-                        });
-                        ((Timer) evt1.getSource()).stop();
-                    }); // This is thrown if we throw an exception
-                    // from doInBackground.
-                    timer.setRepeats(false);
-                    timer.start();
-
-                }
-            };
-
-            SwingUtilities.invokeLater(() -> {
-                dialogLoading.setVisible(true);
-            });
-
-            worker.execute();
-
+        CafeManagementSystem.loadWithGif(this, new ForgotPassword(), "/images/Loading GIFs/RockOrange.gif");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
         // TODO add your handling code here:
-         String gif = "Orange.gif";//Name of gif file
-         CafeManagementSystem.createDialog(dialogLoading, gif);
-            setVisible(false);
-            dialogLoading.setVisible(false);
-
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    new Login().setVisible(true); // this is the long process
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    Timer timer = new Timer(1500, (ActionEvent evt1) -> {
-                        SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                dialogLoading.setVisible(false);
-                            }
-                        });
-                        ((Timer) evt1.getSource()).stop();
-                    }); // This is thrown if we throw an exception
-                    // from doInBackground.
-                    timer.setRepeats(false);
-                    timer.start();
-
-                }
-            };
-
-            SwingUtilities.invokeLater(() -> {
-                dialogLoading.setVisible(true);
-            });
-
-            worker.execute();
+        CafeManagementSystem.loadWithGif(this, new Login(), "/images/Loading GIFs/Orange.gif");
     }//GEN-LAST:event_loginbtnActionPerformed
 
     /**

@@ -12,22 +12,31 @@ import model.Product;
 import dao.CategoryDao;
 import java.util.Iterator;
 import dao.ProductDao;
+import dao.UserDao;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.Timer;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import model.User;
 
 /**
  *
  * @author kingrishabdugar
  */
 public class AddNewProduct extends javax.swing.JFrame {
+
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form AddNewProduct
@@ -46,16 +55,22 @@ public class AddNewProduct extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
+                    dialogLoading.dispose();
                     dispose();
                 }
             }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
+            }
         });
     }
+
     public boolean onlyDigits(String str) {
         // Regex to check string
         // contains only digits
@@ -79,6 +94,16 @@ public class AddNewProduct extends javax.swing.JFrame {
         // matched the ReGex
         return m.matches();
     }
+
+    public void clear() {
+        txtname.setText("");
+        txtprice.setText("");
+        btnsave.setEnabled(false);
+        dialogLoading.dispose();
+        setVisible(false);
+        setVisible(true);
+    }
+
     public void validateFields() {
         String name = txtname.getText();
         String price = txtprice.getText();
@@ -161,7 +186,7 @@ public class AddNewProduct extends javax.swing.JFrame {
                 btnclearActionPerformed(evt);
             }
         });
-        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 276, 260, -1));
+        getContentPane().add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 227, 120, -1));
 
         btnsave.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         btnsave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.gif"))); // NOI18N
@@ -172,7 +197,7 @@ public class AddNewProduct extends javax.swing.JFrame {
                 btnsaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 227, 260, -1));
+        getContentPane().add(btnsave, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 227, 110, -1));
 
         txtcategory.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 15)); // NOI18N
         getContentPane().add(txtcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 129, 260, -1));
@@ -183,7 +208,6 @@ public class AddNewProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
@@ -191,28 +215,55 @@ public class AddNewProduct extends javax.swing.JFrame {
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         // TODO add your handling code here:
-        if(!onlyDigits(txtprice.getText()))
-        {
+
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Burger.gif");//Name of gif file
+        //setVisible(false);
+        dialogLoading.setVisible(false);
+        dialogLoading.setAlwaysOnTop(false); // loading gif stays below the dialog
+
+        if (!onlyDigits(txtprice.getText())) {
             JOptionPane.showMessageDialog(null, "<html><b style=\"colorred\">Price should be in Digits only. Please ignore adding currency !</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
-            setVisible(false);
-            new AddNewProduct().setVisible(true);
-        }
-        else
-        {
-        Product product = new Product();
-        product.setName(CafeManagementSystem.apostrophe(txtname.getText()));
-        product.setCategory((String) txtcategory.getSelectedItem());
-        product.setPrice(txtprice.getText());
-        ProductDao.save(product);
-        setVisible(false);
-        new AddNewProduct().setVisible(true);
+            clear();
+        } else {
+            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+
+                    // this is the long process
+                    Product product = new Product();
+                    product.setName(CafeManagementSystem.apostrophe(txtname.getText()));
+                    product.setCategory((String) txtcategory.getSelectedItem());
+                    product.setPrice(txtprice.getText());
+                    ProductDao.save(product);
+                    clear();
+                    // this will execute the query taken from the object user
+
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialogLoading.dispose();
+                            clear();
+                        }
+                    });
+                }
+            };
+
+            SwingUtilities.invokeLater(() -> {
+                dialogLoading.setVisible(true);
+            });
+
+            worker.execute();
         }
     }//GEN-LAST:event_btnsaveActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new AddNewProduct().setVisible(true);
+        clear();
     }//GEN-LAST:event_btnclearActionPerformed
 
     private void txtnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnameKeyReleased
@@ -227,12 +278,32 @@ public class AddNewProduct extends javax.swing.JFrame {
 //THIS IS FOR THE CATEGORY DROPDOWN SPECIFICALLY SO THAT IT SHOWS LIST OF MANAGE CATEGORY
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        ArrayList<Category> list = CategoryDao.getAllRecorded();
-        Iterator<Category> itr = list.iterator();
-        while (itr.hasNext()) {
-            Category categoryobj = itr.next();
-            txtcategory.addItem(categoryobj.getName());
-        }
+
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/Burger.gif");
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                ArrayList<Category> list = CategoryDao.getAllRecorded();
+                Iterator<Category> itr = list.iterator();
+                while (itr.hasNext()) {
+                    Category categoryobj = itr.next();
+                    txtcategory.addItem(categoryobj.getName());
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.dispose();
+                    }
+                });
+            }
+        };
+        worker.execute();
+
     }//GEN-LAST:event_formComponentShown
 
     /**

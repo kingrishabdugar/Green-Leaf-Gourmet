@@ -60,6 +60,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import javax.swing.Timer;
@@ -81,9 +82,11 @@ public class PlaceOrder extends javax.swing.JFrame {
     public String mobileNumberPattern = "^[0-9]*$";
     public String userEmail;
     public String DateToday;
+    JFrame old;
 
     /**
      * Creates new form PlaceOrder
+     *
      */
     public PlaceOrder() {
         initComponents();
@@ -97,30 +100,30 @@ public class PlaceOrder extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                dialogLoading.dispose();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                     setVisible(false);
+                    dialogLoading.dispose();
                     dispose();
                 }
             }
-        });
-        //new Home().setVisible(true);
 
-//        TableCellRenderer renderer = boldheader1.getDefaultRenderer();
-//        renderer.setVerticalAlignment(SwingConstants.CENTER
-//        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-//        ((DefaultTableCellHeaderRenderer) boldheader2.getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-//    
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
+            }
+        });
     }
 
-    public PlaceOrder(String email) {
+    public PlaceOrder(String email, JFrame oldclass) {
         initComponents();
+        old = oldclass;
         JTableHeader boldheader1 = jTable1.getTableHeader();
         JTableHeader boldheader2 = jTable2.getTableHeader();
         boldheader1.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -132,22 +135,25 @@ public class PlaceOrder extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
-        //setSize(1024, 616);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         userEmail = email;
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
+                    oldclass.setVisible(true);
+                    dialogLoading.dispose();
                     dispose();
-                    new Home(userEmail).setVisible(true);
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
         txtproductname.setEditable(false); //automatically product name comes user cannot edit it the second name column in the JFrame
@@ -262,19 +268,38 @@ public class PlaceOrder extends javax.swing.JFrame {
             dtm.addRow(new Object[]{productObj.getName()});
 
         }
-
     }
 
     public void filterProductByname(String name, String category) {
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-        ArrayList<Product> list = ProductDao.filterProductByname(name, category);
-        Iterator<Product> itr = list.iterator();
-        while (itr.hasNext()) {
-            Product productObj = itr.next();
-            dtm.addRow(new Object[]{productObj.getName()});
 
-        }
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/GreenApple.gif");
+
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                dtm.setRowCount(0);
+                ArrayList<Product> list = ProductDao.filterProductByname(name, category);
+                Iterator<Product> itr = list.iterator();
+                while (itr.hasNext()) {
+                    Product productObj = itr.next();
+                    dtm.addRow(new Object[]{productObj.getName()});
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.dispose();
+                    }
+                });
+            }
+        };
+        worker.execute();
 
     }
 
@@ -284,7 +309,6 @@ public class PlaceOrder extends javax.swing.JFrame {
         jSpinner1.setValue(1);
         txttotal.setText("");
         btnaddtocart.setEnabled(false);
-
     }
 
     public void validateField() {
@@ -689,17 +713,11 @@ public class PlaceOrder extends javax.swing.JFrame {
     private void btnbillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillActionPerformed
         // TODO add your handling code here:
 
-        String gif = "StirFry.gif";//Name of gif file
-        CafeManagementSystem.createDialog(dialogLoading, gif);
-        //setVisible(false);
-        dialogLoading.setVisible(false);
-        dialogLoading.setAlwaysOnTop(false);
-
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
                 // this is the very long process
-
+                dialogLoading.setAlwaysOnTop(false);
                 String customerName = CafeManagementSystem.apostrophe(txtcusname.getText());
                 String customerMobileNumber = txtcusmobile.getText();
                 String customerEmail = txtcusemail.getText();
@@ -771,9 +789,6 @@ public class PlaceOrder extends javax.swing.JFrame {
                     image_qr.setAlignment(Image.MIDDLE);
                     image_qr.scaleToFit(documentWidth, documentHeight);
 
-//            Paragraph cafeName = new Paragraph("Green-Leaf-Gourmet\nPeace starts on our plate ^_~ \n");
-//            doc.add(cafeName);
-//            Paragraph starLine = new Paragraph("****************************************************************************************************************");
                     doc.add(image_line); //After Header
                     String total_paid = " ( Rupees " + convertNumberToWord(grandTotal) + " Only )";
                     Paragraph paragraph3 = new Paragraph("\tBill ID: " + billId + "\nCustomer Name: " + customerName + "\nTotal Paid: INR " + grandTotal + total_paid + "\nInvoice Date: " + DateToday);
@@ -795,38 +810,29 @@ public class PlaceOrder extends javax.swing.JFrame {
                         tb1.addCell(q);
                     }
                     doc.add(tb1);
-//            doc.add(starLine);
-
                     doc.add(image_line);
-
                     doc.add(image_footer);
                     doc.add(image_qr);
-//            String id = String.valueOf(billId);
-//            if((new File(path+"Green-Leaf-Gourmet_Bill_"+id+".pdf")).exists()){
-//                String fph = "rundll32 url.dll,FileProtocolHandler"+path;
-//                Process p = Runtime.getRuntime().exec(fph + "Green-Leaf-Gourmet_Bill_"+id+".pdf" );
-//                
-//            }
-//            else
-//                JOptionPane.showMessageDialog(null, "File does not Exist");
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured ❗",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, e, "Some Error ❌ Occured ❗", JOptionPane.ERROR_MESSAGE);
                 }
                 OpenPdf.openById(String.valueOf(billId), path + "\\");
                 doc.close();
+
+                new PlaceOrder(userEmail, old).setVisible(true);
                 setVisible(false);
-                new PlaceOrder(createdBy).setVisible(true);
+                dispose();
 
                 return null;
             }
 
             @Override
             protected void done() {
-                Timer timer = new Timer(2000, (ActionEvent evt1) -> {
+                Timer timer = new Timer(10, (ActionEvent evt1) -> {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            dialogLoading.setVisible(false);
+                            dialogLoading.dispose();
                         }
                     });
                     ((Timer) evt1.getSource()).stop();
@@ -843,8 +849,6 @@ public class PlaceOrder extends javax.swing.JFrame {
         });
 
         worker.execute();
-
-
     }//GEN-LAST:event_btnbillActionPerformed
 
     private void txtcusmobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcusmobileActionPerformed
@@ -940,16 +944,38 @@ public class PlaceOrder extends javax.swing.JFrame {
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
         // TODO add your handling code here:
-        billId = Integer.parseInt(BillDao.getId());
-        jLabel15.setText(BillDao.getId());
-        ArrayList<Category> list = CategoryDao.getAllRecorded();
-        Iterator<Category> itr = list.iterator();
-        while (itr.hasNext()) {
-            Category categoryObj = itr.next();
-            jComboBox1.addItem(categoryObj.getName());
-        }
-        String category = (String) jComboBox1.getSelectedItem();
-        productNameByCategory(category);
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/GreenApple.gif");
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    billId = Integer.parseInt(BillDao.getId());
+                    jLabel15.setText(BillDao.getId());
+                    ArrayList<Category> list = CategoryDao.getAllRecorded();
+                    Iterator<Category> itr = list.iterator();
+                    while (itr.hasNext()) {
+                        Category categoryObj = itr.next();
+                        jComboBox1.addItem(categoryObj.getName());
+                    }
+                    String category = (String) jComboBox1.getSelectedItem();
+                    productNameByCategory(category);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.dispose();
+                    }
+                });
+            }
+        };
+        worker.execute();
     }//GEN-LAST:event_formComponentShown
 
     private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
@@ -970,16 +996,24 @@ public class PlaceOrder extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlaceOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlaceOrder.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlaceOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlaceOrder.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlaceOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlaceOrder.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PlaceOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlaceOrder.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

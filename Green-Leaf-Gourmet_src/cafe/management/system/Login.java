@@ -5,6 +5,7 @@
 package cafe.management.system;
 
 import common.Main;
+import common.UpdateChecker;
 import javax.swing.JOptionPane;
 import model.User;
 import dao.UserDao;
@@ -14,10 +15,12 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -33,13 +36,14 @@ public class Login extends javax.swing.JFrame {
     int width = (int) screenSize.getWidth();
     int height = (int) screenSize.getHeight();
     public String emailPattern = "^[a-zA-Z0-9]+[@]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9]+$";
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        Seticon();  
+        Seticon();
         setTitle(" Green-Leaf-Gourmet ");
         btnLogin.setEnabled(false);
         setLocationRelativeTo(null); //makes aligned at center of screen
@@ -47,20 +51,24 @@ public class Login extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setLocationRelativeTo(null);
-        setSize(1100,680); 
+        setSize(1100, 680);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
-                    dispose();
+                    dialogLoading.dispose();
                     new WelcomeLanding().setVisible(true);
+                    dispose();
                 }
+            }
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
     }
@@ -280,19 +288,19 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new Sign_Up().setVisible(true);
+        CafeManagementSystem.loadWithGif(this, new Sign_Up(), "/images/Loading GIFs/Lemon.gif");
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ForgotPassword().setVisible(true);
+        CafeManagementSystem.loadWithGif(this, new ForgotPassword(), "/images/Loading GIFs/Lemon.gif");
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really wish to close the Application ?", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
+        int a = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Do you really wish to close the Application ?</b></html>", "Select", JOptionPane.YES_NO_CANCEL_OPTION);
         if (a == 0) {
             System.exit(0);
         }
@@ -307,18 +315,18 @@ public class Login extends javax.swing.JFrame {
         user = UserDao.login(email, password);
         //Changing colour for incorrect password hence using HTML tags
         if (user == null)
-        JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username or Password</b></html>", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html><b style=\"color:red\">Incorrect Username 👤 or Password 🔐 </b></html>", "Error ❌", JOptionPane.ERROR_MESSAGE);
         else {
             if (user.getStatus().equals("false")) {
-                ImageIcon icon = new ImageIcon("src//images//wait.gif");
+                URL url = UpdateChecker.class.getResource("/images/wait.gif");
+                ImageIcon icon = new ImageIcon(url);
                 JOptionPane.showMessageDialog(null, "<html><b style=\"color:Green\"> ⌛ Wait for Admin Approval ✅</b></html>", "Verification in progress ...", JOptionPane.INFORMATION_MESSAGE, icon);
                 clear();
 
             }
             if (user.getStatus().equals("true")) {
-                setVisible(false);
-                new Home(email).setVisible(true);
-
+                //setVisible(false);
+                CafeManagementSystem.loadWithGif(this, new Home(email), "/images/Loading GIFs/Lemon.gif");
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed

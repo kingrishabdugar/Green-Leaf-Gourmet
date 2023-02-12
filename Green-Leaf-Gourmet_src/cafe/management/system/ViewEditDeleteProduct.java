@@ -15,8 +15,11 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.JTableHeader;
@@ -31,6 +34,7 @@ import model.Category;
 public class ViewEditDeleteProduct extends javax.swing.JFrame {
 
     public String userEmail;
+    JDialog dialogLoading = new JDialog();
 
     /**
      * Creates new form ViewEditDeleteProduct
@@ -49,13 +53,19 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                     setVisible(false);
+                    dialogLoading.dispose();
                     dispose();
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
         // new Home().setVisible(true);
@@ -75,18 +85,22 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         // setShape(new RoundRectangle2D.Double(0,0, 1024, 576, 35, 35));
         setSize(1024, 616);
         userEmail = email;
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    dialogLoading.dispose();
                     setVisible(false);
-                    dispose();
-                    //new Home(userEmail).setVisible(true);
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
         // new Home().setVisible(true);
@@ -95,7 +109,18 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
 //        ((DefaultTableCellHeaderRenderer) boldheader1.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
     }
-
+    
+    public void clear()
+    {
+        txtname.setText("");
+        txtprice.setText("");
+        btnupdate.setEnabled(false);
+        btndelete.setEnabled(false);
+        setVisible(false);
+        jTable1.repaint();
+        setVisible(true);
+    }
+    
     public void validateField() {
         String name = txtname.getText();
         String price = txtprice.getText();
@@ -278,44 +303,65 @@ public class ViewEditDeleteProduct extends javax.swing.JFrame {
         product.setCategory((String) jComboBox1.getSelectedItem());
         product.setPrice(txtprice.getText());
         ProductDao.update(product);
-        setVisible(false);
-        new ViewEditDeleteProduct(userEmail).setVisible(true);
+        dialogLoading.dispose();
+        clear();
     }//GEN-LAST:event_btnupdateActionPerformed
 
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
         // TODO add your handling code here:
         String id = txtid.getText();
+        dialogLoading.dispose();
         int a = JOptionPane.showConfirmDialog(null, " Do you want to Delete this product", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
             ProductDao.delete(id);
-            setVisible(false);
-            new ViewEditDeleteProduct(userEmail).setVisible(true);
+            dialogLoading.dispose();
+            clear();
         }
     }//GEN-LAST:event_btndeleteActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        new ViewEditDeleteProduct(userEmail).setVisible(true);
+        clear();
     }//GEN-LAST:event_btnclearActionPerformed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        ArrayList<Product> list = ProductDao.getAllRecords();
-        Iterator<Product> itr = list.iterator();
-        while (itr.hasNext()) {
-            Product productObj = itr.next();
-            dtm.addRow(new Object[]{productObj.getId(), productObj.getName(), productObj.getCategory(), productObj.getPrice()});
+        CafeManagementSystem.createDialog(dialogLoading, "/images/Loading GIFs/GreenApple.gif");
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    dtm.setRowCount(0);
+                    ArrayList<Product> list = ProductDao.getAllRecords();
+                    Iterator<Product> itr = list.iterator();
+                    while (itr.hasNext()) {
+                        Product productObj = itr.next();
+                        dtm.addRow(new Object[]{productObj.getId(), productObj.getName(), productObj.getCategory(), productObj.getPrice()});
 
-        }
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialogLoading.dispose();
+                    }
+                });
+            }
+        };
+        worker.execute();
+
     }//GEN-LAST:event_formComponentShown
 //clicked on a row in the table -> should display on left side in text boxes and category
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        
-        
-        
         
         int index = jTable1.getSelectedRow();
         TableModel model = jTable1.getModel();

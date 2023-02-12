@@ -39,7 +39,6 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 public class Home extends javax.swing.JFrame {
 
     public String email;
-
     /**
      * Creates new form Home
      */
@@ -55,17 +54,18 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(1100, 680);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    new WelcomeLanding().setVisible(true);
                     setVisible(false);
                     dispose();
-                    new WelcomeLanding().setVisible(true);
                 }
             }
         });
@@ -75,7 +75,7 @@ public class Home extends javax.swing.JFrame {
         d.setUndecorated(true);
         d.setLocationRelativeTo(null);
         d.setBackground(new Color(0, 0, 0, 0));
-        JLabel l = new JLabel(new ImageIcon(("src/images/" + gif)));
+        JLabel l = new JLabel(new ImageIcon((gif)));
         d.setSize(200, 200);
         d.add(l);
         d.setVisible(true);
@@ -103,18 +103,23 @@ public class Home extends javax.swing.JFrame {
             btnvedp.setVisible(false);
             btnvu.setVisible(false);
         }
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure?");
+                dialogLoading.dispose();
+                int result = JOptionPane.showConfirmDialog(null, "<html><b style=\"color:Green\">Are you Sure❓</b></html>");
                 if (result == JOptionPane.OK_OPTION) {
                     // NOW we change it to dispose on close..
                     setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setVisible(false);
-                    dispose();
+                    dialogLoading.dispose();
                     new WelcomeLanding().setVisible(true);
+                    dispose();
                 }
+            }
+
+            public void windowIconified(WindowEvent e) {
+                dialogLoading.dispose();
             }
         });
     }
@@ -364,129 +369,24 @@ public class Home extends javax.swing.JFrame {
 
     private void btnvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvuActionPerformed
         // TODO add your handling code here:
-        String gif = "Orange_Loading.gif";//Name of gif file
-        createDialog(dialogLoading, gif);
-        if (evt.getSource() == btnvu) {
-            setVisible(false);
-            dialogLoading.setVisible(false);
-
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    new VerifyUsers(email).setVisible(true); // this is the long process
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    Timer timer = new Timer(3000, (ActionEvent evt1) -> {
-                        SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                dialogLoading.setVisible(false);
-                            }
-                        });
-                        ((Timer) evt1.getSource()).stop();
-                    }); // This is thrown if we throw an exception
-                    // from doInBackground.
-                    timer.setRepeats(false);
-                    timer.start();
-                }
-            };
-            
-            SwingUtilities.invokeLater(() -> {
-                dialogLoading.setVisible(true);
-            });
-
-            worker.execute();
-        }
+        CafeManagementSystem.loadWithGif(this, new VerifyUsers(email, this), "");
     }//GEN-LAST:event_btnvuActionPerformed
 
     private void PlaceOrderbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceOrderbtnActionPerformed
         // TODO add your handling code here:
-
-        String gif = "Apple_Loading.gif";//Name of gif file
-        createDialog(dialogLoading, gif);
-        if (PlaceOrderbtn == evt.getSource()) {
-            setVisible(false);
-            dialogLoading.setVisible(false);
-
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    new PlaceOrder(email).setVisible(true); // this is the long process
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    Timer timer = new Timer(5000, (ActionEvent evt1) -> {
-                        SwingUtilities.invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                dialogLoading.setVisible(false);
-                            }
-                        });
-                        ((Timer) evt1.getSource()).stop();
-                    }); // This is thrown if we throw an exception
-                    // from doInBackground.
-                    timer.setRepeats(false);
-                    timer.start();
-
-                }
-            };
-            
-            SwingUtilities.invokeLater(() -> {
-                dialogLoading.setVisible(true);
-            });
-
-            worker.execute();
-        }
+        CafeManagementSystem.loadWithGif(this, new PlaceOrder(email, this), "");
     }//GEN-LAST:event_PlaceOrderbtnActionPerformed
 
     private void btnbillandorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbillandorderActionPerformed
         // TODO add your handling code here:
-       
-        String gif = "Apple_Loading.gif";//Name of gif file
-        createDialog(dialogLoading, gif);
-        if (evt.getSource() == btnbillandorder) {
-            setVisible(false);
-            dialogLoading.setVisible(false);
+        CafeManagementSystem.loadWithGif(this, new ViewBillandOrderDetails(email, this), "");
 
-            SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-                @Override
-                protected Void doInBackground() throws Exception {
-                    new ViewBillandOrderDetails(email).setVisible(true); // this is the long process
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    Timer timer = new Timer(5000, (ActionEvent evt1) -> {
-                        SwingUtilities.invokeLater(() -> {
-                            dialogLoading.setVisible(false);
-                        });
-                        ((Timer) evt1.getSource()).stop();
-                    }); // This is thrown if we throw an exception
-                    // from doInBackground.
-                    timer.setRepeats(false);
-                    timer.start();
-
-                }
-            };
-            //lambda expression suggested by NetBeans itself
-            SwingUtilities.invokeLater(() -> {
-                dialogLoading.setVisible(true);
-            });
-
-            worker.execute();
-        }
     }//GEN-LAST:event_btnbillandorderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         //new ChangePassword().setVisible(true);
-        new ChangePassword(email).setVisible(true);
+        new ChangePassword(email,this).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

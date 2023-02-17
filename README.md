@@ -41,10 +41,10 @@
 * *Registration with Admin approval to manage all users with administrator access*
 * *Get the total bill value with the option to generate a Bill receipt in PDF format*
 * *View past Bill receipts generated with the option to filter by date and sort by time created*
-* *"Check for Updates" option for users to manually choose to check for any new updates deployed on GitHub Releases or even repair an existing installation. 
-* *Passwords and Security Answers securely encrypted using SHA-512 with salting to conceal the details.
-* *Loading Animations while fetching data from the Database utilizing Java's [Swing Worker](https://docs.oracle.com/javase/7/docs/api/javax/swing/SwingWorker.html) class.
-* *More responsive, optimized and faster even on low-end devices
+* *"Check for Updates" option for users to manually check for any new updates deployed on GitHub Releases or even repair an existing installation.* 
+* *Passwords and Security Answers securely encrypted using SHA-512 with salting to conceal the details.*
+* *Loading Animations while fetching data from the Database utilizing Java's [Swing Worker](https://docs.oracle.com/javase/7/docs/api/javax/swing/SwingWorker.html) class.*
+* *More responsive, optimized and faster even on low-end devices*
 
 ## 💻 Tech Stacks used 
 <div align="center">  

@@ -63,7 +63,7 @@
 </div>
 
 <div align="center">
-<a href=""><img src="ReadMe files/Working of the application Green-Leaf-Gourmet.gif" align="center" width="500"/></a>
+<a href=""><img src="ReadMe files/Working Demo _ Green-Leaf-Gourmet.gif" align="center" width="540"/></a>
 </div>  
   
 

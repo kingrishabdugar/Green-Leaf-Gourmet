@@ -20,7 +20,7 @@
 ## About 🍃Green-Leaf-Gourmet🍃 
 <p align="center">
 
-<img width="500" src="Green-Leaf-Gourmet_src/images/FS_WelcomeLanding.png">
+<img width="500" src="src/images/FS_WelcomeLanding.png">
 
 <p align="center">
 

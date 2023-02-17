@@ -19,7 +19,10 @@
 
 ## About 🍃Green-Leaf-Gourmet🍃 
 <p align="center">
-<img width="500" src="ReadMe files/Welcome_Green-Leaf-Gourmet.png">
+
+<img width="500" src="Green-Leaf-Gourmet_src/images/FS_WelcomeLanding.png">
+
+<p align="center">
 
 * *A full-stack Restaurant Management Desktop application with features to store and view information about users, add, remove & view items in a menu and efficiently manage orders. While ordering, users can select menu items with their quantity/number. Furthermore, They can calculate the total cost and generate a bill/receipt for the customer. With Administrator privileges one gets access to more features viz verifying and approving users, managing categories & products listed etc*
 * *The Frontend (User Interface) of the application designed in Java Swing using the NetBeans GUI Builder.*
@@ -53,9 +56,9 @@
 >```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
 <div align="center">
 
-<!--- <a href="https://youtu.be/8T8trUddHDk"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
+<!--- <a href="https://youtu.be/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
 
-[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://youtu.be/8T8trUddHDk)
+[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://youtu.be/vGr5oRf1baw)
 
 </div>
 
@@ -68,19 +71,25 @@
 ### Welcome Screen
 
 <p align="center">
-<img width="350" alt="Welcome" src="https://user-images.githubusercontent.com/56007479/208426337-7884cb88-117b-4428-bbb6-76e52dd1b3c2.png">
+<img width="500" alt="Welcome" src="https://user-images.githubusercontent.com/56007479/211354001-aa7d13f9-245e-4552-9f3f-3c6de4a76a08.png">
 <p align="center">
 
 ### Sign Up & Login
 <p align="center">
-<img width="350" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/190919453-b04b72a8-1aa7-49d0-9751-5f05007063b9.png">
-<img style="margin: 70px" width="350" alt="Log In" src="https://user-images.githubusercontent.com/56007479/190920150-7e71e6f4-efb5-4bbd-b39a-c77519b042b0.png">
+<img width="400" alt="Sign Up" src="https://user-images.githubusercontent.com/56007479/211354315-cd7383db-3ed9-4b22-b3fc-d238afdce321.png">
+<img style="margin: 50px" width="400" alt="Log In" src="https://user-images.githubusercontent.com/56007479/211354379-e74fa1b5-32c7-4e4f-bee2-be26fb71b45b.png">
 <p align="center">
+
 
 ### Home Page | Admin & User Interface View
 <p align="center">
-<img width="350" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/190920359-09563fcb-2b34-4e51-88bd-15368f9aaad8.png"> 
-<img style="margin: 70px" width="350" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/190920498-9ba4be64-2dc2-4e99-8ce5-34779f152e11.png">
+<img width="400" alt="ADMIN VIEW" src="https://user-images.githubusercontent.com/56007479/211459348-1ad48f31-9aed-493d-b6bd-83f878eefee4.png"> 
+<img style="margin: 70px" width="400" alt="USER VIEW" src="https://user-images.githubusercontent.com/56007479/211462617-41cf65c7-ec03-442e-bd01-5b2fbf84d147.png">
+<p align="center">
+
+### Place Order
+<p align="center">
+<img width="500" alt="Place Order" src="https://user-images.githubusercontent.com/56007479/211462080-518c7ef9-f8e3-4f97-bf0c-260e9bdf0a2f.png">
 <p align="center">
 
 #### *A user can Signup / Login (after Admin approval) and has access to the following features :*

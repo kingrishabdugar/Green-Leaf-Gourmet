@@ -162,14 +162,3 @@ Read the [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet
 
 </div>
 
-
-How to change application image fromtaskbar and title bar
-initComponents();
-        Seticon();
-    private void Seticon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("salad.png")));
-    }
-
-
-
-

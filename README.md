@@ -60,9 +60,9 @@
 >```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
 <div align="center">
 
-<!--- <a href="https://youtu.be/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
+<!--- <a href="https://www.youtube-nocookie.com/embed/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
 
-[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://youtu.be/vGr5oRf1baw)
+[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://www.youtube-nocookie.com/embed/vGr5oRf1baw)
 
 </div>
 

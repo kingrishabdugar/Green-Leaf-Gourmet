@@ -65,14 +65,13 @@
 
 [![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://www.youtube-nocookie.com/embed/vGr5oRf1baw)
 
-</div>
 
-<div align="center">
   
-<video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" controls="controls" style="max-width: 540px;">
+<video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" width="540" class="d-block rounded-bottom-2 width-fit" poster="src/images/FS_WelcomeLanding.png" preload="auto" controls autoplay>
 </video>  
 
 </div>
+
 
 ## Overview 🪟
 ### Welcome Screen

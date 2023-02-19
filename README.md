@@ -17,6 +17,29 @@
 
 </div>
 
+
+## Demo | Working Example of the Application📲
+
+<div align="center">
+
+>```Too fast/slow ? or the video isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
+
+
+<!--- <a href="https://www.youtube-nocookie.com/embed/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
+
+[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://www.youtube-nocookie.com/embed/vGr5oRf1baw)
+
+</div>
+
+<div align="center">
+  <div style="max-width: 540px;">
+    <video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" width="100%" controls poster="https://example.com/video-thumbnail.jpg" preload="auto" autoplay loop muted>
+    </video>
+  </div>
+</div>
+
+
+
 ## About 🍃Green-Leaf-Gourmet🍃 
 <p align="center">
 
@@ -53,23 +76,6 @@
 <img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="75" />
 <img style="margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Canva_icon_2021.svg/900px-Canva_icon_2021.svg.png" alt="Canva" height="55" />
 <img style="margin: 15px" src="https://user-images.githubusercontent.com/56007479/190919058-2d40191d-2b52-4c37-b4b3-a6d48b3c1edf.png" alt="Inno Setup" height="75" />   
-</div>
-
-## Demo | Working Example of the Application📲
-
-
->```Too fast/slow ? or the video isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
-<div align="center">
-
-<!--- <a href="https://www.youtube-nocookie.com/embed/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
-
-[![Working Demo | Green-Leaf-Gourmet | Full-Stack Restaurant Management System](https://img.shields.io/badge/Watch%20On%20YouTube%20-red.svg?logo=Youtube&style=)](https://www.youtube-nocookie.com/embed/vGr5oRf1baw)
-
-
-  
-<video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" width="540" class="d-block rounded-bottom-2 width-fit" poster="src/images/FS_WelcomeLanding.png" preload="auto" controls autoplay>
-</video>  
-
 </div>
 
 

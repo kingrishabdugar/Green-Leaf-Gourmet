@@ -57,7 +57,8 @@
 
 ## Demo | Working Example of the Application📲
 
->```Too fast/slow ? or the GIF isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
+
+>```Too fast/slow ? or the video isn't loading 🔃 ? Acess the Demo / Working example here ⬇️ :```
 <div align="center">
 
 <!--- <a href="https://www.youtube-nocookie.com/embed/vGr5oRf1baw"><img alt="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" title="Working Demo | Green-Leaf-Gourmet | Java, Swing, SQL, Git | Full-Stack Restaurant Management System" src="https://custom-icon-badges.demolab.com/badge/-Watch%20On%20YouTube%20-red?style=for-the-badge&logo=video&logoColor=white"/></a> --->
@@ -67,9 +68,11 @@
 </div>
 
 <div align="center">
-<a href=""><img src="ReadMe files/Working Demo _ Green-Leaf-Gourmet.gif" align="center" width="540"/></a>
-</div>  
   
+<video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" controls="controls" style="max-width: 540px;">
+</video>  
+
+</div>
 
 ## Overview 🪟
 ### Welcome Screen

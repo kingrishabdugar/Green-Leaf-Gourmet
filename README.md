@@ -33,7 +33,7 @@
 
 <div align="center">
   <div style="max-width: 540px;">
-    <video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" width="100%" controls poster="https://example.com/video-thumbnail.jpg" preload="auto" autoplay loop muted>
+    <video src="https://user-images.githubusercontent.com/56007479/219938056-644b2a41-7eed-4b11-af63-904bf5272a44.mp4" width="100%" controls poster="https://github.com/kingrishabdugar/Green-Leaf-Gourmet/blob/main/src/images/FS_Home.png?raw=true" playbackRate="1.5" preload="auto" autoplay loop muted>
     </video>
   </div>
 </div>

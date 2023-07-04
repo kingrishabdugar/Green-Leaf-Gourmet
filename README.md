@@ -166,6 +166,10 @@ Read the [CONTRIBUTING.md](https://github.com/kingrishabdugar/Green-Leaf-Gourmet
 * Make changes and push
 * Make a pull request and wait for merging
 
+## Image Copyright Claims
+Many images used in the project belong to their respective creators/authors. No claim by me & those who use this project. :)
+
+
 ---
 
 <div align="center">
